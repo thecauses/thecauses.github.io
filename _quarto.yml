@@ -10,6 +10,7 @@ book:
   chapters:
     - index.qmd
     - correlation.qmd
+    - frameworks.qmd
     - part: "Appendix: Additional Topics"
     - references.qmd
 

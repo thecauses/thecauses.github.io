@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Correlation vs.&nbsp;Causation – Understanding the Causes of Things</title>
+<title>2&nbsp; Causal Frameworks – Understanding the Causes of Things</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./frameworks.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./correlation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -112,7 +112,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./correlation.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./frameworks.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -145,13 +145,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./correlation.html" class="sidebar-item-text sidebar-link active">
+  <a href="./correlation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./frameworks.html" class="sidebar-item-text sidebar-link">
+  <a href="./frameworks.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></span></a>
   </div>
 </li>
@@ -175,11 +175,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#treatment-and-outcomes" id="toc-treatment-and-outcomes" class="nav-link active" data-scroll-target="#treatment-and-outcomes">Treatment and Outcomes</a></li>
-  <li><a href="#correlations-between-variables" id="toc-correlations-between-variables" class="nav-link" data-scroll-target="#correlations-between-variables">Correlations between Variables</a></li>
-  <li><a href="#correlation-is-not-causation" id="toc-correlation-is-not-causation" class="nav-link" data-scroll-target="#correlation-is-not-causation">Correlation is not Causation</a></li>
-  <li><a href="#formalising-confounders" id="toc-formalising-confounders" class="nav-link" data-scroll-target="#formalising-confounders">Formalising Confounders</a></li>
-  <li><a href="#dealing-with-confounders" id="toc-dealing-with-confounders" class="nav-link" data-scroll-target="#dealing-with-confounders">Dealing with Confounders</a></li>
+  <li><a href="#potential-outcomes-framework" id="toc-potential-outcomes-framework" class="nav-link active" data-scroll-target="#potential-outcomes-framework">Potential Outcomes Framework</a></li>
+  <li><a href="#the-fundamental-problem" id="toc-the-fundamental-problem" class="nav-link" data-scroll-target="#the-fundamental-problem">The Fundamental Problem</a></li>
+  <li><a href="#heterogenous-treatment-effects" id="toc-heterogenous-treatment-effects" class="nav-link" data-scroll-target="#heterogenous-treatment-effects">Heterogenous Treatment Effects</a></li>
+  <li><a href="#causal-estimands" id="toc-causal-estimands" class="nav-link" data-scroll-target="#causal-estimands">Causal Estimands</a></li>
+  <li><a href="#uncertainty-and-inference" id="toc-uncertainty-and-inference" class="nav-link" data-scroll-target="#uncertainty-and-inference">Uncertainty and Inference</a></li>
   </ul>
 </nav>
     </div>
@@ -188,7 +188,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></h1>
 </div>
 
 
@@ -215,94 +215,162 @@ Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this chapter, we discuss the basics of causal inference, and why causation is not correlation:</p>
+<p>In this chapter, we discuss the the key aspects of causal inference:</p>
 <ol type="1">
-<li>Define what treatment and outcome variables are.</li>
-<li>Discuss the concept of correlation.</li>
-<li>Discuss how <strong>confounders</strong> and <strong>selection bias</strong> mean correlation is not equal to causation.</li>
-<li>Briefly discuss broad ideas of how we can address the issues of confounders and selection bias to go from correlation to causation.</li>
+<li>Discuss the <strong>potential outcomes</strong> framework as a way to think about causality.</li>
+<li>Define the main causal <strong>estimands</strong> that we are interested in estimating.</li>
+<li>Discuss the idea of <strong>heterogenous</strong> treatment effects.</li>
+<li>Discuss. the idea of <strong>statistical inference</strong> and <strong>uncertainty</strong>.</li>
 </ol>
 </div>
 </div>
 <p><br></p>
-<section id="treatment-and-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="treatment-and-outcomes">Treatment and Outcomes</h2>
-<p>In causal inference, we are concerned with how a <strong>treatment</strong> causes some change in the <strong>outcome</strong> variable:</p>
-<ul>
-<li>How does taking the vaccine cause change in mortality rates.</li>
-<li>How does going to college change your expected lifetime earnings.</li>
-<li>How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold.</li>
-</ul>
-<p>In this course, we mostly assume that the treatment variable is <strong>binary</strong>. This means that the treatment can take one of two values - you either have received the treatment, or did not receive the treatment. For example, you either received the vaccine, or you didn’t.</p>
-<p>We typically notate the treatment as <span class="math inline">\(D\)</span> for notation simplicity:</p>
+<section id="potential-outcomes-framework" class="level2">
+<h2 class="anchored" data-anchor-id="potential-outcomes-framework">Potential Outcomes Framework</h2>
+<p>In the last chapter, we discussed how correlation is not equal to causation. However, we did not formally define what causation is.</p>
+<p>Imagine we have two hypothetical parallel worlds - copies of the current world. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>World</th>
+<th>Treatment <span class="math inline">\(D\)</span></th>
+<th>Outcome <span class="math inline">\(Y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>Does not Receive Treatment</td>
+<td><span class="math inline">\(\textcolor{purple}{Y(0)}\)</span></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Receives Treatment</td>
+<td><span class="math inline">\(\textcolor{purple}{Y(1)}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These two outcome variable values are called <strong>potential outcomes</strong>.</p>
+<p>Since these two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment, any difference in your outcome variable value must be a result of the treatment.</p>
+<p>Using this fact, we know the individual treatment effect (notated <span class="math inline">\(\tau\)</span>) of our treatment is simply the difference in potential outcomes between these two worlds:</p>
 <p><span class="math display">\[
-D = \begin{cases}
-0 \quad \text{You did not receive the treatment} \\
-1 \quad \text{You did receive the treatment}
-\end{cases}
+\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
-<p>The outcome variable is the variable of interest that changes as a result of either receiving or not receiving treatment. For example, your expected lifetime earnings changes depending on if you went to college or not.</p>
-<p>We typically notate the outcome variable as <span class="math inline">\(Y\)</span>.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Stable Unit Treatment Value Assumption
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The potential outcomes framework described above, with two parallel worlds, depends on a key assumption, called the stable unit treatment value assumption (SUTVA).</p>
+<p>Let us say we have multiple people in our study, including person A and B. SUTVA essentially says that if person A gets the treatment, that does not affect the outcome values of person B.</p>
+<p>The reason this is important is that if A’s treatment status affects B’s outcome, then we would have more than 2 potential worlds - not just B getting the treatment or not, but also if A got the treatment or not. Common causes of SUTVA violations include:</p>
+<ul>
+<li>Spill-over effects. For example, if we are testing a new curriculum’s impact on student performance, student A who got the new curriculum might teach/tutor their friend, student B, which affects their outcomes.</li>
+<li>Dilution: For example, in vaccines, there is herd immunity. That mean other people getting the vaccines improves my health outcomes.</li>
+</ul>
+</div>
+</div>
+</div>
 <p><br></p>
 </section>
-<section id="correlations-between-variables" class="level2">
-<h2 class="anchored" data-anchor-id="correlations-between-variables">Correlations between Variables</h2>
-<p>One way we can analyse the relationship between a treatment and an outcome is with a correlation. <strong>Correlation</strong> is how one variable changes when the other variable changes.</p>
-<p>For example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings.</p>
+<section id="the-fundamental-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-fundamental-problem">The Fundamental Problem</h2>
+<p>However, we have an issue - in reality, we do not have two parallel realities, one where you get the treatment, and another you don’t get the treatment. In the real world, someone either gets the treatment, or doesn’t get the treatment.</p>
 <ul>
-<li>To calculate a correlation measure, we would simply find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.</li>
-<li>Once we have these averages, we can compare them. If by going to college, you get a higher average career earnings, then going to college is <strong>positively correlated</strong> with career earnings.</li>
-<li>The opposite is also true: if by going to college, you get a lower average career earnings, then going to college is <strong>negatively correlated</strong> with career earnings.</li>
-<li>If going to college and not going to college have the same career earnings, then we say that going to college is <strong>not correlated</strong> with career earnings.</li>
+<li>In the real world, you either got the vaccine, or didn’t get the vaccine.</li>
 </ul>
+<p>Thus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the <strong>counterfactual</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 31%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>In the Real World</th>
+<th>Observed Outcome</th>
+<th>Counterfactual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>I receive treatment</td>
+<td><span class="math inline">\(\textcolor{purple}{Y(1)}\)</span></td>
+<td><span class="math inline">\(\textcolor{purple}{Y(0)}\)</span></td>
+</tr>
+<tr class="even">
+<td>I did not receive treatment</td>
+<td><span class="math inline">\(\textcolor{purple}{Y(0)}\)</span></td>
+<td><span class="math inline">\(\textcolor{purple}{Y(1)}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Remember our individual treatment effect <span class="math inline">\(\tau\)</span>:</p>
+<p><span class="math display">\[
+\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
+\]</span></p>
+<p>The <strong>fundamental problem of causal inference</strong> is that in order to find our treatment effect <span class="math inline">\(\tau\)</span>, we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate these counterfactuals in order to estimate the causal effects.</p>
 <p><br></p>
 </section>
-<section id="correlation-is-not-causation" class="level2">
-<h2 class="anchored" data-anchor-id="correlation-is-not-causation">Correlation is not Causation</h2>
-<p>You probably have heard the phrase: “correlation is not causation”. But what does this mean?</p>
-<p>Let us take an example. Imagine that our treatment is if you go to the hospital or not, and our outcome is some measure of your health. Our causal question is thus: how does going to the hospital cause your health to change?</p>
-<p>If we just collect correlation data, we likely find the following:</p>
+<section id="heterogenous-treatment-effects" class="level2">
+<h2 class="anchored" data-anchor-id="heterogenous-treatment-effects">Heterogenous Treatment Effects</h2>
+<p>Remember our individual treatment effect <span class="math inline">\(\tau\)</span>:</p>
+<p><span class="math display">\[
+\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
+\]</span></p>
+<p>As the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.</p>
+<p>Because we have multiple individuals in a study, we will also have multiple individual treatment effects <span class="math inline">\(\tau\)</span>, one for each individual. This means we can have two scenarios:</p>
 <ul>
-<li>The average health outcome of individuals who went to the hospital (got the treatment) is <u>quite low</u>.</li>
-<li>The average health outcome of individuals who did not go to the hospital (did not get the treatment) is <u>quite high</u>.</li>
+<li><p><strong>Homogenous Treatment Effects</strong>: This is when the individual treatment effects <span class="math inline">\(\tau\)</span> are equal across all individuals. This implies that the treatment has the same causal effect for everyone.</p></li>
+<li><p><strong>Heterogenous Treatment Effects</strong>: This is when the individual treatment effects <span class="math inline">\(\tau\)</span> differ between individuals. This is often based on some characteristics of individuals. For example, a maternity leave policy treatment probably has different treatment effects on men vs.&nbsp;women.</p></li>
 </ul>
-<p>Thus, based on our discussion on correlation, we find that going to the hospital is correlated with <strong>worse</strong> health outcomes. Does this mean that going to the hospital worsens your health?</p>
-<p>The answer is <strong>no</strong>! The reason we have a negative correlation is because of a <strong>confounding variable</strong>. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn’t get the treatment.</p>
-<ul>
-<li>In this example, a confounder could be <strong>smoking</strong>. Smoking will be negatively correlated with health outcome. Someone who smokes is also more likely to visit the hospital with health complications, and thus, is more likely to get the treatment.</li>
-<li>Since smokers on average have worse health outcomes, and they are more likely to go to the hospital and get the treatment, that means people who go to the hospital (get the treatment) start out with worse health outcomes than people who did not go to the hospital.</li>
-</ul>
-<p>This means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.</p>
-<p>Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.</p>
+<p>The reason homogenous and heterogenous treatment effects are important is that they often influence what type of strategies we can use in causal estimation, as we will see later.</p>
 <p><br></p>
 </section>
-<section id="formalising-confounders" class="level2">
-<h2 class="anchored" data-anchor-id="formalising-confounders">Formalising Confounders</h2>
-<p>To dive deeper into causal inference, we need to formally define confounders. Confounders, often notated with a <span class="math inline">\(X\)</span>, are variables that meet the following characteristics:</p>
-<ol type="1">
-<li>The confounder is correlated (either positively or negatively) with the outcome variable of interest.</li>
-<li>The confounder causes who gets and doesn’t get the treatment.</li>
-<li>The confounder is <strong>not</strong> itself caused by the treatment.</li>
-</ol>
-<p>We often explore confounders graphically:</p>
+<section id="causal-estimands" class="level2">
+<h2 class="anchored" data-anchor-id="causal-estimands">Causal Estimands</h2>
+<p>An <strong>estimand</strong> is a true real-world value that we want to estimate. For example, the individual treatment effect <span class="math inline">\(\tau\)</span> is an estimand - the true treatment effect as defined by the parallel world potential outcomes:</p>
+<p><span class="math display">\[
+\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
+\]</span></p>
+<p>However, because of the fundamental problem of causal inference, it is almost impossible to estimate the individual treatment effect <span class="math inline">\(\tau\)</span> for every person.</p>
+<p>We instead mostly focus on averaged group estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:</p>
+<ul>
+<li><strong>Average Treatment Effect (ATE)</strong>: This is exactly what it sounds like - the average of individual treatment effects <span class="math inline">\(\tau\)</span>, for all individuals in our study. This means for both individuals who received and didn’t receive the treatment.</li>
+<li><strong>Average Treatment Effect on the Treated (ATT)</strong>: This is the average of individual treatment effects <span class="math inline">\(\tau\)</span>, but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.</li>
+<li><strong>Local Average Treatment Effect (LATE)</strong>: This is the average of individual treatment effects <span class="math inline">\(\tau\)</span>, but only for a specific (local) group of individuals in a study. This group can be defined by their confounding values, or some other characteristic the individuals hold together.</li>
+</ul>
+<p>Remember that these are causal estimands - the true causal effects in the world. We do not have both potential outcomes, so we will need some strategy to <strong>estimate</strong> these true causal effects.</p>
+<p><br></p>
+</section>
+<section id="uncertainty-and-inference" class="level2">
+<h2 class="anchored" data-anchor-id="uncertainty-and-inference">Uncertainty and Inference</h2>
+<p>We do not know the values of counterfactuals, the potential outcomes that we do not observe. Thus, we have to estimate these counterfactuals with an <strong>estimator</strong> to get causal estimates.</p>
+<p>However, an estimation process has a level of uncertainty. We cannot be sure that our estimates are accurate. We quantify that uncertainty in our causal effect estimates with a <strong>standard error</strong>. This value tells us how precise our estimates are.</p>
+<ul>
+<li>Smaller standard errors means we are more confident about our estimates.</li>
+<li>Larger standard errors means we are less certain about our estimates.</li>
+</ul>
+<p>With our standard errors, we can calculate how likely that there is zero (no) causal effect (called a p-value). This procedure is called a hypothesis test.</p>
+<ul>
+<li>If our p-value is less than 0.05 (5%), there is less than a 5% chance that there is zero causal effect, which implies 95%+ chance there is a causal effect. In this case, we say there is a <strong>statistically significant causal effect</strong>.</li>
+<li>If our p-value is larger than 0.05 (5%), there is a greater than 5% chance that the causal effect is 0. We generally conclude that there is no statistically significant causal effect.</li>
+</ul>
+<p>In most software and reports, if there is a p-value less than 5%, the authors will put stars (**) next to the estimate. If you see any stars, there is statistically significant causal effect.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/clipboard-928665935.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+<p><img src="images/clipboard-3174072485.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
-<p><span class="math inline">\(X\)</span> is a confounder. It is correlated with outcome <span class="math inline">\(Y\)</span> (as shown by the arrow <span class="math inline">\(X\rightarrow Y\)</span> ), and it causes who gets and doesn’t get the treatment <span class="math inline">\(D\)</span> (as shown by the arrow <span class="math inline">\(X \rightarrow D\)</span>).</p>
-<p><span class="math inline">\(V\)</span> is <strong>not</strong> a confounder. Why? <span class="math inline">\(V\)</span> does not cause who gets and doesn’t get the treatment - note that the arrow is pointing from <span class="math inline">\(D \rightarrow V\)</span>, meaning treatment <span class="math inline">\(D\)</span> is causing <span class="math inline">\(V\)</span>, and not the other way around.</p>
-<p><br></p>
-</section>
-<section id="dealing-with-confounders" class="level2">
-<h2 class="anchored" data-anchor-id="dealing-with-confounders">Dealing with Confounders</h2>
-<p>We have discussed how the presence of confounders can result in our correlation being completely different from the causal effect.</p>
-<p>To get the correct causal effect of a treatment on an outcome, we must find some way to “account” for confounder. There are two main ways we do this in causal inference:</p>
-<ol type="1">
-<li>We <strong>control</strong> for confounders. This basically means we account for the influence of confounder <span class="math inline">\(X\)</span>, and get rid of that part of influence.</li>
-<li>We <strong>determine who gets treated</strong>. For example, if we randomly decide who gets the treatment and who doesn’t (such as flipping a coin), that means <strong>we the researchers</strong> are controlling who gets the treatment, and not the confounder. Thus, the confounder no longer determines who gets and doesn’t get the treatment, and thus is no longer a confounder.</li>
-</ol>
-<p>We will cover a variety of different causal research designs from chapter 3 onwards, which will apply these strategies to isolate causal effects, and go from correlation to causation.</p>
+<p>In the figure above, you can see the stars *** indicate a non-zero causal effect. Do not worry about interpreting the table now - we will show more details in the following chapters.</p>
 
 
 </section>
@@ -730,13 +798,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./correlation.html" class="pagination-link" aria-label="Correlation vs. Causation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./frameworks.html" class="pagination-link" aria-label="Causal Frameworks">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

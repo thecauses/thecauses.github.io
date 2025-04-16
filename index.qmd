@@ -6,11 +6,17 @@ We have all heard of the saying - "correlation is not causation". But what does 
 
 This booklet aims to teach the fundamentals of causal inference, while relying on as little mathematics and complexity as possible. The goal is that with the knowledge in this booklet, you will be able to critically assess the claims of others - is it truly causation or just correlation? You will also be able to conduct your own causal analysis using the R programming language.
 
+<br />
+
 ## Prerequisites
 
 I aim to avoid as much mathematics and technical notation as possible. I recommend that before starting, one has an understanding of basic statistical concepts, such as average/mean, and some simple high-school level algebra. Some understanding of statistical inference and simple linear regression is desirable but not required.
 
 I provide R-code to implement the methods I discuss in this booklet. While I provide the code for the methods, I do not teach how to code in R in this booklet. Thus, if you wish to implement these methods, I recommend looking at simple tutorials regarding coding in R.
+
+I also provide some more detailed notes in blue drop-down info boxes, for those who are interested in a more thorough approach.
+
+<br />
 
 ## Layout
 

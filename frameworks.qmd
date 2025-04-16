@@ -1,0 +1,133 @@
+# Causal Frameworks
+
+::: {.callout-tip appearance="simple"}
+## Overview
+
+In this chapter, we discuss the the key aspects of causal inference:
+
+1.  Discuss the **potential outcomes** framework as a way to think about causality.
+2.  Define the main causal **estimands** that we are interested in estimating.
+3.  Discuss the idea of **heterogenous** treatment effects.
+4.  Discuss. the idea of **statistical inference** and **uncertainty**.
+:::
+
+<br />
+
+## Potential Outcomes Framework
+
+In the last chapter, we discussed how correlation is not equal to causation. However, we did not formally define what causation is.
+
+Imagine we have two hypothetical parallel worlds - copies of the current world. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.
+
+| World | Treatment $D$              | Outcome $Y$                |
+|-------|----------------------------|----------------------------|
+| 0     | Does not Receive Treatment | $\textcolor{purple}{Y(0)}$ |
+| 1     | Receives Treatment         | $\textcolor{purple}{Y(1)}$ |
+
+These two outcome variable values are called **potential outcomes**.
+
+Since these two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment, any difference in your outcome variable value must be a result of the treatment.
+
+Using this fact, we know the individual treatment effect (notated $\tau$) of our treatment is simply the difference in potential outcomes between these two worlds:
+
+$$
+\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
+$$
+
+::: {.callout-note collapse="true" appearance="simple"}
+## Stable Unit Treatment Value Assumption
+
+The potential outcomes framework described above, with two parallel worlds, depends on a key assumption, called the stable unit treatment value assumption (SUTVA).
+
+Let us say we have multiple people in our study, including person A and B. SUTVA essentially says that if person A gets the treatment, that does not affect the outcome values of person B.
+
+The reason this is important is that if A's treatment status affects B's outcome, then we would have more than 2 potential worlds - not just B getting the treatment or not, but also if A got the treatment or not. Common causes of SUTVA violations include:
+
+-   Spill-over effects. For example, if we are testing a new curriculum's impact on student performance, student A who got the new curriculum might teach/tutor their friend, student B, which affects their outcomes.
+-   Dilution: For example, in vaccines, there is herd immunity. That mean other people getting the vaccines improves my health outcomes.
+:::
+
+<br />
+
+## The Fundamental Problem
+
+However, we have an issue - in reality, we do not have two parallel realities, one where you get the treatment, and another you don't get the treatment. In the real world, someone either gets the treatment, or doesn't get the treatment.
+
+-   In the real world, you either got the vaccine, or didn't get the vaccine.
+
+Thus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the **counterfactual**.
+
+| In the Real World           | Observed Outcome           | Counterfactual             |
+|--------------------------|-----------------------|-----------------------|
+| I receive treatment         | $\textcolor{purple}{Y(1)}$ | $\textcolor{purple}{Y(0)}$ |
+| I did not receive treatment | $\textcolor{purple}{Y(0)}$ | $\textcolor{purple}{Y(1)}$ |
+
+Remember our individual treatment effect $\tau$:
+
+$$
+\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
+$$
+
+The **fundamental problem of causal inference** is that in order to find our treatment effect $\tau$, we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate these counterfactuals in order to estimate the causal effects.
+
+<br />
+
+## Heterogenous Treatment Effects
+
+Remember our individual treatment effect $\tau$:
+
+$$
+\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
+$$
+
+As the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.
+
+Because we have multiple individuals in a study, we will also have multiple individual treatment effects $\tau$, one for each individual. This means we can have two scenarios:
+
+-   **Homogenous Treatment Effects**: This is when the individual treatment effects $\tau$ are equal across all individuals. This implies that the treatment has the same causal effect for everyone.
+
+-   **Heterogenous Treatment Effects**: This is when the individual treatment effects $\tau$ differ between individuals. This is often based on some characteristics of individuals. For example, a maternity leave policy treatment probably has different treatment effects on men vs. women.
+
+The reason homogenous and heterogenous treatment effects are important is that they often influence what type of strategies we can use in causal estimation, as we will see later.
+
+<br />
+
+## Causal Estimands
+
+An **estimand** is a true real-world value that we want to estimate. For example, the individual treatment effect $\tau$ is an estimand - the true treatment effect as defined by the parallel world potential outcomes:
+
+$$
+\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
+$$
+
+However, because of the fundamental problem of causal inference, it is almost impossible to estimate the individual treatment effect $\tau$ for every person.
+
+We instead mostly focus on averaged group estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:
+
+-   **Average Treatment Effect (ATE)**: This is exactly what it sounds like - the average of individual treatment effects $\tau$, for all individuals in our study. This means for both individuals who received and didn't receive the treatment.
+-   **Average Treatment Effect on the Treated (ATT)**: This is the average of individual treatment effects $\tau$, but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.
+-   **Local Average Treatment Effect (LATE)**: This is the average of individual treatment effects $\tau$, but only for a specific (local) group of individuals in a study. This group can be defined by their confounding values, or some other characteristic the individuals hold together.
+
+Remember that these are causal estimands - the true causal effects in the world. We do not have both potential outcomes, so we will need some strategy to **estimate** these true causal effects.
+
+<br />
+
+## Uncertainty and Inference
+
+We do not know the values of counterfactuals, the potential outcomes that we do not observe. Thus, we have to estimate these counterfactuals with an **estimator** to get causal estimates.
+
+However, an estimation process has a level of uncertainty. We cannot be sure that our estimates are accurate. We quantify that uncertainty in our causal effect estimates with a **standard error**. This value tells us how precise our estimates are.
+
+-   Smaller standard errors means we are more confident about our estimates.
+-   Larger standard errors means we are less certain about our estimates.
+
+With our standard errors, we can calculate how likely that there is zero (no) causal effect (called a p-value). This procedure is called a hypothesis test.
+
+-   If our p-value is less than 0.05 (5%), there is less than a 5% chance that there is zero causal effect, which implies 95%+ chance there is a causal effect. In this case, we say there is a **statistically significant causal effect**.
+-   If our p-value is larger than 0.05 (5%), there is a greater than 5% chance that the causal effect is 0. We generally conclude that there is no statistically significant causal effect.
+
+In most software and reports, if there is a p-value less than 5%, the authors will put stars (\*\*) next to the estimate. If you see any stars, there is statistically significant causal effect.
+
+![](images/clipboard-3174072485.png){fig-align="center" width="50%"}
+
+In the figure above, you can see the stars \*\*\* indicate a non-zero causal effect. Do not worry about interpreting the table now - we will show more details in the following chapters.
