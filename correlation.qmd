@@ -1,0 +1,112 @@
+# Correlation vs. Causation
+
+::: {.callout-tip appearance="simple"}
+## Overview
+
+In this chapter, we discuss the basics of causal inference, and why causation is not correlation:
+
+1.  Define what treatment and outcome variables are.
+2.  Discuss the concept of correlation.
+3.  Discuss how **confounders** and **selection bias** mean correlation is not equal to causation.
+4.  Briefly discuss broad ideas of how we can address the issues of confounders and selection bias to go from correlation to causation.
+:::
+
+<br />
+
+## Treatment and Outcomes
+
+In causal inference, we are concerned with how a **treatment** causes some change in the **outcome** variable. The treatment variable is the one that causes something to occur, and that effect is reflected in the outcome variable:
+
+-   How does taking the vaccine cause change in mortality rates.
+-   How does going to college change your expected lifetime earnings.
+-   How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold.
+
+In this course, we mostly assume that the treatment variable is **binary**. This means that the treatment can take one of two values - you either have received the treatment, or did not receive the treatment. For example, you either received the vaccine, or you didn't.
+
+We typically notate the treatment as $D$ for notation simplicity. As noted above, $D$ can take two values - you either got the treatment $D$, or did not get the treatment $D$.
+
+$$
+D = \begin{cases}
+0 \quad \text{You did not receive the treatment} \\
+1 \quad \text{You did receive the treatment}
+\end{cases}
+$$
+
+The outcome variable is the result that changes as a result of either receiving or not receiving treatment. For example, your expected lifetime earnings change depending on if you went to college or not. Thus, your expected lifetime earnings would be an outcome in this scenario.
+
+We typically notate the outcome variable as $Y$.
+
+<br />
+
+## Correlations between Variables
+
+One way we can analyse the relationship between a treatment $D$ and an outcome $Y$ is with a correlation. **Correlation** is how one variable changes when the other variable changes.
+
+For example, let us say that our treatment $D$ is whether or not you went to college. Our outcome $Y$ of interest is you career earnings.
+
+-   To calculate a correlation measure, we would simply find the average career earnings of someone who didn't go to college, and the average career earnings of someone who did go to college.
+-   Once we have these averages, we can compare them. If by going to college, you get a higher average career earnings, then going to college is **positively correlated** with career earnings.
+-   The opposite is also true: if by going to college, you get a lower average career earnings, then going to college is **negatively correlated** with career earnings.
+-   If going to college and not going to college have the same career earnings, then we say that going to college is **not correlated** with career earnings.
+
+<br />
+
+## Correlation is not Causation
+
+We just learned what correlation is. You probably have heard the phrase: "correlation is not causation". But what does this mean?
+
+Let us take an example. Imagine that our treatment $D$ is if you go to the hospital or not, and $Y$ is some measure of your health. Our causal question is thus: how does going to the hospital cause your health to change?
+
+If we just collect correlation data, we likely find the following:
+
+-   The average health outcome $Y$ of individuals who went to the hospital (got the treatment) is [quite low]{.underline}.
+-   The average health outcome $Y$ of individuals who did not go to the hospital (did not get the treatment) is [quite high]{.underline}.
+
+Thus, based on our discussion on correlation, we find that going to the hospital is correlated with **worse** health outcomes. Does this mean that going to the hospital worsens your health?
+
+The answer is **no**! The reason we have a negative correlation is because of a **confounding variable**. A confounder is a third variable, that is correlated with our outcome $Y$, while also affecting who gets and doesn't get the treatment $D$.
+
+In this example, a confounder could be **smoking**. Smoking will be negatively correlated with health outcome $Y$. Someone who smokes is also more likely to visit the hospital with health complications, and thus, is more likely to get the treatment $D$.
+
+Since smokers on average have worse health outcomes $Y$, and they are more likely to go to the hospital and get the treatment $D$, that means people who go to the hospital (get the treatment) start out with worse health outcomes than people who did not go to the hospital.
+
+This means that the hospital might actually be boosting these unhealthy people's health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome $Y$ to be equal to the people who did not go to the hospital.
+
+Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.
+
+<br />
+
+## Formalising Confounders
+
+We just discussed the idea of confounders - third variables that are correlated with our outcome $Y$, while also affecting who and who doesn't get the treatment $D$. We saw that the presence of confounders can result in our correlation being completely different from the causal effect.
+
+But to dive deeper into causal inference, we need to formally define confounders. Confounders, often notated with a $X$, are variables that meet the following characteristics:
+
+1.  The confounder $X$ is correlated (either positively or negatively) with the outcome variable $Y$ of interest.
+2.  The confounder $X$ causes who gets and doesn't get the treatment $D$.
+3.  The confounder is **not** itself caused by the treatment $D$.
+
+We often explore confounders graphically:
+
+![](images/clipboard-928665935.png){fig-align="center" width="40%"}
+
+Above, we can see that $X$ is a confounder. It is correlated with outcome $Y$ (as shown by the arrow $X\rightarrow Y$ ), and it causes who gets and doesn't get the treatment $D$ (as shown by the arrow $X \rightarrow D$).
+
+Note that $V$ is not a confounder. Why? $V$ does not cause who gets and doesn't get the treatment - note that the arrow is pointing from $D \rightarrow V$, meaning treatment $D$ is causing $V$, and not the other way around.
+
+<br />
+
+## Dealing with Confounders
+
+We have discussed how the presence of confounders can result in our correlation being completely different from the causal effect. We can also visualise this graphically:
+
+![](images/clipboard-928665935.png){fig-align="center" width="40%"}
+
+The causal effect we want to find is the direct path $D \rightarrow Y$. When we estimate a correlation, we are estimating not only $D\rightarrow Y$, but also any other "path" through the confounder - in this case $D \leftarrow X \rightarrow Y$.
+
+To get the true causal effect of $D\rightarrow Y$, we must find some way to "account" for confounder $X$. There are two main ways we do this in causal inference:
+
+1.  We **control** for confounder $X$. This basically means we account for the influence of confounder $X$, and get rid of that part of influence.
+2.  We **determine who gets treated**. For example, if we randomly decide who gets the treatment $D$ and who doesn't, that means **we the researchers** are controlling who gets $D$, and not the confounder $X$. Thus, we break the link between $X \rightarrow D$.
+
+We will cover a variety of different causal research designs from chapter 3 onwards, which will apply these strategies to isolate causal effects, and go from correlation to causation.

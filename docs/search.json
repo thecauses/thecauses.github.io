@@ -1,0 +1,142 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Understanding the Causes of Things",
+    "section": "",
+    "text": "Preface\nHow does raising the minimum wage cause unemployment levels to change? How does going to university cause our career earnings to change? How does taking the vaccine cause our chances of getting the disease to change? From economics to health, politics to physics, causation is key.\nWe have all heard of the saying - “correlation is not causation”. But what does that actually mean? How do we go from an observed correlation to finding the causal effect?\nThis booklet aims to teach the fundamentals of causal inference, while relying on as little mathematics and complexity as possible. The goal is that with the knowledge in this booklet, you will be able to critically assess the claims of others - is it truly causation or just correlation? You will also be able to conduct your own causal analysis using the R programming language.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "Understanding the Causes of Things",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nI aim to avoid as much mathematics and technical notation as possible. I recommend that before starting, one has an understanding of basic statistical concepts, such as average/mean, and some simple high-school level algebra. Some understanding of statistical inference and simple linear regression is desirable but not required.\nI provide R-code to implement the methods I discuss in this booklet. While I provide the code for the methods, I do not teach how to code in R in this booklet. Thus, if you wish to implement these methods, I recommend looking at simple tutorials regarding coding in R.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#layout",
+    "href": "index.html#layout",
+    "title": "Understanding the Causes of Things",
+    "section": "Layout",
+    "text": "Layout\nThis booklet is laid out in the following manner:\n\nIn the first two chapters, we discuss the basics of causal inference: what is causation, how is it different from correlation, and what are the challenges of finding causal effects.\nFor the remaining main chapters, we discuss different methods to estimate causal effects.\nIn the appendix: additional topics section, I also provide other methods that may be used to complement the main methods of causal inference.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "correlation.html",
+    "href": "correlation.html",
+    "title": "1  Correlation vs. Causation",
+    "section": "",
+    "text": "Treatment and Outcomes\nIn causal inference, we are concerned with how a treatment causes some change in the outcome variable. The treatment variable is the one that causes something to occur, and that effect is reflected in the outcome variable:\nIn this course, we mostly assume that the treatment variable is binary. This means that the treatment can take one of two values - you either have received the treatment, or did not receive the treatment. For example, you either received the vaccine, or you didn’t.\nWe typically notate the treatment as \\(D\\) for notation simplicity. As noted above, \\(D\\) can take two values - you either got the treatment \\(D\\), or did not get the treatment \\(D\\).\n\\[\nD = \\begin{cases}\n0 \\quad \\text{You did not receive the treatment} \\\\\n1 \\quad \\text{You did receive the treatment}\n\\end{cases}\n\\]\nThe outcome variable is the result that changes as a result of either receiving or not receiving treatment. For example, your expected lifetime earnings change depending on if you went to college or not. Thus, your expected lifetime earnings would be an outcome in this scenario.\nWe typically notate the outcome variable as \\(Y\\).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#overview",
+    "href": "correlation.html#overview",
+    "title": "1  Correlation vs. Causation",
+    "section": "",
+    "text": "Define what treatment and outcome variables are.\nDiscuss the concept of correlation.\nDiscuss how confounders and selection bias mean correlation is not equal to causation.\nBriefly discuss broad ideas of how we can address the issues of confounders and selection bias to go from correlation to causation.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#treatment-and-outcomes",
+    "href": "correlation.html#treatment-and-outcomes",
+    "title": "1  Correlation vs. Causation",
+    "section": "",
+    "text": "How does taking the vaccine cause change in mortality rates.\nHow does going to college change your expected lifetime earnings.\nHow does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#correlations-between-variables",
+    "href": "correlation.html#correlations-between-variables",
+    "title": "1  Correlation vs. Causation",
+    "section": "Correlations between Variables",
+    "text": "Correlations between Variables\nOne way we can analyse the relationship between a treatment \\(D\\) and an outcome \\(Y\\) is with a correlation. Correlation is how one variable changes when the other variable changes.\nFor example, let us say that our treatment \\(D\\) is whether or not you went to college. Our outcome \\(Y\\) of interest is you career earnings.\n\nTo calculate a correlation measure, we would simply find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.\nOnce we have these averages, we can compare them. If by going to college, you get a higher average career earnings, then going to college is positively correlated with career earnings.\nThe opposite is also true: if by going to college, you get a lower average career earnings, then going to college is negatively correlated with career earnings.\nIf going to college and not going to college have the same career earnings, then we say that going to college is not correlated with career earnings.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#confounders-and-selection-bias",
+    "href": "correlation.html#confounders-and-selection-bias",
+    "title": "1  Correlation vs. Causation",
+    "section": "Confounders and Selection Bias",
+    "text": "Confounders and Selection Bias\nWe just learned what correlation is. You probably have heard the phrase: “correlation is not causation”. But what does this mean?\nLet us take an example. Imagine that our treatment \\(D\\) is if you go to the hospital or not, and \\(Y\\) is some measure of your health. Our causal question is thus: how does going to the hospital cause your health to change?\nIf we just collect correlation data, we likely find the following:\n\nThe average health outcome \\(Y\\) of individuals who went to the hospital (got the treatment) is quite low.\nThe average health outcome \\(Y\\) of individuals who did not go to the hospital (did not get the treatment) is quite high.\n\nThus, based on our discussion on correlation, we find that going to the hospital is correlated with worse health outcomes. Does this mean that going to the hospital worsens your health?\nThe answer is no! The reason we have a negative correlation is because of a confounding variable. A confounder is a third variable, that is correlated with our outcome \\(Y\\), while also affecting who gets and doesn’t get the treatment \\(D\\).\nIn this example, a confounder could be smoking. Smoking will be negatively correlated with health outcome \\(Y\\). Someone who smokes is also more likely to visit the hospital with health complications, and thus, is more likely to get the treatment \\(D\\).\nSince smokers on average have worse health outcomes \\(Y\\), and they are more likely to go to the hospital and get the treatment \\(D\\), that means people who go to the hospital (get the treatment) start out with worse health outcomes than people who did not go to the hospital.\nThis means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome \\(Y\\) to be equal to the people who did not go to the hospital.\nThus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes. The reason the correlation is wrong is because people who go to the hospital already start with worse health outcomes, so the positive benefits of going to the hospital cannot catch up with the already good health outcomes of individuals who did not go to the hospital.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#correlation-is-not-causation",
+    "href": "correlation.html#correlation-is-not-causation",
+    "title": "1  Correlation vs. Causation",
+    "section": "Correlation is not Causation",
+    "text": "Correlation is not Causation\nWe just learned what correlation is. You probably have heard the phrase: “correlation is not causation”. But what does this mean?\nLet us take an example. Imagine that our treatment \\(D\\) is if you go to the hospital or not, and \\(Y\\) is some measure of your health. Our causal question is thus: how does going to the hospital cause your health to change?\nIf we just collect correlation data, we likely find the following:\n\nThe average health outcome \\(Y\\) of individuals who went to the hospital (got the treatment) is quite low.\nThe average health outcome \\(Y\\) of individuals who did not go to the hospital (did not get the treatment) is quite high.\n\nThus, based on our discussion on correlation, we find that going to the hospital is correlated with worse health outcomes. Does this mean that going to the hospital worsens your health?\nThe answer is no! The reason we have a negative correlation is because of a confounding variable. A confounder is a third variable, that is correlated with our outcome \\(Y\\), while also affecting who gets and doesn’t get the treatment \\(D\\).\nIn this example, a confounder could be smoking. Smoking will be negatively correlated with health outcome \\(Y\\). Someone who smokes is also more likely to visit the hospital with health complications, and thus, is more likely to get the treatment \\(D\\).\nSince smokers on average have worse health outcomes \\(Y\\), and they are more likely to go to the hospital and get the treatment \\(D\\), that means people who go to the hospital (get the treatment) start out with worse health outcomes than people who did not go to the hospital.\nThis means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome \\(Y\\) to be equal to the people who did not go to the hospital.\nThus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#formalising-confounders",
+    "href": "correlation.html#formalising-confounders",
+    "title": "1  Correlation vs. Causation",
+    "section": "Formalising Confounders",
+    "text": "Formalising Confounders\nWe just discussed the idea of confounders - third variables that are correlated with our outcome \\(Y\\), while also affecting who and who doesn’t get the treatment \\(D\\). We saw that the presence of confounders can result in our correlation being completely different from the causal effect.\nBut to dive deeper into causal inference, we need to formally define confounders. Confounders, often notated with a \\(X\\), are variables that meet the following characteristics:\n\nThe confounder \\(X\\) is correlated (either positively or negatively) with the outcome variable \\(Y\\) of interest.\nThe confounder \\(X\\) causes who gets and doesn’t get the treatment \\(D\\).\nThe confounder is not itself caused by the treatment \\(D\\).\n\nWe often explore confounders graphically:\n\n\n\n\n\nAbove, we can see that \\(X\\) is a confounder. It is correlated with outcome \\(Y\\) (as shown by the arrow \\(X\\rightarrow Y\\) ), and it causes who gets and doesn’t get the treatment \\(D\\) (as shown by the arrow \\(X \\rightarrow D\\)).\nNote that \\(V\\) is not a confounder. Why? \\(V\\) does not cause who gets and doesn’t get the treatment - note that the arrow is pointing from \\(D \\rightarrow V\\), meaning treatment \\(D\\) is causing \\(V\\), and not the other way around.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#dealing-with-confounders",
+    "href": "correlation.html#dealing-with-confounders",
+    "title": "1  Correlation vs. Causation",
+    "section": "Dealing with Confounders",
+    "text": "Dealing with Confounders\nWe have discussed how the presence of confounders can result in our correlation being completely different from the causal effect. We can also visualise this graphically:\n\n\n\n\n\nThe causal effect we want to find is the direct path \\(D \\rightarrow Y\\). When we estimate a correlation, we are estimating not only \\(D\\rightarrow Y\\), but also any other “path” through the confounder - in this case \\(D \\leftarrow X \\rightarrow Y\\).\nTo get the true causal effect of \\(D\\rightarrow Y\\), we must find some way to “account” for confounder \\(X\\). There are two main ways we do this in causal inference:\n\nWe control for confounder \\(X\\). This basically means we account for the influence of confounder \\(X\\), and get rid of that part of influence.\nWe determine who gets treated. For example, if we randomly decide who gets the treatment \\(D\\) and who doesn’t, that means we the researchers are controlling who gets \\(D\\), and not the confounder \\(X\\). Thus, we break the link between \\(X \\rightarrow D\\).\n\nWe will cover a variety of different causal research designs from chapter 3 onwards, which will apply these strategies to isolate causal effects, and go from correlation to causation.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  }
+]

@@ -1,0 +1,42 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Understanding the Causes of Things"
+  subtitle: "An Introduction to Causal Inference: From Correlation to Causation"
+  author: "Kevin Li (London School of Economics)"
+  cover-image: cover.jpeg
+  chapters:
+    - index.qmd
+    - correlation.qmd
+    - part: "Appendix: Additional Topics"
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    number-depth: 1
+    css: styles.css
+    toc: true
+    toc-depth: 2
+    grid:
+      sidebar-width: 300px
+      body-width: 700px
+      margin-width: 350px
+      gutter-width: 1em
+    html-math-method: mathjax
+    crossref:
+      eq-prefix: eq.
+      def-prefix: definition
+      thm-prefix: theorem
+    include-in-header:
+      text: |
+        <script src="mathjax-config.js"></script>
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
