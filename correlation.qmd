@@ -5,17 +5,20 @@
 
 In this chapter, we discuss why correlation is not causation:
 
-1.  Define what treatment and outcome variables are.
-2.  Discuss the concept of correlation.
-3.  Discuss how **confounders** and **selection bias** mean correlation is not equal to causation.
-4.  Briefly discuss broad ideas of how we can address the issues of confounders and selection bias to go from correlation to causation.
+1.  Discuss the concept of **correlation**.
+2.  Discuss how **confounders** and **selection bias** mean correlation is not equal to causation.
+3.  Briefly discuss broad ideas of how we can address the issues of confounders and selection bias to go from correlation to causation.
 :::
 
 <br />
 
 ## What is Correlation?
 
-One (very common) way we can analyse the relationship between a treatment and an outcome is with a correlation. **Correlation** is how one variable changes when the other variable changes.
+::: {.callout-important appearance="simple"}
+## Key Definition: **Correlation**
+
+Correlation is how one variable changes when the other variable changes.
+:::
 
 For example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings. To calculate a correlation measure, we find the average career earnings of someone who didn't go to college, and the average career earnings of someone who did go to college.
 
@@ -44,7 +47,7 @@ Where $Y_t$ is the average outcome value of individuals who do receive the treat
 You probably have heard the phrase: "*correlation is not causation*". But what does this mean? Imagine this causal scenario as an example:
 
 | Our Causal Question: $D \rightarrow Y$                                  | Treatment $D$                     | Outcome $Y$                    |
-|------------------------------------|------------------|------------------|
+|-----------------------------------|------------------|------------------|
 | How does going to the hospital to receive treatment affect your health? | Going to the hospital (yes or no) | Some measure of health outcome |
 
 : {tbl-colwidths="\[50,25,25\]" .bordered}
@@ -55,33 +58,41 @@ If we just collect correlation data, we likely find the following:
 -   The average health outcome of individuals who did not go to the hospital is [quite high]{.underline}.
 -   Thus, we find that going to the hospital is correlated with **worse** health outcomes.
 
-Does this mean that going to the hospital worsens your health? The answer is **no**! Our correlation is incorrectly measuring the causal effect because of a **confounder**. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn't get the treatment.
+Does this mean that going to the hospital **causes** worse health? The answer is **no**! Our correlation is incorrectly measuring the causal effect because of a **confounder**.
+
+::: {.callout-important appearance="simple"}
+## Key Definition: **Confounders**
+
+A confounder is a third variable that has the following characteristics:
+
+1.  The confounder is correlated (positive or negative) with the outcome variable.
+2.  The confounder causes who gets and doesn't get the treatment.
+3.  The confounder is **not** itself caused by the treatment.
+:::
 
 In this example, a confounder could be **smoking**.
 
 -   Smoking will worsen health outcomes. Someone who smokes is also more likely to visit the hospital with health complications (getting the treatment)
 -   That means people who go to the hospital (get the treatment) start out with (on average) worse health outcomes than people who did not go to the hospital.
 
-This means that the hospital might actually be boosting these unhealthy people's health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.
+This means that the hospital might actually be boosting people's health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.
 
-Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes. Correlation is thus not equal to causation because of confounders.
+Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.
 
 <br />
 
 ## Formalising Selection Bias
 
-We just provided an example of confounders resulting in correlation not equalling causation. Let us generalise this example.
-
-We split every individual into two groups - those who received the treatment, and those who haven't. Using what we learned in the [last chapter](frameworks.qmd), we get:
+Let us generalise why correlation is not equal to causation. We split every individual in our study into two groups - those who received the treatment, and those who haven't. Using what we learned in the [last chapter](frameworks.qmd), we get:
 
 | Group                                 | Observed Outcome                   | Counterfactual            | **Real Treatment Effect**                                       |
-|---------------------------------------|------------------------------------|---------------------------|-----------------------------------------------------------------|
+|----------------|----------------|----------------|-------------------------|
 | Group that got the treatment          | $Y_t = \textcolor{purple}{Y_t(1)}$ | $\textcolor{red}{Y_t(0)}$ | $\tau_t = \textcolor{purple}{Y_t(1)} - \textcolor{red}{Y_t(0)}$ |
 | Group that did not get the treatment. | $Y_c = \textcolor{purple}{Y_c(0)}$ | $\textcolor{red}{Y_t(1)}$ | $\tau_c = \textcolor{red}{Y_c(1)} - \textcolor{purple}{Y_c(0)}$ |
 
 : {tbl-colwidths="\[25,25,20,30\]" .bordered}
 
-We know have the real treatment effects $\tau_t$ and $\tau_c$. But how do these treatment effects compare to correlation. Recall our definition of correlation:
+We know the real treatment effects $\tau_t$ and $\tau_c$. But how do these treatment effects compare to correlation? Recall our definition of correlation:
 
 $$
 \text{correlation} = Y_t - Y_c \ = \ \textcolor{purple}{Y_t(1)} - \textcolor{purple}{Y_c(0)}
@@ -99,24 +110,6 @@ So are these two equal? Not if there is a **confounder**.
 -   And since the confounder affects who gets and does not get the treatment, it might result in the treatment and control groups having different no-treatment potential outcomes.
 
 Thus, if there is a confounder, then $\textcolor{purple}{Y_c(0)}$ and $\textcolor{red}{Y_t(0)}$ are not equal, and correlation does not equal causation. This error caused by confounders is called **selection bias** (or endogeneity bias).
-
-<br />
-
-## Formalising Confounders
-
-To dive deeper into causal inference, we need to formally define confounders. Confounders, often notated with a $X$, are variables that meet the following characteristics:
-
-1.  The confounder is correlated (positive or negative) with the outcome variable.
-2.  The confounder causes who gets and doesn't get the treatment.
-3.  The confounder is **not** itself caused by the treatment.
-
-We often explore confounders graphically with **causal diagrams**:
-
-![](images/clipboard-928665935.png){fig-align="center" width="40%"}
-
-$X$ is a confounder. It is correlated with outcome $Y$ (as shown by the arrow $X\rightarrow Y$ ), and it causes who gets and doesn't get the treatment $D$ (as shown by the arrow $X \rightarrow D$).
-
-$V$ is **not** a confounder. Why? $V$ is caused by the treatment $D$, as shown by the direction of the arrow. Thus, this violates the third condition above.
 
 <br />
 

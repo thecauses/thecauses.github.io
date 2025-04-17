@@ -7,7 +7,7 @@ In this chapter, we discuss the the key aspects of causal inference:
 
 1.  Define what a **treatment** and **outcome** are.
 2.  Discuss the **potential outcomes** framework as a way to think about causality.
-3.  Define the main causal **estimands** that we are interested in estimating.
+3.  Discuss the issue of **counterfactuals** as the main problem in causal inference.
 4.  Discuss. the idea of **statistical inference** and **uncertainty**.
 :::
 
@@ -29,7 +29,7 @@ $$
 A few examples of causal questions include:
 
 | Our Causal Question: $D \rightarrow Y$                                                                   | Treatment $D$                                   | Outcome $Y$                      |
-|-------------------------------------|------------------|------------------|
+|------------------------------------|------------------|------------------|
 | How does taking the vaccine cause change in mortality rates?                                             | Getting the vaccine (yes or no)                 | Mortality rate                   |
 | How does going to college change your expected lifetime earnings?                                        | Went to college (yes or no)                     | Expected lifetime earnings       |
 | How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold? | Tax exemptions on electric vehicles (yes or no) | Amount of electric vehicles sold |
@@ -44,20 +44,26 @@ We want to find the causal effect of a treatment on an outcome. But what is a ca
 
 Imagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.
 
-| World | Treatment $D$              | Outcome $Y$                |
-|-------|----------------------------|----------------------------|
-| 0     | Does not Receive Treatment | $\textcolor{purple}{Y(0)}$ |
-| 1     | Receives Treatment         | $\textcolor{purple}{Y(1)}$ |
+The outcome values of these two parallel worlds are called **potential outcomes**:
+
+| Parallel World | Treatment $D$              | Potential Outcome          |
+|----------------|----------------------------|----------------------------|
+| 0              | Does not Receive Treatment | $\textcolor{purple}{Y(0)}$ |
+| 1              | Receives Treatment         | $\textcolor{purple}{Y(1)}$ |
 
 : {tbl-colwidths="\[25,45,30\]" .bordered}
 
-These two outcome variable values are called **potential outcomes**.
+These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your potential outcomes must be the treatment effect.
 
-These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your outcome variable value must be the **individual treatment effect** (notated $\tau$) of our treatment:
+::: {.callout-important appearance="simple"}
+## Key Definition: Individual Treatment Effect
+
+The individual treatment effect (notated $\tau$) is the causal effect of a treatment on an outcome for a specific individual:
 
 $$
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 $$
+:::
 
 As the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.
 
@@ -65,7 +71,7 @@ As the name implies, this is an individual effect, that belongs to an individual
 -   If individual's have different treatment effects $\tau$, we have a **heterogenous** effect.
 
 ::: {.callout-note collapse="true" appearance="simple"}
-## Stable Unit Treatment Value Assumption
+## Additional Info: SUTVA
 
 The potential outcomes framework described above, with two parallel worlds, depends on a key assumption, called the stable unit treatment value assumption (SUTVA).
 
@@ -81,12 +87,7 @@ The reason this is important is that if A's treatment status affects B's outcome
 
 ## The Problem of Counterfactuals
 
-However, in reality, we do not have two parallel realities, one where you get the treatment, and another you don't get the treatment. In the real world, someone either gets the treatment, or doesn't get the treatment.
-
--   In the real world, you either got the vaccine, or didn't get the vaccine.
--   In the real world, you either went to college, or didn't.
-
-Thus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the **counterfactual**.
+However, in reality, we do not have two parallel worlds. In the real world, someone either gets the treatment, or doesn't get the treatment. Thus, by definition, one of the potential outcomes is not observed in the real world - the one not observed is called the **counterfactual**.
 
 | In the Real World                       | Observed Outcome $Y$           | Counterfactual          |
 |-------------------------|------------------------|------------------------|
@@ -95,47 +96,29 @@ Thus, by definition, one of the potential outcomes is not observed in the real w
 
 : {tbl-colwidths="\[40,35,25\]" .bordered}
 
-For the rest of the book, I will notate the unobserved potential outcome (counterfactual) in red for clarity.
-
 Remember our individual treatment effect $\tau$:
 
 $$
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 $$
 
-The **fundamental problem of causal inference** is that in order to calculate our treatment effect $\tau$, we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate the counterfactuals in order to estimate the causal effects.
+The **fundamental problem of causal inference** is that in order to calculate our treatment effect $\tau$, we need both potential outcomes. However, we can never observe both.
 
-<br />
+Causal inference is about estimating the counterfactuals with an **estimator**. This is difficult at the individual level, so instead, we focus on average treatment effects for groups:
 
-## Causal Estimands
-
-An **estimand** is some true value that we want to estimate. For example, the individual treatment effect $\tau$ is an estimand - the true treatment effect as defined by the potential outcomes:
-
-$$
-\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
-$$
-
-However, because of the [The Problem of Counterfactuals], it is almost impossible to estimate the individual treatment effect $\tau$ for every person.
-
-We instead mostly focus on averaged **group** estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:
-
-| Estimand                                      | Notation      | Definition                                                                                                                                                                                               |
-|------------|------------|------------------------------------------------|
+| Type                                          | Notation      | Definition                                                                                                                                                                                               |
+|---------------|---------------|-------------------------------------------|
 | Average Treatment Effect (ATE)                | $\tau_{ATE}$  | The average of individual treatment effects $\tau$, for all individuals in our study, including people who did and didn't get the treatment.                                                             |
 | Average Treatment Effect on the Treated (ATT) | $\tau_{ATT}$  | The average of individual treatment effects $\tau$, but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.                           |
 | Local Average Treatment Effect (LATE)         | $\tau_{LATE}$ | The average of individual treatment effects $\tau$, but only for a specific (local) group of individuals in a study. This group is usually defined by some characteristic the individuals hold together. |
 
-: {tbl-colwidths="\[30, 17, 53\]" .bordered}
-
-Remember that these are causal estimands - the true causal effects in the world. We do not have both potential outcomes, so we will need some strategy to **estimate** these true causal effects.
+: {tbl-colwidths="\[30, 15, 55\]" .bordered}
 
 <br />
 
 ## Uncertainty and Inference
 
-We do not know the values of counterfactuals, the potential outcomes that we do not observe. Thus, we have to estimate these counterfactuals with an **estimator** to get causal estimates.
-
-However, an estimation process has a level of uncertainty. We cannot be sure that our estimates are accurate. We quantify that uncertainty in our causal effect estimates with a **standard error**. This value tells us how precise our estimates are.
+The estimation process for counterfactuals has a level of uncertainty. We cannot be sure that our estimates are completely accurate. We quantify that uncertainty in our causal effect estimates with a **standard error**. This value tells us how precise our estimates are:
 
 -   Smaller standard errors means we are more confident about our estimates.
 -   Larger standard errors means we are less certain about our estimates.

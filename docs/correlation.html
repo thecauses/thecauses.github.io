@@ -197,7 +197,6 @@ window.Quarto = {
   <li><a href="#what-is-correlation" id="toc-what-is-correlation" class="nav-link active" data-scroll-target="#what-is-correlation">What is Correlation?</a></li>
   <li><a href="#correlation-is-not-causation" id="toc-correlation-is-not-causation" class="nav-link" data-scroll-target="#correlation-is-not-causation">Correlation is not Causation</a></li>
   <li><a href="#formalising-selection-bias" id="toc-formalising-selection-bias" class="nav-link" data-scroll-target="#formalising-selection-bias">Formalising Selection Bias</a></li>
-  <li><a href="#formalising-confounders" id="toc-formalising-confounders" class="nav-link" data-scroll-target="#formalising-confounders">Formalising Confounders</a></li>
   <li><a href="#dealing-with-confounders" id="toc-dealing-with-confounders" class="nav-link" data-scroll-target="#dealing-with-confounders">Dealing with Confounders</a></li>
   </ul>
 </nav>
@@ -236,8 +235,7 @@ Overview
 <div class="callout-body-container callout-body">
 <p>In this chapter, we discuss why correlation is not causation:</p>
 <ol type="1">
-<li>Define what treatment and outcome variables are.</li>
-<li>Discuss the concept of correlation.</li>
+<li>Discuss the concept of <strong>correlation</strong>.</li>
 <li>Discuss how <strong>confounders</strong> and <strong>selection bias</strong> mean correlation is not equal to causation.</li>
 <li>Briefly discuss broad ideas of how we can address the issues of confounders and selection bias to go from correlation to causation.</li>
 </ol>
@@ -246,7 +244,19 @@ Overview
 <p><br></p>
 <section id="what-is-correlation" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-correlation">What is Correlation?</h2>
-<p>One (very common) way we can analyse the relationship between a treatment and an outcome is with a correlation. <strong>Correlation</strong> is how one variable changes when the other variable changes.</p>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Definition: <strong>Correlation</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Correlation is how one variable changes when the other variable changes.</p>
+</div>
+</div>
 <p>For example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings. To calculate a correlation measure, we find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.</p>
 <p>Once we have these averages, we can compare them to determine what correlation we have:</p>
 <table class="table-bordered caption-top table">
@@ -312,20 +322,37 @@ Overview
 <li>The average health outcome of individuals who did not go to the hospital is <u>quite high</u>.</li>
 <li>Thus, we find that going to the hospital is correlated with <strong>worse</strong> health outcomes.</li>
 </ul>
-<p>Does this mean that going to the hospital worsens your health? The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a <strong>confounder</strong>. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn’t get the treatment.</p>
+<p>Does this mean that going to the hospital <strong>causes</strong> worse health? The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a <strong>confounder</strong>.</p>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Definition: <strong>Confounders</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A confounder is a third variable that has the following characteristics:</p>
+<ol type="1">
+<li>The confounder is correlated (positive or negative) with the outcome variable.</li>
+<li>The confounder causes who gets and doesn’t get the treatment.</li>
+<li>The confounder is <strong>not</strong> itself caused by the treatment.</li>
+</ol>
+</div>
+</div>
 <p>In this example, a confounder could be <strong>smoking</strong>.</p>
 <ul>
 <li>Smoking will worsen health outcomes. Someone who smokes is also more likely to visit the hospital with health complications (getting the treatment)</li>
 <li>That means people who go to the hospital (get the treatment) start out with (on average) worse health outcomes than people who did not go to the hospital.</li>
 </ul>
-<p>This means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.</p>
-<p>Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes. Correlation is thus not equal to causation because of confounders.</p>
+<p>This means that the hospital might actually be boosting people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.</p>
+<p>Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.</p>
 <p><br></p>
 </section>
 <section id="formalising-selection-bias" class="level2">
 <h2 class="anchored" data-anchor-id="formalising-selection-bias">Formalising Selection Bias</h2>
-<p>We just provided an example of confounders resulting in correlation not equalling causation. Let us generalise this example.</p>
-<p>We split every individual into two groups - those who received the treatment, and those who haven’t. Using what we learned in the <a href="./frameworks.html">last chapter</a>, we get:</p>
+<p>Let us generalise why correlation is not equal to causation. We split every individual in our study into two groups - those who received the treatment, and those who haven’t. Using what we learned in the <a href="./frameworks.html">last chapter</a>, we get:</p>
 <table class="table-bordered caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -356,7 +383,7 @@ Overview
 </tr>
 </tbody>
 </table>
-<p>We know have the real treatment effects <span class="math inline">\(\tau_t\)</span> and <span class="math inline">\(\tau_c\)</span>. But how do these treatment effects compare to correlation. Recall our definition of correlation:</p>
+<p>We know the real treatment effects <span class="math inline">\(\tau_t\)</span> and <span class="math inline">\(\tau_c\)</span>. But how do these treatment effects compare to correlation? Recall our definition of correlation:</p>
 <p><span class="math display">\[
 \text{correlation} = Y_t - Y_c \ = \ \textcolor{purple}{Y_t(1)} - \textcolor{purple}{Y_c(0)}
 \]</span></p>
@@ -372,24 +399,6 @@ Overview
 <li>And since the confounder affects who gets and does not get the treatment, it might result in the treatment and control groups having different no-treatment potential outcomes.</li>
 </ul>
 <p>Thus, if there is a confounder, then <span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> and <span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> are not equal, and correlation does not equal causation. This error caused by confounders is called <strong>selection bias</strong> (or endogeneity bias).</p>
-<p><br></p>
-</section>
-<section id="formalising-confounders" class="level2">
-<h2 class="anchored" data-anchor-id="formalising-confounders">Formalising Confounders</h2>
-<p>To dive deeper into causal inference, we need to formally define confounders. Confounders, often notated with a <span class="math inline">\(X\)</span>, are variables that meet the following characteristics:</p>
-<ol type="1">
-<li>The confounder is correlated (positive or negative) with the outcome variable.</li>
-<li>The confounder causes who gets and doesn’t get the treatment.</li>
-<li>The confounder is <strong>not</strong> itself caused by the treatment.</li>
-</ol>
-<p>We often explore confounders graphically with <strong>causal diagrams</strong>:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-928665935.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
-</figure>
-</div>
-<p><span class="math inline">\(X\)</span> is a confounder. It is correlated with outcome <span class="math inline">\(Y\)</span> (as shown by the arrow <span class="math inline">\(X\rightarrow Y\)</span> ), and it causes who gets and doesn’t get the treatment <span class="math inline">\(D\)</span> (as shown by the arrow <span class="math inline">\(X \rightarrow D\)</span>).</p>
-<p><span class="math inline">\(V\)</span> is <strong>not</strong> a confounder. Why? <span class="math inline">\(V\)</span> is caused by the treatment <span class="math inline">\(D\)</span>, as shown by the direction of the arrow. Thus, this violates the third condition above.</p>
 <p><br></p>
 </section>
 <section id="dealing-with-confounders" class="level2">

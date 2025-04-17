@@ -197,7 +197,6 @@ window.Quarto = {
   <li><a href="#treatment-and-outcomes" id="toc-treatment-and-outcomes" class="nav-link active" data-scroll-target="#treatment-and-outcomes">Treatment and Outcomes</a></li>
   <li><a href="#potential-outcomes-framework" id="toc-potential-outcomes-framework" class="nav-link" data-scroll-target="#potential-outcomes-framework">Potential Outcomes Framework</a></li>
   <li><a href="#the-problem-of-counterfactuals" id="toc-the-problem-of-counterfactuals" class="nav-link" data-scroll-target="#the-problem-of-counterfactuals">The Problem of Counterfactuals</a></li>
-  <li><a href="#causal-estimands" id="toc-causal-estimands" class="nav-link" data-scroll-target="#causal-estimands">Causal Estimands</a></li>
   <li><a href="#uncertainty-and-inference" id="toc-uncertainty-and-inference" class="nav-link" data-scroll-target="#uncertainty-and-inference">Uncertainty and Inference</a></li>
   </ul>
 </nav>
@@ -238,7 +237,7 @@ Overview
 <ol type="1">
 <li>Define what a <strong>treatment</strong> and <strong>outcome</strong> are.</li>
 <li>Discuss the <strong>potential outcomes</strong> framework as a way to think about causality.</li>
-<li>Define the main causal <strong>estimands</strong> that we are interested in estimating.</li>
+<li>Discuss the issue of <strong>counterfactuals</strong> as the main problem in causal inference.</li>
 <li>Discuss. the idea of <strong>statistical inference</strong> and <strong>uncertainty</strong>.</li>
 </ol>
 </div>
@@ -292,6 +291,7 @@ D = \begin{cases}
 <h2 class="anchored" data-anchor-id="potential-outcomes-framework">Potential Outcomes Framework</h2>
 <p>We want to find the causal effect of a treatment on an outcome. But what is a causal effect?</p>
 <p>Imagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.</p>
+<p>The outcome values of these two parallel worlds are called <strong>potential outcomes</strong>:</p>
 <table class="table-bordered caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -300,9 +300,9 @@ D = \begin{cases}
 </colgroup>
 <thead>
 <tr class="header">
-<th>World</th>
+<th>Parallel World</th>
 <th>Treatment <span class="math inline">\(D\)</span></th>
-<th>Outcome <span class="math inline">\(Y\)</span></th>
+<th>Potential Outcome</th>
 </tr>
 </thead>
 <tbody>
@@ -318,27 +318,39 @@ D = \begin{cases}
 </tr>
 </tbody>
 </table>
-<p>These two outcome variable values are called <strong>potential outcomes</strong>.</p>
-<p>These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your outcome variable value must be the <strong>individual treatment effect</strong> (notated <span class="math inline">\(\tau\)</span>) of our treatment:</p>
+<p>These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your potential outcomes must be the treatment effect.</p>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Definition: Individual Treatment Effect
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The individual treatment effect (notated <span class="math inline">\(\tau\)</span>) is the causal effect of a treatment on an outcome for a specific individual:</p>
 <p><span class="math display">\[
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
+</div>
+</div>
 <p>As the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.</p>
 <ul>
 <li>If every individual in our study has the same individual treatment effect <span class="math inline">\(\tau\)</span>, we have a <strong>homogenous</strong> treatment effect.</li>
 <li>If individual’s have different treatment effects <span class="math inline">\(\tau\)</span>, we have a <strong>heterogenous</strong> effect.</li>
 </ul>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Stable Unit Treatment Value Assumption
+Additional Info: SUTVA
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The potential outcomes framework described above, with two parallel worlds, depends on a key assumption, called the stable unit treatment value assumption (SUTVA).</p>
 <p>Let us say we have multiple people in our study, including person A and B. SUTVA essentially says that if person A gets the treatment, that does not affect the outcome values of person B.</p>
@@ -354,12 +366,7 @@ Stable Unit Treatment Value Assumption
 </section>
 <section id="the-problem-of-counterfactuals" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-of-counterfactuals">The Problem of Counterfactuals</h2>
-<p>However, in reality, we do not have two parallel realities, one where you get the treatment, and another you don’t get the treatment. In the real world, someone either gets the treatment, or doesn’t get the treatment.</p>
-<ul>
-<li>In the real world, you either got the vaccine, or didn’t get the vaccine.</li>
-<li>In the real world, you either went to college, or didn’t.</li>
-</ul>
-<p>Thus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the <strong>counterfactual</strong>.</p>
+<p>However, in reality, we do not have two parallel worlds. In the real world, someone either gets the treatment, or doesn’t get the treatment. Thus, by definition, one of the potential outcomes is not observed in the real world - the one not observed is called the <strong>counterfactual</strong>.</p>
 <table class="table-bordered caption-top table">
 <colgroup>
 <col style="width: 40%">
@@ -386,31 +393,21 @@ Stable Unit Treatment Value Assumption
 </tr>
 </tbody>
 </table>
-<p>For the rest of the book, I will notate the unobserved potential outcome (counterfactual) in red for clarity.</p>
 <p>Remember our individual treatment effect <span class="math inline">\(\tau\)</span>:</p>
 <p><span class="math display">\[
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
-<p>The <strong>fundamental problem of causal inference</strong> is that in order to calculate our treatment effect <span class="math inline">\(\tau\)</span>, we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate the counterfactuals in order to estimate the causal effects.</p>
-<p><br></p>
-</section>
-<section id="causal-estimands" class="level2">
-<h2 class="anchored" data-anchor-id="causal-estimands">Causal Estimands</h2>
-<p>An <strong>estimand</strong> is some true value that we want to estimate. For example, the individual treatment effect <span class="math inline">\(\tau\)</span> is an estimand - the true treatment effect as defined by the potential outcomes:</p>
-<p><span class="math display">\[
-\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
-\]</span></p>
-<p>However, because of the <a href="#the-problem-of-counterfactuals">The Problem of Counterfactuals</a>, it is almost impossible to estimate the individual treatment effect <span class="math inline">\(\tau\)</span> for every person.</p>
-<p>We instead mostly focus on averaged <strong>group</strong> estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:</p>
+<p>The <strong>fundamental problem of causal inference</strong> is that in order to calculate our treatment effect <span class="math inline">\(\tau\)</span>, we need both potential outcomes. However, we can never observe both.</p>
+<p>Causal inference is about estimating the counterfactuals with an <strong>estimator</strong>. This is difficult at the individual level, so instead, we focus on average treatment effects for groups:</p>
 <table class="table-bordered caption-top table">
 <colgroup>
 <col style="width: 30%">
-<col style="width: 17%">
-<col style="width: 53%">
+<col style="width: 15%">
+<col style="width: 55%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Estimand</th>
+<th>Type</th>
 <th>Notation</th>
 <th>Definition</th>
 </tr>
@@ -433,13 +430,11 @@ Stable Unit Treatment Value Assumption
 </tr>
 </tbody>
 </table>
-<p>Remember that these are causal estimands - the true causal effects in the world. We do not have both potential outcomes, so we will need some strategy to <strong>estimate</strong> these true causal effects.</p>
 <p><br></p>
 </section>
 <section id="uncertainty-and-inference" class="level2">
 <h2 class="anchored" data-anchor-id="uncertainty-and-inference">Uncertainty and Inference</h2>
-<p>We do not know the values of counterfactuals, the potential outcomes that we do not observe. Thus, we have to estimate these counterfactuals with an <strong>estimator</strong> to get causal estimates.</p>
-<p>However, an estimation process has a level of uncertainty. We cannot be sure that our estimates are accurate. We quantify that uncertainty in our causal effect estimates with a <strong>standard error</strong>. This value tells us how precise our estimates are.</p>
+<p>The estimation process for counterfactuals has a level of uncertainty. We cannot be sure that our estimates are completely accurate. We quantify that uncertainty in our causal effect estimates with a <strong>standard error</strong>. This value tells us how precise our estimates are:</p>
 <ul>
 <li>Smaller standard errors means we are more confident about our estimates.</li>
 <li>Larger standard errors means we are less certain about our estimates.</li>
