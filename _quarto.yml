@@ -11,8 +11,11 @@ book:
   chapters:
     - index.qmd
     - "---"
-    - frameworks.qmd
-    - correlation.qmd
+    - part: "Introduction to Causation"
+      chapters:
+        - frameworks.qmd
+        - correlation.qmd
+    - part: "Designs for Causal Estimation"
     - "---"
   appendices:
     - logistic.qmd
