@@ -14,11 +14,8 @@ book:
     - frameworks.qmd
     - correlation.qmd
     - "---"
-    - part: "Related Statistical Topics"
-    - "---"
   appendices:
-    - mechanics.qmd
-    - identification.qmd
+    - logistic.qmd
 
 bibliography: references.bib
 
@@ -28,12 +25,12 @@ format:
     number-depth: 1
     css: styles.css
     toc: true
-    toc-depth: 2
+    toc-depth: 0
     grid:
-      sidebar-width: 300px
+      sidebar-width: 275px
       body-width: 700px
-      margin-width: 350px
-      gutter-width: 1em
+      margin-width: 190px
+      gutter-width: 1.5em
     html-math-method: mathjax
     crossref:
       eq-prefix: eq.

@@ -157,29 +157,18 @@ window.Quarto = {
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Related Statistical Topics</span></span>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mechanics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mechanics of Regression</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./identification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Identification Proofs</span></span></a>
+  <a href="./logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Binary Choice Models</span></span></a>
   </div>
 </li>
       </ul>
@@ -189,17 +178,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul class="collapse">
-  <li><a href="#what-is-correlation" id="toc-what-is-correlation" class="nav-link active" data-scroll-target="#what-is-correlation">What is Correlation?</a></li>
-  <li><a href="#correlation-is-not-causation" id="toc-correlation-is-not-causation" class="nav-link" data-scroll-target="#correlation-is-not-causation">Correlation is not Causation</a></li>
-  <li><a href="#formalising-selection-bias" id="toc-formalising-selection-bias" class="nav-link" data-scroll-target="#formalising-selection-bias">Formalising Selection Bias</a></li>
-  <li><a href="#dealing-with-confounders" id="toc-dealing-with-confounders" class="nav-link" data-scroll-target="#dealing-with-confounders">Dealing with Confounders</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -223,28 +203,16 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Overview
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>In this chapter, we discuss why correlation is not causation:</p>
 <ol type="1">
 <li>Discuss the concept of <strong>correlation</strong>.</li>
-<li>Discuss how <strong>confounders</strong> and <strong>selection bias</strong> mean correlation is not equal to causation.</li>
-<li>Briefly discuss broad ideas of how we can address the issues of confounders and selection bias to go from correlation to causation.</li>
+<li>Discuss how <strong>confounders</strong> mean correlation is not equal to causation.</li>
 </ol>
-</div>
-</div>
 <p><br></p>
 <section id="what-is-correlation" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-correlation">What is Correlation?</h2>
-<div class="callout callout-style-simple callout-important callout-titled">
+<p>Correlation is a very common way to express the relationship between variables.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -254,11 +222,19 @@ Key Definition: <strong>Correlation</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Correlation is how one variable changes when the other variable changes.</p>
+<p><strong>Correlation</strong> is how one variable changes when the other variable changes.</p>
 </div>
 </div>
-<p>For example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings. To calculate a correlation measure, we find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.</p>
-<p>Once we have these averages, we can compare them to determine what correlation we have:</p>
+<p>To calculate a correlation between treatment and control, we:</p>
+<ul>
+<li>Find the average outcome values of all who got the treatment: <span class="math inline">\(Y_t\)</span>.</li>
+<li>Find the average outcome values of all who didn’t get the treatment: <span class="math inline">\(Y_c\)</span>.</li>
+</ul>
+<p>Then, compare the two average values by finding their difference:</p>
+<p><span class="math display">\[
+\text{correlation} = Y_t - Y_c
+\]</span></p>
+<p>Our result will either be positive, negative, or zero. We can interpret it in the following way:</p>
 <table class="table-bordered caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -267,34 +243,30 @@ Key Definition: <strong>Correlation</strong>
 <thead>
 <tr class="header">
 <th>Type of Correlation</th>
-<th>How to Identify</th>
+<th>Interpretation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Positive Correlation</strong> between going to college and average career earnings.</td>
-<td>If by going to college, you get <strong>higher</strong> average career earnings.</td>
+<td><strong>Positive Correlation</strong> between treatment and outcome.</td>
+<td>Getting the treatment is related with <strong>higher</strong> outcome values on average.</td>
 </tr>
 <tr class="even">
-<td><strong>Negative Correlation</strong> between going to college and average career earnings.</td>
-<td>If by going to college, you get <strong>lower</strong> average career earnings.</td>
+<td><strong>Negative Correlation</strong> between treatment and outcome.</td>
+<td>Getting the treatment is related with <strong>lower</strong> outcome values on average.</td>
 </tr>
 <tr class="odd">
-<td><strong>No Correlation</strong> between going to college and average career earnings.</td>
-<td>If by going to college <strong>does not change</strong> the average career earnings.</td>
+<td><strong>No (Zero) Correlation</strong> between treatment and outcome.</td>
+<td>Getting the treatment <strong>has no relationship</strong> with the average outcome values.</td>
 </tr>
 </tbody>
 </table>
-<p>We can generalise this to find the correlation of any treatment and outcome:</p>
-<p><span class="math display">\[
-\text{correlation} = Y_t - Y_c
-\]</span></p>
-<p>Where <span class="math inline">\(Y_t\)</span> is the average outcome value of individuals who do receive the treatment, and <span class="math inline">\(Y_c\)</span> is the average outcome of individuals who do not receive the treatment.</p>
+<p>Note how I used the world <strong>related</strong> - correlation is not causation.</p>
 <p><br></p>
 </section>
 <section id="correlation-is-not-causation" class="level2">
 <h2 class="anchored" data-anchor-id="correlation-is-not-causation">Correlation is not Causation</h2>
-<p>You probably have heard the phrase: “<em>correlation is not causation</em>”. But what does this mean? Imagine this causal scenario as an example:</p>
+<p>Why is correlation not causation? Imagine this causal scenario as an example:</p>
 <table class="table-bordered caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -323,7 +295,7 @@ Key Definition: <strong>Correlation</strong>
 <li>Thus, we find that going to the hospital is correlated with <strong>worse</strong> health outcomes.</li>
 </ul>
 <p>Does this mean that going to the hospital <strong>causes</strong> worse health? The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a <strong>confounder</strong>.</p>
-<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout callout-style-simple callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -333,7 +305,7 @@ Key Definition: <strong>Confounders</strong>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A confounder is a third variable that has the following characteristics:</p>
+<p>A <strong>confounder</strong> is a third variable that has the following characteristics:</p>
 <ol type="1">
 <li>The confounder is correlated (positive or negative) with the outcome variable.</li>
 <li>The confounder causes who gets and doesn’t get the treatment.</li>
@@ -398,24 +370,8 @@ Key Definition: <strong>Confounders</strong>
 <li>Since the confounder is correlated with the outcome, that means people with different values of the confounder will have different outcomes had they not received the treatment.</li>
 <li>And since the confounder affects who gets and does not get the treatment, it might result in the treatment and control groups having different no-treatment potential outcomes.</li>
 </ul>
-<p>Thus, if there is a confounder, then <span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> and <span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> are not equal, and correlation does not equal causation. This error caused by confounders is called <strong>selection bias</strong> (or endogeneity bias).</p>
+<p>Thus, if there is a confounder, then <span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> and <span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> are not equal, and correlation does not equal causation. This error caused by confounders is called <strong>selection bias</strong>.</p>
 <p><br></p>
-</section>
-<section id="dealing-with-confounders" class="level2">
-<h2 class="anchored" data-anchor-id="dealing-with-confounders">Dealing with Confounders</h2>
-<p>We have discussed how the presence of confounders can result in our correlation being completely different from the causal effect.</p>
-<p>To get the correct causal effect of a treatment on an outcome, we must find some way to “account” for confounder. But first, how do we identify confounders?</p>
-<ul>
-<li>Unfortunately, there is not some magical statistical test to find confounders.</li>
-<li>Instead, we have to use our own <em>knowledge</em> and <em>intuition</em> about a topic to think of potential confounders.</li>
-<li>Typically, researchers identify potential confounders by reading a lot about the topics they are studying, and thinking about how other variables might meet the definition of a confounder.</li>
-</ul>
-<p>Once we have identified confounders, there are two main ways we do this in causal inference:</p>
-<ol type="1">
-<li>We <strong>control</strong> for confounders. This basically means we account for the influence of confounder <span class="math inline">\(X\)</span>, and get rid of that part of influence.</li>
-<li>We <strong>determine who gets treated</strong>. For example, if we randomly decide who gets the treatment and who doesn’t (such as flipping a coin), that means <strong>we the researchers</strong> are controlling who gets the treatment, and not the confounder. Thus, the confounder no longer determines who gets and doesn’t get the treatment, and thus is no longer a confounder.</li>
-</ol>
-<p>We will cover a variety of different causal research designs from chapter 3 onwards, which will apply these strategies to isolate causal effects, and go from correlation to causation.</p>
 
 
 </section>

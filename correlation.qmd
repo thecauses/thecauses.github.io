@@ -1,53 +1,53 @@
 # Correlation vs. Causation
 
-::: {.callout-tip appearance="simple"}
-## Overview
-
 In this chapter, we discuss why correlation is not causation:
 
 1.  Discuss the concept of **correlation**.
-2.  Discuss how **confounders** and **selection bias** mean correlation is not equal to causation.
-3.  Briefly discuss broad ideas of how we can address the issues of confounders and selection bias to go from correlation to causation.
-:::
+2.  Discuss how **confounders** mean correlation is not equal to causation.
 
 <br />
 
 ## What is Correlation?
 
-::: {.callout-important appearance="simple"}
+Correlation is a very common way to express the relationship between variables.
+
+::: {.callout-tip appearance="simple"}
 ## Key Definition: **Correlation**
 
-Correlation is how one variable changes when the other variable changes.
+**Correlation** is how one variable changes when the other variable changes.
 :::
 
-For example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings. To calculate a correlation measure, we find the average career earnings of someone who didn't go to college, and the average career earnings of someone who did go to college.
+To calculate a correlation between treatment and control, we:
 
-Once we have these averages, we can compare them to determine what correlation we have:
+-   Find the average outcome values of all who got the treatment: $Y_t$.
+-   Find the average outcome values of all who didn't get the treatment: $Y_c$.
 
-| Type of Correlation                                                            | How to Identify                                                         |
-|--------------------------------------|----------------------------------|
-| **Positive Correlation** between going to college and average career earnings. | If by going to college, you get **higher** average career earnings.     |
-| **Negative Correlation** between going to college and average career earnings. | If by going to college, you get **lower** average career earnings.      |
-| **No Correlation** between going to college and average career earnings.       | If by going to college **does not change** the average career earnings. |
-
-: {tbl-colwidths="\[50,50\]" .bordered}
-
-We can generalise this to find the correlation of any treatment and outcome:
+Then, compare the two average values by finding their difference:
 
 $$
 \text{correlation} = Y_t - Y_c
 $$
 
-Where $Y_t$ is the average outcome value of individuals who do receive the treatment, and $Y_c$ is the average outcome of individuals who do not receive the treatment.
+Our result will either be positive, negative, or zero. We can interpret it in the following way:
+
+| Type of Correlation                                      | Interpretation                                                                 |
+|----------------------------------------------------------|--------------------------------------------------------------------------------|
+| **Positive Correlation** between treatment and outcome.  | Getting the treatment is related with **higher** outcome values on average.    |
+| **Negative Correlation** between treatment and outcome.  | Getting the treatment is related with **lower** outcome values on average.     |
+| **No (Zero) Correlation** between treatment and outcome. | Getting the treatment **has no relationship** with the average outcome values. |
+
+: {tbl-colwidths="\[50,50\]" .bordered}
+
+Note how I used the world **related** - correlation is not causation.
 
 <br />
 
 ## Correlation is not Causation
 
-You probably have heard the phrase: "*correlation is not causation*". But what does this mean? Imagine this causal scenario as an example:
+Why is correlation not causation? Imagine this causal scenario as an example:
 
 | Our Causal Question: $D \rightarrow Y$                                  | Treatment $D$                     | Outcome $Y$                    |
-|-----------------------------------|------------------|------------------|
+|-------------------------------------------------------------------------|-----------------------------------|--------------------------------|
 | How does going to the hospital to receive treatment affect your health? | Going to the hospital (yes or no) | Some measure of health outcome |
 
 : {tbl-colwidths="\[50,25,25\]" .bordered}
@@ -60,10 +60,10 @@ If we just collect correlation data, we likely find the following:
 
 Does this mean that going to the hospital **causes** worse health? The answer is **no**! Our correlation is incorrectly measuring the causal effect because of a **confounder**.
 
-::: {.callout-important appearance="simple"}
+::: {.callout-tip appearance="simple"}
 ## Key Definition: **Confounders**
 
-A confounder is a third variable that has the following characteristics:
+A **confounder** is a third variable that has the following characteristics:
 
 1.  The confounder is correlated (positive or negative) with the outcome variable.
 2.  The confounder causes who gets and doesn't get the treatment.
@@ -86,7 +86,7 @@ Thus, while our correlation says that going to the hospital worsens our health o
 Let us generalise why correlation is not equal to causation. We split every individual in our study into two groups - those who received the treatment, and those who haven't. Using what we learned in the [last chapter](frameworks.qmd), we get:
 
 | Group                                 | Observed Outcome                   | Counterfactual            | **Real Treatment Effect**                                       |
-|----------------|----------------|----------------|-------------------------|
+|---------------------------------------|------------------------------------|---------------------------|-----------------------------------------------------------------|
 | Group that got the treatment          | $Y_t = \textcolor{purple}{Y_t(1)}$ | $\textcolor{red}{Y_t(0)}$ | $\tau_t = \textcolor{purple}{Y_t(1)} - \textcolor{red}{Y_t(0)}$ |
 | Group that did not get the treatment. | $Y_c = \textcolor{purple}{Y_c(0)}$ | $\textcolor{red}{Y_t(1)}$ | $\tau_c = \textcolor{red}{Y_c(1)} - \textcolor{purple}{Y_c(0)}$ |
 
@@ -109,23 +109,6 @@ So are these two equal? Not if there is a **confounder**.
 -   Since the confounder is correlated with the outcome, that means people with different values of the confounder will have different outcomes had they not received the treatment.
 -   And since the confounder affects who gets and does not get the treatment, it might result in the treatment and control groups having different no-treatment potential outcomes.
 
-Thus, if there is a confounder, then $\textcolor{purple}{Y_c(0)}$ and $\textcolor{red}{Y_t(0)}$ are not equal, and correlation does not equal causation. This error caused by confounders is called **selection bias** (or endogeneity bias).
+Thus, if there is a confounder, then $\textcolor{purple}{Y_c(0)}$ and $\textcolor{red}{Y_t(0)}$ are not equal, and correlation does not equal causation. This error caused by confounders is called **selection bias**.
 
 <br />
-
-## Dealing with Confounders
-
-We have discussed how the presence of confounders can result in our correlation being completely different from the causal effect.
-
-To get the correct causal effect of a treatment on an outcome, we must find some way to "account" for confounder. But first, how do we identify confounders?
-
--   Unfortunately, there is not some magical statistical test to find confounders.
--   Instead, we have to use our own *knowledge* and *intuition* about a topic to think of potential confounders.
--   Typically, researchers identify potential confounders by reading a lot about the topics they are studying, and thinking about how other variables might meet the definition of a confounder.
-
-Once we have identified confounders, there are two main ways we do this in causal inference:
-
-1.  We **control** for confounders. This basically means we account for the influence of confounder $X$, and get rid of that part of influence.
-2.  We **determine who gets treated**. For example, if we randomly decide who gets the treatment and who doesn't (such as flipping a coin), that means **we the researchers** are controlling who gets the treatment, and not the confounder. Thus, the confounder no longer determines who gets and doesn't get the treatment, and thus is no longer a confounder.
-
-We will cover a variety of different causal research designs from chapter 3 onwards, which will apply these strategies to isolate causal effects, and go from correlation to causation.

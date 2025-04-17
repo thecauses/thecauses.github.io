@@ -157,29 +157,18 @@ window.Quarto = {
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Related Statistical Topics</span></span>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./mechanics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mechanics of Regression</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./identification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Identification Proofs</span></span></a>
+  <a href="./logistic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Binary Choice Models</span></span></a>
   </div>
 </li>
       </ul>
@@ -189,17 +178,8 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul class="collapse">
-  <li><a href="#treatment-and-outcomes" id="toc-treatment-and-outcomes" class="nav-link active" data-scroll-target="#treatment-and-outcomes">Treatment and Outcomes</a></li>
-  <li><a href="#potential-outcomes-framework" id="toc-potential-outcomes-framework" class="nav-link" data-scroll-target="#potential-outcomes-framework">Potential Outcomes Framework</a></li>
-  <li><a href="#the-problem-of-counterfactuals" id="toc-the-problem-of-counterfactuals" class="nav-link" data-scroll-target="#the-problem-of-counterfactuals">The Problem of Counterfactuals</a></li>
-  <li><a href="#uncertainty-and-inference" id="toc-uncertainty-and-inference" class="nav-link" data-scroll-target="#uncertainty-and-inference">Uncertainty and Inference</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -223,16 +203,6 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Overview
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>In this chapter, we discuss the the key aspects of causal inference:</p>
 <ol type="1">
 <li>Define what a <strong>treatment</strong> and <strong>outcome</strong> are.</li>
@@ -240,8 +210,6 @@ Overview
 <li>Discuss the issue of <strong>counterfactuals</strong> as the main problem in causal inference.</li>
 <li>Discuss. the idea of <strong>statistical inference</strong> and <strong>uncertainty</strong>.</li>
 </ol>
-</div>
-</div>
 <p><br></p>
 <section id="treatment-and-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="treatment-and-outcomes">Treatment and Outcomes</h2>
@@ -289,7 +257,6 @@ D = \begin{cases}
 </section>
 <section id="potential-outcomes-framework" class="level2">
 <h2 class="anchored" data-anchor-id="potential-outcomes-framework">Potential Outcomes Framework</h2>
-<p>We want to find the causal effect of a treatment on an outcome. But what is a causal effect?</p>
 <p>Imagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.</p>
 <p>The outcome values of these two parallel worlds are called <strong>potential outcomes</strong>:</p>
 <table class="table-bordered caption-top table">
@@ -318,7 +285,7 @@ D = \begin{cases}
 </tr>
 </tbody>
 </table>
-<p>These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your potential outcomes must be the treatment effect.</p>
+<p>These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in outcomes between the two worlds must be the result of the treatment.</p>
 <div class="callout callout-style-simple callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -329,19 +296,15 @@ Key Definition: Individual Treatment Effect
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The individual treatment effect (notated <span class="math inline">\(\tau\)</span>) is the causal effect of a treatment on an outcome for a specific individual:</p>
+<p>The <strong>individual treatment effect</strong> (notated <span class="math inline">\(\tau\)</span>) is the causal effect of a treatment on an outcome for a specific individual.</p>
+</div>
+</div>
+<p>We can calculate the individual treatment effect as the difference in potential outcomes:</p>
 <p><span class="math display">\[
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
-</div>
-</div>
-<p>As the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.</p>
-<ul>
-<li>If every individual in our study has the same individual treatment effect <span class="math inline">\(\tau\)</span>, we have a <strong>homogenous</strong> treatment effect.</li>
-<li>If individual’s have different treatment effects <span class="math inline">\(\tau\)</span>, we have a <strong>heterogenous</strong> effect.</li>
-</ul>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -350,7 +313,7 @@ Additional Info: SUTVA
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The potential outcomes framework described above, with two parallel worlds, depends on a key assumption, called the stable unit treatment value assumption (SUTVA).</p>
 <p>Let us say we have multiple people in our study, including person A and B. SUTVA essentially says that if person A gets the treatment, that does not affect the outcome values of person B.</p>
@@ -393,11 +356,7 @@ Additional Info: SUTVA
 </tr>
 </tbody>
 </table>
-<p>Remember our individual treatment effect <span class="math inline">\(\tau\)</span>:</p>
-<p><span class="math display">\[
-\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
-\]</span></p>
-<p>The <strong>fundamental problem of causal inference</strong> is that in order to calculate our treatment effect <span class="math inline">\(\tau\)</span>, we need both potential outcomes. However, we can never observe both.</p>
+<p>The <strong>fundamental problem of causal inference</strong> is that in order to calculate our individual treatment effect <span class="math inline">\(\tau\)</span>, we need both potential outcomes. However, we can never observe both.</p>
 <p>Causal inference is about estimating the counterfactuals with an <strong>estimator</strong>. This is difficult at the individual level, so instead, we focus on average treatment effects for groups:</p>
 <table class="table-bordered caption-top table">
 <colgroup>
