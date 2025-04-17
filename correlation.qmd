@@ -29,7 +29,7 @@ $$
 A few examples of causal questions include:
 
 | Our Causal Question: $D \rightarrow Y$                                                                   | Treatment $D$                                   | Outcome $Y$                      |
-|--------------------------------------|-----------------|-----------------|
+|----------------------------------------------------------------------------------------------------------|-------------------------------------------------|----------------------------------|
 | How does taking the vaccine cause change in mortality rates?                                             | Getting the vaccine (yes or no)                 | Mortality rate                   |
 | How does going to college change your expected lifetime earnings?                                        | Went to college (yes or no)                     | Expected lifetime earnings       |
 | How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold? | Tax exemptions on electric vehicles (yes or no) | Amount of electric vehicles sold |
@@ -49,7 +49,7 @@ To calculate a correlation measure, we find the average career earnings of someo
 Once we have these averages, we can compare them to determine what correlation we have:
 
 | Type of Correlation                                                            | How to Identify                                                         |
-|------------------------------------|------------------------------------|
+|--------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | **Positive Correlation** between going to college and average career earnings. | If by going to college, you get **higher** average career earnings.     |
 | **Negative Correlation** between going to college and average career earnings. | If by going to college, you get **lower** average career earnings.      |
 | **No Correlation** between going to college and average career earnings.       | If by going to college **does not change** the average career earnings. |
@@ -63,7 +63,7 @@ Once we have these averages, we can compare them to determine what correlation w
 You probably have heard the phrase: "*correlation is not causation*". But what does this mean? Imagine this causal scenario:
 
 | Our Causal Question: $D \rightarrow Y$                                  | Treatment $D$                     | Outcome $Y$                    |
-|--------------------------------------|-----------------|-----------------|
+|-------------------------------------------------------------------------|-----------------------------------|--------------------------------|
 | How does going to the hospital to receive treatment affect your health? | Going to the hospital (yes or no) | Some measure of health outcome |
 
 : {tbl-colwidths="\[50,25,25\]" .bordered}

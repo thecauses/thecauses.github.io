@@ -1,0 +1,13 @@
+# Mechanics of Regression
+
+This appendix provides more technical details regarding the multiple linear regression model. This appendix is quite technical.
+
+## Multiple Regression Specification
+
+## Least Squares Estimator
+
+## Regression Anatomy
+
+## Unbiasedness of Least Squares
+
+## Consistency of Least Squares

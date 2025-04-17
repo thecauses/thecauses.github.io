@@ -60,7 +60,7 @@ However, in reality, we do not have two parallel realities, one where you get th
 Thus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the **counterfactual**.
 
 | In the Real World           | Observed Outcome           | Counterfactual             |
-|--------------------------|-----------------------|-----------------------|
+|-----------------------------|----------------------------|----------------------------|
 | I receive treatment         | $\textcolor{purple}{Y(1)}$ | $\textcolor{purple}{Y(0)}$ |
 | I did not receive treatment | $\textcolor{purple}{Y(0)}$ | $\textcolor{purple}{Y(1)}$ |
 

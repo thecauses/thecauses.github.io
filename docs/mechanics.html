@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Correlation vs.&nbsp;Causation – Uncovering the Causes: From Correlation to Causation</title>
+<title>Appendix A — Mechanics of Regression – Uncovering the Causes: From Correlation to Causation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./frameworks.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./identification.html" rel="next">
+<link href="./frameworks.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script src="mathjax-config.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -112,7 +83,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./correlation.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mechanics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./mechanics.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mechanics of Regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -145,7 +116,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./correlation.html" class="sidebar-item-text sidebar-link active">
+  <a href="./correlation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></span></a>
   </div>
 </li>
@@ -160,15 +131,28 @@ window.Quarto = {
  <span class="menu-text">Related Statistical Topics</span></span>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Appendix</span></span>
-  </li>
-        <li class="sidebar-item">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./mechanics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mechanics of Regression</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./identification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Identification Proofs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -179,20 +163,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#treatment-and-outcomes" id="toc-treatment-and-outcomes" class="nav-link active" data-scroll-target="#treatment-and-outcomes">Treatment and Outcomes</a></li>
-  <li><a href="#correlations-between-variables" id="toc-correlations-between-variables" class="nav-link" data-scroll-target="#correlations-between-variables">Correlations between Variables</a></li>
-  <li><a href="#correlation-is-not-causation" id="toc-correlation-is-not-causation" class="nav-link" data-scroll-target="#correlation-is-not-causation">Correlation is not Causation</a></li>
-  <li><a href="#formalising-confounders" id="toc-formalising-confounders" class="nav-link" data-scroll-target="#formalising-confounders">Formalising Confounders</a></li>
-  <li><a href="#dealing-with-confounders" id="toc-dealing-with-confounders" class="nav-link" data-scroll-target="#dealing-with-confounders">Dealing with Confounders</a></li>
+  <li><a href="#multiple-regression-specification" id="toc-multiple-regression-specification" class="nav-link active" data-scroll-target="#multiple-regression-specification">Multiple Regression Specification</a></li>
+  <li><a href="#least-squares-estimator" id="toc-least-squares-estimator" class="nav-link" data-scroll-target="#least-squares-estimator">Least Squares Estimator</a></li>
+  <li><a href="#regression-anatomy" id="toc-regression-anatomy" class="nav-link" data-scroll-target="#regression-anatomy">Regression Anatomy</a></li>
+  <li><a href="#unbiasedness-of-least-squares" id="toc-unbiasedness-of-least-squares" class="nav-link" data-scroll-target="#unbiasedness-of-least-squares">Unbiasedness of Least Squares</a></li>
+  <li><a href="#consistency-of-least-squares" id="toc-consistency-of-least-squares" class="nav-link" data-scroll-target="#consistency-of-least-squares">Consistency of Least Squares</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mechanics.html">Appendices</a></li><li class="breadcrumb-item"><a href="./mechanics.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mechanics of Regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></h1>
+<h1 class="title">Appendix A — Mechanics of Regression</h1>
 </div>
 
 
@@ -209,177 +193,21 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Overview
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In this chapter, we discuss the basics of causal inference, and why causation is not correlation:</p>
-<ol type="1">
-<li>Define what treatment and outcome variables are.</li>
-<li>Discuss the concept of correlation.</li>
-<li>Discuss how <strong>confounders</strong> and <strong>selection bias</strong> mean correlation is not equal to causation.</li>
-<li>Briefly discuss broad ideas of how we can address the issues of confounders and selection bias to go from correlation to causation.</li>
-</ol>
-</div>
-</div>
-<p><br></p>
-<section id="treatment-and-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="treatment-and-outcomes">Treatment and Outcomes</h2>
-<p>In causal inference, we are concerned with how a <strong>treatment</strong> (notated <span class="math inline">\(D\)</span>) causes some change in the <strong>outcome</strong> variable (notated <span class="math inline">\(Y\)</span>).</p>
-<p>In this course, we mostly assume that the treatment variable is <strong>binary</strong>. This means that you either get the treatment, or you do not get the treatment.</p>
-<p><span class="math display">\[
-D = \begin{cases}
-0 \quad \text{You did not receive the treatment} \\
-1 \quad \text{You did receive the treatment}
-\end{cases}
-\]</span></p>
-<p>A few examples of causal questions include:</p>
-<table class="table-bordered caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Our Causal Question: <span class="math inline">\(D \rightarrow Y\)</span></th>
-<th>Treatment <span class="math inline">\(D\)</span></th>
-<th>Outcome <span class="math inline">\(Y\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>How does taking the vaccine cause change in mortality rates?</td>
-<td>Getting the vaccine (yes or no)</td>
-<td>Mortality rate</td>
-</tr>
-<tr class="even">
-<td>How does going to college change your expected lifetime earnings?</td>
-<td>Went to college (yes or no)</td>
-<td>Expected lifetime earnings</td>
-</tr>
-<tr class="odd">
-<td>How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold?</td>
-<td>Tax exemptions on electric vehicles (yes or no)</td>
-<td>Amount of electric vehicles sold</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
+<p>This appendix provides more technical details regarding the multiple linear regression model. This appendix is quite technical.</p>
+<section id="multiple-regression-specification" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-regression-specification">Multiple Regression Specification</h2>
 </section>
-<section id="correlations-between-variables" class="level2">
-<h2 class="anchored" data-anchor-id="correlations-between-variables">Correlations between Variables</h2>
-<p>One way we can analyse the relationship between a treatment and an outcome is with a correlation. <strong>Correlation</strong> is how one variable changes when the other variable changes.</p>
-<p>For example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings.</p>
-<p>To calculate a correlation measure, we find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.</p>
-<p>Once we have these averages, we can compare them to determine what correlation we have:</p>
-<table class="table-bordered caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Type of Correlation</th>
-<th>How to Identify</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Positive Correlation</strong> between going to college and average career earnings.</td>
-<td>If by going to college, you get <strong>higher</strong> average career earnings.</td>
-</tr>
-<tr class="even">
-<td><strong>Negative Correlation</strong> between going to college and average career earnings.</td>
-<td>If by going to college, you get <strong>lower</strong> average career earnings.</td>
-</tr>
-<tr class="odd">
-<td><strong>No Correlation</strong> between going to college and average career earnings.</td>
-<td>If by going to college <strong>does not change</strong> the average career earnings.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
+<section id="least-squares-estimator" class="level2">
+<h2 class="anchored" data-anchor-id="least-squares-estimator">Least Squares Estimator</h2>
 </section>
-<section id="correlation-is-not-causation" class="level2">
-<h2 class="anchored" data-anchor-id="correlation-is-not-causation">Correlation is not Causation</h2>
-<p>You probably have heard the phrase: “<em>correlation is not causation</em>”. But what does this mean? Imagine this causal scenario:</p>
-<table class="table-bordered caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Our Causal Question: <span class="math inline">\(D \rightarrow Y\)</span></th>
-<th>Treatment <span class="math inline">\(D\)</span></th>
-<th>Outcome <span class="math inline">\(Y\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>How does going to the hospital to receive treatment affect your health?</td>
-<td>Going to the hospital (yes or no)</td>
-<td>Some measure of health outcome</td>
-</tr>
-</tbody>
-</table>
-<p>If we just collect correlation data, we likely find the following:</p>
-<ul>
-<li>The average health outcome of individuals who went to the hospital is <u>quite low</u>.</li>
-<li>The average health outcome of individuals who did not go to the hospital is <u>quite high</u>.</li>
-</ul>
-<p>Thus, based on our discussion on correlation, we find that going to the hospital is correlated with <strong>worse</strong> health outcomes. Does this mean that going to the hospital worsens your health?</p>
-<p>The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a <strong>confounder</strong>. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn’t get the treatment.</p>
-<ul>
-<li>In this example, a confounder could be <strong>smoking</strong>. Smoking will be negatively correlated with health outcomes. Someone who smokes is also more likely to visit the hospital with health complications, and thus, is more likely to get the treatment.</li>
-<li>Since smokers on average have worse health outcomes, and they are more likely to go to the hospital and get the treatment.</li>
-<li>That means people who go to the hospital (get the treatment) start out with worse health outcomes than people who did not go to the hospital.</li>
-</ul>
-<p>This means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.</p>
-<p>Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes. Correlation is thus not equal to causation because of confounders.</p>
-<p><br></p>
+<section id="regression-anatomy" class="level2">
+<h2 class="anchored" data-anchor-id="regression-anatomy">Regression Anatomy</h2>
 </section>
-<section id="formalising-confounders" class="level2">
-<h2 class="anchored" data-anchor-id="formalising-confounders">Formalising Confounders</h2>
-<p>To dive deeper into causal inference, we need to formally define confounders. Confounders, often notated with a <span class="math inline">\(X\)</span>, are variables that meet the following characteristics:</p>
-<ol type="1">
-<li>The confounder is correlated (positive or negative) with the outcome variable.</li>
-<li>The confounder causes who gets and doesn’t get the treatment.</li>
-<li>The confounder is <strong>not</strong> itself caused by the treatment.</li>
-</ol>
-<p>We often explore confounders graphically with <strong>causal diagrams</strong>:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/clipboard-928665935.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
-</figure>
-</div>
-<p><span class="math inline">\(X\)</span> is a confounder. It is correlated with outcome <span class="math inline">\(Y\)</span> (as shown by the arrow <span class="math inline">\(X\rightarrow Y\)</span> ), and it causes who gets and doesn’t get the treatment <span class="math inline">\(D\)</span> (as shown by the arrow <span class="math inline">\(X \rightarrow D\)</span>).</p>
-<p><span class="math inline">\(V\)</span> is <strong>not</strong> a confounder. Why? <span class="math inline">\(V\)</span> is caused by the treatment <span class="math inline">\(D\)</span>, as shown by the direction of the arrow. Thus, this violates the third condition above.</p>
-<p><br></p>
+<section id="unbiasedness-of-least-squares" class="level2">
+<h2 class="anchored" data-anchor-id="unbiasedness-of-least-squares">Unbiasedness of Least Squares</h2>
 </section>
-<section id="dealing-with-confounders" class="level2">
-<h2 class="anchored" data-anchor-id="dealing-with-confounders">Dealing with Confounders</h2>
-<p>We have discussed how the presence of confounders can result in our correlation being completely different from the causal effect.</p>
-<p>To get the correct causal effect of a treatment on an outcome, we must find some way to “account” for confounder. But first, how do we identify confounders?</p>
-<ul>
-<li>Unfortunately, there is not some magical statistical test to find confounders.</li>
-<li>Instead, we have to use our own <em>knowledge</em> and <em>intuition</em> about a topic to think of potential confounders.</li>
-<li>Typically, researchers identify potential confounders by reading a lot about the topics they are studying, and thinking about how other variables might meet the definition of a confounder.</li>
-</ul>
-<p>Once we have identified confounders, there are two main ways we do this in causal inference:</p>
-<ol type="1">
-<li>We <strong>control</strong> for confounders. This basically means we account for the influence of confounder <span class="math inline">\(X\)</span>, and get rid of that part of influence.</li>
-<li>We <strong>determine who gets treated</strong>. For example, if we randomly decide who gets the treatment and who doesn’t (such as flipping a coin), that means <strong>we the researchers</strong> are controlling who gets the treatment, and not the confounder. Thus, the confounder no longer determines who gets and doesn’t get the treatment, and thus is no longer a confounder.</li>
-</ol>
-<p>We will cover a variety of different causal research designs from chapter 3 onwards, which will apply these strategies to isolate causal effects, and go from correlation to causation.</p>
+<section id="consistency-of-least-squares" class="level2">
+<h2 class="anchored" data-anchor-id="consistency-of-least-squares">Consistency of Least Squares</h2>
 
 
 </section>
@@ -807,13 +635,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./frameworks.html" class="pagination-link" aria-label="Causal Frameworks">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./frameworks.html" class="pagination-link" aria-label="Causal Frameworks">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./identification.html" class="pagination-link" aria-label="Identification Proofs">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Identification Proofs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

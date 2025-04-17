@@ -30,4 +30,5 @@ This booklet is laid out in the following manner:
 
 -   In the first two chapters, we discuss the basics of causal inference: what is causation, how is it different from correlation, and what are the challenges of finding causal effects.
 -   For the remaining main chapters, we discuss different methods to estimate causal effects.
--   In the **appendix: additional topics** section, I also provide other methods that may be used to complement the main methods of causal inference.
+-   In the **related statistical topics** section, I also provide other methods that may be used to complement the main methods of causal inference.
+-   In the **appendix**, I provide more technical details about some of the methods.
