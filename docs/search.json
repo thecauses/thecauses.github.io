@@ -62,11 +62,11 @@
   {
     "objectID": "correlation.html",
     "href": "correlation.html",
-    "title": "1  Correlation vs. Causation",
+    "title": "2  Correlation vs. Causation",
     "section": "",
-    "text": "Treatment and Outcomes\nIn causal inference, we are concerned with how a treatment (notated \\(D\\)) causes some change in the outcome variable (notated \\(Y\\)).\nIn this course, we mostly assume that the treatment variable is binary. This means that you either get the treatment, or you do not get the treatment.\n\\[\nD = \\begin{cases}\n0 \\quad \\text{You did not receive the treatment} \\\\\n1 \\quad \\text{You did receive the treatment}\n\\end{cases}\n\\]\nA few examples of causal questions include:",
+    "text": "What is Correlation?\nOne (very common) way we can analyse the relationship between a treatment and an outcome is with a correlation. Correlation is how one variable changes when the other variable changes.\nFor example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings. To calculate a correlation measure, we find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.\nOnce we have these averages, we can compare them to determine what correlation we have:\nWe can generalise this to find the correlation of any treatment and outcome:\n\\[\n\\text{correlation} = Y_t - Y_c\n\\]\nWhere \\(Y_t\\) is the average outcome value of individuals who do receive the treatment, and \\(Y_c\\) is the average outcome of individuals who do not receive the treatment.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
     ]
   },
   {
@@ -82,21 +82,21 @@
   {
     "objectID": "correlation.html#treatment-and-outcomes",
     "href": "correlation.html#treatment-and-outcomes",
-    "title": "1  Correlation vs. Causation",
+    "title": "2  Correlation vs. Causation",
     "section": "",
     "text": "Our Causal Question: \\(D \\rightarrow Y\\)\nTreatment \\(D\\)\nOutcome \\(Y\\)\n\n\n\n\nHow does taking the vaccine cause change in mortality rates?\nGetting the vaccine (yes or no)\nMortality rate\n\n\nHow does going to college change your expected lifetime earnings?\nWent to college (yes or no)\nExpected lifetime earnings\n\n\nHow does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold?\nTax exemptions on electric vehicles (yes or no)\nAmount of electric vehicles sold",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
     ]
   },
   {
     "objectID": "correlation.html#correlations-between-variables",
     "href": "correlation.html#correlations-between-variables",
-    "title": "1  Correlation vs. Causation",
+    "title": "2  Correlation vs. Causation",
     "section": "Correlations between Variables",
     "text": "Correlations between Variables\nOne way we can analyse the relationship between a treatment and an outcome is with a correlation. Correlation is how one variable changes when the other variable changes.\nFor example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings.\nTo calculate a correlation measure, we find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.\nOnce we have these averages, we can compare them to determine what correlation we have:\n\n\n\n\n\n\n\nType of Correlation\nHow to Identify\n\n\n\n\nPositive Correlation between going to college and average career earnings.\nIf by going to college, you get higher average career earnings.\n\n\nNegative Correlation between going to college and average career earnings.\nIf by going to college, you get lower average career earnings.\n\n\nNo Correlation between going to college and average career earnings.\nIf by going to college does not change the average career earnings.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
     ]
   },
   {
@@ -112,91 +112,91 @@
   {
     "objectID": "correlation.html#correlation-is-not-causation",
     "href": "correlation.html#correlation-is-not-causation",
-    "title": "1  Correlation vs. Causation",
+    "title": "2  Correlation vs. Causation",
     "section": "Correlation is not Causation",
-    "text": "Correlation is not Causation\nYou probably have heard the phrase: “correlation is not causation”. But what does this mean? Imagine this causal scenario:\n\n\n\n\n\n\n\n\nOur Causal Question: \\(D \\rightarrow Y\\)\nTreatment \\(D\\)\nOutcome \\(Y\\)\n\n\n\n\nHow does going to the hospital to receive treatment affect your health?\nGoing to the hospital (yes or no)\nSome measure of health outcome\n\n\n\nIf we just collect correlation data, we likely find the following:\n\nThe average health outcome of individuals who went to the hospital is quite low.\nThe average health outcome of individuals who did not go to the hospital is quite high.\n\nThus, based on our discussion on correlation, we find that going to the hospital is correlated with worse health outcomes. Does this mean that going to the hospital worsens your health?\nThe answer is no! Our correlation is incorrectly measuring the causal effect because of a confounder. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn’t get the treatment.\n\nIn this example, a confounder could be smoking. Smoking will be negatively correlated with health outcomes. Someone who smokes is also more likely to visit the hospital with health complications, and thus, is more likely to get the treatment.\nSince smokers on average have worse health outcomes, and they are more likely to go to the hospital and get the treatment.\nThat means people who go to the hospital (get the treatment) start out with worse health outcomes than people who did not go to the hospital.\n\nThis means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.\nThus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes. Correlation is thus not equal to causation because of confounders.",
+    "text": "Correlation is not Causation\nYou probably have heard the phrase: “correlation is not causation”. But what does this mean? Imagine this causal scenario as an example:\n\n\n\n\n\n\n\n\nOur Causal Question: \\(D \\rightarrow Y\\)\nTreatment \\(D\\)\nOutcome \\(Y\\)\n\n\n\n\nHow does going to the hospital to receive treatment affect your health?\nGoing to the hospital (yes or no)\nSome measure of health outcome\n\n\n\nIf we just collect correlation data, we likely find the following:\n\nThe average health outcome of individuals who went to the hospital is quite low.\nThe average health outcome of individuals who did not go to the hospital is quite high.\nThus, we find that going to the hospital is correlated with worse health outcomes.\n\nDoes this mean that going to the hospital worsens your health? The answer is no! Our correlation is incorrectly measuring the causal effect because of a confounder. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn’t get the treatment.\nIn this example, a confounder could be smoking.\n\nSmoking will worsen health outcomes. Someone who smokes is also more likely to visit the hospital with health complications (getting the treatment)\nThat means people who go to the hospital (get the treatment) start out with (on average) worse health outcomes than people who did not go to the hospital.\n\nThis means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.\nThus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes. Correlation is thus not equal to causation because of confounders.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
     ]
   },
   {
     "objectID": "correlation.html#formalising-confounders",
     "href": "correlation.html#formalising-confounders",
-    "title": "1  Correlation vs. Causation",
+    "title": "2  Correlation vs. Causation",
     "section": "Formalising Confounders",
     "text": "Formalising Confounders\nTo dive deeper into causal inference, we need to formally define confounders. Confounders, often notated with a \\(X\\), are variables that meet the following characteristics:\n\nThe confounder is correlated (positive or negative) with the outcome variable.\nThe confounder causes who gets and doesn’t get the treatment.\nThe confounder is not itself caused by the treatment.\n\nWe often explore confounders graphically with causal diagrams:\n\n\n\n\n\n\\(X\\) is a confounder. It is correlated with outcome \\(Y\\) (as shown by the arrow \\(X\\rightarrow Y\\) ), and it causes who gets and doesn’t get the treatment \\(D\\) (as shown by the arrow \\(X \\rightarrow D\\)).\n\\(V\\) is not a confounder. Why? \\(V\\) is caused by the treatment \\(D\\), as shown by the direction of the arrow. Thus, this violates the third condition above.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
     ]
   },
   {
     "objectID": "correlation.html#dealing-with-confounders",
     "href": "correlation.html#dealing-with-confounders",
-    "title": "1  Correlation vs. Causation",
+    "title": "2  Correlation vs. Causation",
     "section": "Dealing with Confounders",
     "text": "Dealing with Confounders\nWe have discussed how the presence of confounders can result in our correlation being completely different from the causal effect.\nTo get the correct causal effect of a treatment on an outcome, we must find some way to “account” for confounder. But first, how do we identify confounders?\n\nUnfortunately, there is not some magical statistical test to find confounders.\nInstead, we have to use our own knowledge and intuition about a topic to think of potential confounders.\nTypically, researchers identify potential confounders by reading a lot about the topics they are studying, and thinking about how other variables might meet the definition of a confounder.\n\nOnce we have identified confounders, there are two main ways we do this in causal inference:\n\nWe control for confounders. This basically means we account for the influence of confounder \\(X\\), and get rid of that part of influence.\nWe determine who gets treated. For example, if we randomly decide who gets the treatment and who doesn’t (such as flipping a coin), that means we the researchers are controlling who gets the treatment, and not the confounder. Thus, the confounder no longer determines who gets and doesn’t get the treatment, and thus is no longer a confounder.\n\nWe will cover a variety of different causal research designs from chapter 3 onwards, which will apply these strategies to isolate causal effects, and go from correlation to causation.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
     ]
   },
   {
     "objectID": "frameworks.html",
     "href": "frameworks.html",
-    "title": "2  Causal Frameworks",
+    "title": "1  What is Causation?",
     "section": "",
-    "text": "Potential Outcomes Framework\nIn the last chapter, we discussed how correlation is not equal to causation. However, we did not formally define what causation is.\nImagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.\nThese two outcome variable values are called potential outcomes.\nThese two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your outcome variable value must be a result of the treatment.\nUsing this fact, we know the individual treatment effect (notated \\(\\tau\\)) of our treatment is simply the difference in potential outcomes between these two worlds:\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]",
+    "text": "Treatment and Outcomes\nIn causal inference, we are concerned with how a treatment (notated \\(D\\)) causes some change in the outcome variable (notated \\(Y\\)).\nWe generally assume that the treatment variable is binary. This means that you either get the treatment, or you do not get the treatment.\n\\[\nD = \\begin{cases}\n0 \\quad \\text{You did not receive the treatment} \\\\\n1 \\quad \\text{You did receive the treatment}\n\\end{cases}\n\\]\nA few examples of causal questions include:",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Causal Frameworks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
     ]
   },
   {
     "objectID": "frameworks.html#potential-outcomes-framework",
     "href": "frameworks.html#potential-outcomes-framework",
-    "title": "2  Causal Frameworks",
-    "section": "",
-    "text": "World\nTreatment \\(D\\)\nOutcome \\(Y\\)\n\n\n\n\n0\nDoes not Receive Treatment\n\\(\\textcolor{purple}{Y(0)}\\)\n\n\n1\nReceives Treatment\n\\(\\textcolor{purple}{Y(1)}\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\nStable Unit Treatment Value Assumption\n\n\n\n\n\nThe potential outcomes framework described above, with two parallel worlds, depends on a key assumption, called the stable unit treatment value assumption (SUTVA).\nLet us say we have multiple people in our study, including person A and B. SUTVA essentially says that if person A gets the treatment, that does not affect the outcome values of person B.\nThe reason this is important is that if A’s treatment status affects B’s outcome, then we would have more than 2 potential worlds - not just B getting the treatment or not, but also if A got the treatment or not. Common causes of SUTVA violations include:\n\nSpill-over effects. For example, if we are testing a new curriculum’s impact on student performance, student A who got the new curriculum might teach/tutor their friend, student B, which affects their outcomes.\nDilution: For example, in vaccines, there is herd immunity. That mean other people getting the vaccines improves my health outcomes.",
+    "title": "1  What is Causation?",
+    "section": "Potential Outcomes Framework",
+    "text": "Potential Outcomes Framework\nWe want to find the causal effect of a treatment on an outcome. But what is a causal effect?\nImagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.\n\n\n\n\n\n\n\n\nWorld\nTreatment \\(D\\)\nOutcome \\(Y\\)\n\n\n\n\n0\nDoes not Receive Treatment\n\\(\\textcolor{purple}{Y(0)}\\)\n\n\n1\nReceives Treatment\n\\(\\textcolor{purple}{Y(1)}\\)\n\n\n\nThese two outcome variable values are called potential outcomes.\nThese two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your outcome variable value must be the individual treatment effect (notated \\(\\tau\\)) of our treatment:\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]\nAs the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.\n\nIf every individual in our study has the same individual treatment effect \\(\\tau\\), we have a homogenous treatment effect.\nIf individual’s have different treatment effects \\(\\tau\\), we have a heterogenous effect.\n\n\n\n\n\n\n\nStable Unit Treatment Value Assumption\n\n\n\n\n\nThe potential outcomes framework described above, with two parallel worlds, depends on a key assumption, called the stable unit treatment value assumption (SUTVA).\nLet us say we have multiple people in our study, including person A and B. SUTVA essentially says that if person A gets the treatment, that does not affect the outcome values of person B.\nThe reason this is important is that if A’s treatment status affects B’s outcome, then we would have more than 2 potential worlds - not just B getting the treatment or not, but also if A got the treatment or not. Common causes of SUTVA violations include:\n\nSpill-over effects. For example, if we are testing a new curriculum’s impact on student performance, student A who got the new curriculum might teach/tutor their friend, student B, which affects their outcomes.\nDilution: For example, in vaccines, there is herd immunity. That mean other people getting the vaccines improves my health outcomes.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Causal Frameworks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
     ]
   },
   {
     "objectID": "frameworks.html#the-fundamental-problem",
     "href": "frameworks.html#the-fundamental-problem",
-    "title": "2  Causal Frameworks",
+    "title": "1  What is Causation?",
     "section": "The Fundamental Problem",
-    "text": "The Fundamental Problem\nHowever, in reality, we do not have two parallel realities, one where you get the treatment, and another you don’t get the treatment. In the real world, someone either gets the treatment, or doesn’t get the treatment.\n\nIn the real world, you either got the vaccine, or didn’t get the vaccine.\n\nThus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the counterfactual.\n\n\n\n\n\n\n\n\nIn the Real World\nObserved Outcome\nCounterfactual\n\n\n\n\nI receive treatment\n\\(\\textcolor{purple}{Y(1)}\\)\n\\(\\textcolor{purple}{Y(0)}\\)\n\n\nI did not receive treatment\n\\(\\textcolor{purple}{Y(0)}\\)\n\\(\\textcolor{purple}{Y(1)}\\)\n\n\n\nRemember our individual treatment effect \\(\\tau\\):\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]\nThe fundamental problem of causal inference is that in order to calculate our treatment effect \\(\\tau\\), we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate the counterfactuals in order to estimate the causal effects.",
+    "text": "The Fundamental Problem\nHowever, in reality, we do not have two parallel realities, one where you get the treatment, and another you don’t get the treatment. In the real world, someone either gets the treatment, or doesn’t get the treatment.\n\nIn the real world, you either got the vaccine, or didn’t get the vaccine.\nIn the real world, you either went to college, or didn’t.\n\nThus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the counterfactual.\n\n\n\n\n\n\n\n\nIn the Real World\nObserved Outcome \\(Y\\)\nCounterfactual\n\n\n\n\nScenario 1: I receive treatment\n\\(Y = \\textcolor{purple}{Y(1)}\\)\n\\(\\textcolor{red}{Y(0)}\\)\n\n\nScenario 2: I did not receive treatment\n\\(Y = \\textcolor{purple}{Y(0)}\\)\n\\(\\textcolor{red}{Y(1)}\\)\n\n\n\nFor the rest of the book, I will notate the observed potential outcome in purple, and the unobserved potential outcome in red.\nRemember our individual treatment effect \\(\\tau\\):\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]\nThe fundamental problem of causal inference is that in order to calculate our treatment effect \\(\\tau\\), we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate the counterfactuals in order to estimate the causal effects.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Causal Frameworks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
     ]
   },
   {
     "objectID": "frameworks.html#causal-estimands",
     "href": "frameworks.html#causal-estimands",
-    "title": "2  Causal Frameworks",
+    "title": "1  What is Causation?",
     "section": "Causal Estimands",
-    "text": "Causal Estimands\nAn estimand is some true value that we want to estimate. For example, the individual treatment effect \\(\\tau\\) is an estimand - the true treatment effect as defined by the potential outcomes:\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]\nHowever, because of the The Fundamental Problem, it is almost impossible to estimate the individual treatment effect \\(\\tau\\) for every person.\nWe instead mostly focus on averaged group estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:\n\n\n\n\n\n\n\n\nEstimand\nNotation\nDefinition\n\n\n\n\nAverage Treatment Effect (ATE)\n\\(\\tau_{ATE}\\)\nThe average of individual treatment effects \\(\\tau\\), for all individuals in our study, including people who did and didn’t get the treatment.\n\n\nAverage Treatment Effect on the Treated (ATT)\n\\(\\tau_{ATT}\\)\nThe average of individual treatment effects \\(\\tau\\), but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.\n\n\nLocal Average Treatment Effect (LATE)\n\\(\\tau_{LATE}\\)\nThe average of individual treatment effects \\(\\tau\\), but only for a specific (local) group of individuals in a study. This group is usually defined by some characteristic the individuals hold together.\n\n\n\nRemember that these are causal estimands - the true causal effects in the world. We do not have both potential outcomes, so we will need some strategy to estimate these true causal effects.",
+    "text": "Causal Estimands\nAn estimand is some true value that we want to estimate. For example, the individual treatment effect \\(\\tau\\) is an estimand - the true treatment effect as defined by the potential outcomes:\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]\nHowever, because of the The Problem of Counterfactuals, it is almost impossible to estimate the individual treatment effect \\(\\tau\\) for every person.\nWe instead mostly focus on averaged group estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:\n\n\n\n\n\n\n\n\nEstimand\nNotation\nDefinition\n\n\n\n\nAverage Treatment Effect (ATE)\n\\(\\tau_{ATE}\\)\nThe average of individual treatment effects \\(\\tau\\), for all individuals in our study, including people who did and didn’t get the treatment.\n\n\nAverage Treatment Effect on the Treated (ATT)\n\\(\\tau_{ATT}\\)\nThe average of individual treatment effects \\(\\tau\\), but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.\n\n\nLocal Average Treatment Effect (LATE)\n\\(\\tau_{LATE}\\)\nThe average of individual treatment effects \\(\\tau\\), but only for a specific (local) group of individuals in a study. This group is usually defined by some characteristic the individuals hold together.\n\n\n\nRemember that these are causal estimands - the true causal effects in the world. We do not have both potential outcomes, so we will need some strategy to estimate these true causal effects.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Causal Frameworks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
     ]
   },
   {
     "objectID": "frameworks.html#heterogenous-treatment-effects",
     "href": "frameworks.html#heterogenous-treatment-effects",
-    "title": "2  Causal Frameworks",
+    "title": "1  What is Causation?",
     "section": "Heterogenous Treatment Effects",
     "text": "Heterogenous Treatment Effects\nRemember our individual treatment effect \\(\\tau\\):\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]\nAs the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.\nBecause we have multiple individuals in a study, we will also have multiple individual treatment effects \\(\\tau\\), one for each individual. This means we can have two scenarios:\n\n\n\n\n\n\n\nHomogenous Treatment Effects\nHeterogenous Treatment Effects\n\n\n\n\nWhen the individual treatment effects \\(\\tau\\) are the same across all individuals. This implies that the treatment has the same causal effect for everyone.\nWhen the individual treatment effects \\(\\tau\\) differ between different individuals. This is often based on some characteristics of individuals.\n\n\n\nAn example of a heterogenous treatment effect is that a maternity leave policy treatment probably has different effects on men vs. women.\nThe reason homogenous and heterogenous treatment effects are important is that they often influence what type of strategies we can use in causal estimation, as we will see later.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Causal Frameworks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
     ]
   },
   {
     "objectID": "frameworks.html#uncertainty-and-inference",
     "href": "frameworks.html#uncertainty-and-inference",
-    "title": "2  Causal Frameworks",
+    "title": "1  What is Causation?",
     "section": "Uncertainty and Inference",
     "text": "Uncertainty and Inference\nWe do not know the values of counterfactuals, the potential outcomes that we do not observe. Thus, we have to estimate these counterfactuals with an estimator to get causal estimates.\nHowever, an estimation process has a level of uncertainty. We cannot be sure that our estimates are accurate. We quantify that uncertainty in our causal effect estimates with a standard error. This value tells us how precise our estimates are.\n\nSmaller standard errors means we are more confident about our estimates.\nLarger standard errors means we are less certain about our estimates.\n\nWith our standard errors, we can calculate how likely that there is zero (no) causal effect (called a p-value). This procedure is called a hypothesis test.\n\nIf our p-value is less than 0.05 (5%), there is less than a 5% chance that there is zero causal effect, which implies 95%+ chance there is a causal effect. In this case, we say there is a statistically significant causal effect.\nIf our p-value is larger than 0.05 (5%), there is a greater than 5% chance that the causal effect is 0. We generally conclude that there is no statistically significant causal effect.\n\nIn most software and reports, if there is a p-value less than 5%, the authors will put stars (**) next to the estimate. If you see any stars, there is statistically significant causal effect.\n\n\n\n\n\nIn the figure above, you can see the stars *** indicate a non-zero causal effect. Do not worry about interpreting the table now - we will show more details in the following chapters.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Causal Frameworks</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
     ]
   },
   {
@@ -307,6 +307,66 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Identification Proofs</span>"
+    ]
+  },
+  {
+    "objectID": "frameworks.html#treatment-and-outcomes",
+    "href": "frameworks.html#treatment-and-outcomes",
+    "title": "1  What is Causation?",
+    "section": "",
+    "text": "Our Causal Question: \\(D \\rightarrow Y\\)\nTreatment \\(D\\)\nOutcome \\(Y\\)\n\n\n\n\nHow does taking the vaccine cause change in mortality rates?\nGetting the vaccine (yes or no)\nMortality rate\n\n\nHow does going to college change your expected lifetime earnings?\nWent to college (yes or no)\nExpected lifetime earnings\n\n\nHow does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold?\nTax exemptions on electric vehicles (yes or no)\nAmount of electric vehicles sold",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#what-is-correlation",
+    "href": "correlation.html#what-is-correlation",
+    "title": "2  Correlation vs. Causation",
+    "section": "",
+    "text": "Type of Correlation\nHow to Identify\n\n\n\n\nPositive Correlation between going to college and average career earnings.\nIf by going to college, you get higher average career earnings.\n\n\nNegative Correlation between going to college and average career earnings.\nIf by going to college, you get lower average career earnings.\n\n\nNo Correlation between going to college and average career earnings.\nIf by going to college does not change the average career earnings.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#selection-bias",
+    "href": "correlation.html#selection-bias",
+    "title": "2  Correlation vs. Causation",
+    "section": "Selection Bias",
+    "text": "Selection Bias\nLet us take that above example of why correlation is not causation, and generalise it. Let us define two groups:\n\nThe treatment group \\(t\\) who receive the treatment (such as going to the hospital)\nThe control group \\(c\\) who does not receive the treatment.\n\nEach group has their own outcome values \\(Y_t\\) and \\(Y_c\\), their own potential outcomes, and treatment effects \\(\\tau_t\\) and \\(\\tau_c\\). Using what we learned in the last chapter, we know:\n\n\n\n\n\n\n\n\n\nGroup\nObserved Outcome\nCounterfactual\nReal Treatment Effect\n\n\n\n\nGroup that got the treatment (went to the hospital)\n\\(Y_t = \\textcolor{purple}{Y_t(1)}\\)\n\\(\\textcolor{red}{Y_t(0)}\\)\n\\(\\tau_t = \\textcolor{purple}{Y_t(1)} - \\textcolor{red}{Y_t(0)}\\)\n\n\nGroup that did not get the treatment.\n\\(Y_c = \\textcolor{purple}{Y_c(0)}\\)\n\\(\\textcolor{red}{Y_t(1)}\\)\n\\(\\tau_c = \\textcolor{red}{Y_c(1)} - \\textcolor{purple}{Y_c(0)}\\)\n\n\n\nWe know have the real treatment effects. But what about correlation? If you recall from above, we measured correlated by finding the difference between the observed outcome for individuals in the treatment group and the control group.\nWe can rewrite that in a equation. Our measure of correlation is:\n\\[\n\\text{correlation} = Y_t - Y_c \\ = \\ \\textcolor{purple}{Y_t(1)} - \\textcolor{purple}{Y_c(0)}\n\\]\nNotice how this equation for correlation is not the same to either causal effect we found above. However, if \\(\\textcolor{purple}{Y_c(0)}\\) and \\(\\textcolor{red}{Y_t(0)}\\) are equal, then our correlation would indeed be the same as the causal effect of the treatment group, \\(\\tau_t\\). So are these equal?\n\n\\(\\textcolor{purple}{Y_c(0)}\\) is the potential outcome of group \\(c\\) in the parallel world they do not get the treatment (which we observe)\n\\(\\textcolor{red}{Y_t(0)}\\) is the potential outcome of group \\(t\\) in the parallel world they do not get the treament (which is counterfactual).\nThus, both are the outcome value of all individuals, had they not received the treatment.\n\nHowever, if there exists some confounder (like smoking) that affects which individuals get the treament (group \\(t\\)) or don’t get the treatment (group \\(c\\)), and that confounder also affects their outcomes, then it is likely that \\(\\textcolor{purple}{Y_c(0)}\\) and \\(\\textcolor{red}{Y_t(0)}\\) are not equal, and thus, our correlation will not be equal to the causal effect.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#example-of-selection-bias",
+    "href": "correlation.html#example-of-selection-bias",
+    "title": "2  Correlation vs. Causation",
+    "section": "Example of Selection Bias",
+    "text": "Example of Selection Bias\nImagine this causal scenario as an example:\n\n\n\n\n\n\n\n\nOur Causal Question: \\(D \\rightarrow Y\\)\nTreatment \\(D\\)\nOutcome \\(Y\\)\n\n\n\n\nHow does going to the hospital to receive treatment affect your health?\nGoing to the hospital (yes or no)\nSome measure of health outcome\n\n\n\nIf we just collect correlation data, we likely find the following:\n\nThe average health outcome of individuals who went to the hospital is quite low.\nThe average health outcome of individuals who did not go to the hospital is quite high.\n\nThus, based on our discussion on correlation, we find that going to the hospital is correlated with worse health outcomes. Does this mean that going to the hospital worsens your health?\nThe answer is no! Our correlation is incorrectly measuring the causal effect because of a confounder. In this example, a confounder could be smoking.\n\nSmoking will be negatively correlated with health outcomes. Someone who smokes is also more likely to visit the hospital with health complications (getting the treatment)\nThat means people who go to the hospital (get the treatment) start out with worse health outcomes \\(\\textcolor{red}{Y_t(0)}\\) than people who did not go to the hospital’s health outcomes \\(\\textcolor{purple}{Y_c(0)}\\) .\n\nThis means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.\nThus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes. Correlation is thus not equal to causation because of confounders.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#formalising-selection-bias",
+    "href": "correlation.html#formalising-selection-bias",
+    "title": "2  Correlation vs. Causation",
+    "section": "Formalising Selection Bias",
+    "text": "Formalising Selection Bias\nWe just provided an example of confounders resulting in correlation not equalling causation. Let us generalise this example.\nWe split every individual into two groups - those who received the treatment, and those who haven’t. Using what we learned in the last chapter, we get:\n\n\n\n\n\n\n\n\n\nGroup\nObserved Outcome\nCounterfactual\nReal Treatment Effect\n\n\n\n\nGroup that got the treatment\n\\(Y_t = \\textcolor{purple}{Y_t(1)}\\)\n\\(\\textcolor{red}{Y_t(0)}\\)\n\\(\\tau_t = \\textcolor{purple}{Y_t(1)} - \\textcolor{red}{Y_t(0)}\\)\n\n\nGroup that did not get the treatment.\n\\(Y_c = \\textcolor{purple}{Y_c(0)}\\)\n\\(\\textcolor{red}{Y_t(1)}\\)\n\\(\\tau_c = \\textcolor{red}{Y_c(1)} - \\textcolor{purple}{Y_c(0)}\\)\n\n\n\nWe know have the real treatment effects \\(\\tau_t\\) and \\(\\tau_c\\). But how do these treatment effects compare to correlation. Recall our definition of correlation:\n\\[\n\\text{correlation} = Y_t - Y_c \\ = \\ \\textcolor{purple}{Y_t(1)} - \\textcolor{purple}{Y_c(0)}\n\\]\nNotice how this equation for correlation is not the same to either causal effect we found above. However, if \\(\\textcolor{purple}{Y_c(0)}\\) and \\(\\textcolor{red}{Y_t(0)}\\) are equal, then our correlation would indeed be the same as the causal effect of the treatment group, \\(\\tau_t\\). So are these equal?\n\n\\(\\textcolor{purple}{Y_c(0)}\\) is the potential outcome of group \\(c\\) in the parallel world they do not get the treatment (which we observe)\n\\(\\textcolor{red}{Y_t(0)}\\) is the potential outcome of group \\(t\\) in the parallel world they do not get the treament (which is counterfactual).\nThus, both are the outcome value of all individuals, had they not received the treatment.\n\nSo are these two equal? Not if there is a confounder.\n\nSince the confounder is correlated with the outcome, that means people with different values of the confounder will have different outcomes had they not received the treatment.\nAnd since the confounder affects who gets and does not get the treatment, it might result in the treatment and control groups having different no-treatment potential outcomes.\n\nThus, if there is a confounder, then \\(\\textcolor{purple}{Y_c(0)}\\) and \\(\\textcolor{red}{Y_t(0)}\\) are not equal, and correlation does not equal causation. This error caused by confounders is called selection bias (or endogeneity bias).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "frameworks.html#the-problem-of-counterfactuals",
+    "href": "frameworks.html#the-problem-of-counterfactuals",
+    "title": "1  What is Causation?",
+    "section": "The Problem of Counterfactuals",
+    "text": "The Problem of Counterfactuals\nHowever, in reality, we do not have two parallel realities, one where you get the treatment, and another you don’t get the treatment. In the real world, someone either gets the treatment, or doesn’t get the treatment.\n\nIn the real world, you either got the vaccine, or didn’t get the vaccine.\nIn the real world, you either went to college, or didn’t.\n\nThus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the counterfactual.\n\n\n\n\n\n\n\n\nIn the Real World\nObserved Outcome \\(Y\\)\nCounterfactual\n\n\n\n\nScenario 1: I receive treatment\n\\(Y = \\textcolor{purple}{Y(1)}\\)\n\\(\\textcolor{red}{Y(0)}\\)\n\n\nScenario 2: I did not receive treatment\n\\(Y = \\textcolor{purple}{Y(0)}\\)\n\\(\\textcolor{red}{Y(1)}\\)\n\n\n\nFor the rest of the book, I will notate the unobserved potential outcome (counterfactual) in red for clarity.\nRemember our individual treatment effect \\(\\tau\\):\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]\nThe fundamental problem of causal inference is that in order to calculate our treatment effect \\(\\tau\\), we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate the counterfactuals in order to estimate the causal effects.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
     ]
   }
 ]

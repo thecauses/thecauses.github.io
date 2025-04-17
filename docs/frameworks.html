@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Causal Frameworks – Uncovering the Causes: From Correlation to Causation</title>
+<title>1&nbsp; What is Causation? – Uncovering the Causes: From Correlation to Causation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./identification.html" rel="next">
-<link href="./correlation.html" rel="prev">
+<link href="./correlation.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -112,7 +111,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./frameworks.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./frameworks.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Causation?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -143,22 +142,25 @@ window.Quarto = {
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./correlation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></span></a>
-  </div>
-</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./frameworks.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Causation?</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Related Statistical Topics</span></span>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
@@ -170,8 +172,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mechanics of Regression</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./identification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Identification Proofs</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Identification Proofs</span></span></a>
   </div>
 </li>
       </ul>
@@ -186,9 +194,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#potential-outcomes-framework" id="toc-potential-outcomes-framework" class="nav-link active" data-scroll-target="#potential-outcomes-framework">Potential Outcomes Framework</a></li>
-  <li><a href="#the-fundamental-problem" id="toc-the-fundamental-problem" class="nav-link" data-scroll-target="#the-fundamental-problem">The Fundamental Problem</a></li>
-  <li><a href="#heterogenous-treatment-effects" id="toc-heterogenous-treatment-effects" class="nav-link" data-scroll-target="#heterogenous-treatment-effects">Heterogenous Treatment Effects</a></li>
+  <li><a href="#treatment-and-outcomes" id="toc-treatment-and-outcomes" class="nav-link active" data-scroll-target="#treatment-and-outcomes">Treatment and Outcomes</a></li>
+  <li><a href="#potential-outcomes-framework" id="toc-potential-outcomes-framework" class="nav-link" data-scroll-target="#potential-outcomes-framework">Potential Outcomes Framework</a></li>
+  <li><a href="#the-problem-of-counterfactuals" id="toc-the-problem-of-counterfactuals" class="nav-link" data-scroll-target="#the-problem-of-counterfactuals">The Problem of Counterfactuals</a></li>
   <li><a href="#causal-estimands" id="toc-causal-estimands" class="nav-link" data-scroll-target="#causal-estimands">Causal Estimands</a></li>
   <li><a href="#uncertainty-and-inference" id="toc-uncertainty-and-inference" class="nav-link" data-scroll-target="#uncertainty-and-inference">Uncertainty and Inference</a></li>
   </ul>
@@ -199,7 +207,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Causation?</span></h1>
 </div>
 
 
@@ -228,17 +236,61 @@ Overview
 <div class="callout-body-container callout-body">
 <p>In this chapter, we discuss the the key aspects of causal inference:</p>
 <ol type="1">
+<li>Define what a <strong>treatment</strong> and <strong>outcome</strong> are.</li>
 <li>Discuss the <strong>potential outcomes</strong> framework as a way to think about causality.</li>
 <li>Define the main causal <strong>estimands</strong> that we are interested in estimating.</li>
-<li>Discuss the idea of <strong>heterogenous</strong> treatment effects.</li>
 <li>Discuss. the idea of <strong>statistical inference</strong> and <strong>uncertainty</strong>.</li>
 </ol>
 </div>
 </div>
 <p><br></p>
+<section id="treatment-and-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="treatment-and-outcomes">Treatment and Outcomes</h2>
+<p>In causal inference, we are concerned with how a <strong>treatment</strong> (notated <span class="math inline">\(D\)</span>) causes some change in the <strong>outcome</strong> variable (notated <span class="math inline">\(Y\)</span>).</p>
+<p>We generally assume that the treatment variable is <strong>binary</strong>. This means that you either get the treatment, or you do not get the treatment.</p>
+<p><span class="math display">\[
+D = \begin{cases}
+0 \quad \text{You did not receive the treatment} \\
+1 \quad \text{You did receive the treatment}
+\end{cases}
+\]</span></p>
+<p>A few examples of causal questions include:</p>
+<table class="table-bordered caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Our Causal Question: <span class="math inline">\(D \rightarrow Y\)</span></th>
+<th>Treatment <span class="math inline">\(D\)</span></th>
+<th>Outcome <span class="math inline">\(Y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How does taking the vaccine cause change in mortality rates?</td>
+<td>Getting the vaccine (yes or no)</td>
+<td>Mortality rate</td>
+</tr>
+<tr class="even">
+<td>How does going to college change your expected lifetime earnings?</td>
+<td>Went to college (yes or no)</td>
+<td>Expected lifetime earnings</td>
+</tr>
+<tr class="odd">
+<td>How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold?</td>
+<td>Tax exemptions on electric vehicles (yes or no)</td>
+<td>Amount of electric vehicles sold</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
 <section id="potential-outcomes-framework" class="level2">
 <h2 class="anchored" data-anchor-id="potential-outcomes-framework">Potential Outcomes Framework</h2>
-<p>In the last chapter, we discussed how correlation is not equal to causation. However, we did not formally define what causation is.</p>
+<p>We want to find the causal effect of a treatment on an outcome. But what is a causal effect?</p>
 <p>Imagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.</p>
 <table class="table-bordered caption-top table">
 <colgroup>
@@ -267,11 +319,15 @@ Overview
 </tbody>
 </table>
 <p>These two outcome variable values are called <strong>potential outcomes</strong>.</p>
-<p>These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your outcome variable value must be a result of the treatment.</p>
-<p>Using this fact, we know the <strong>individual treatment effect</strong> (notated <span class="math inline">\(\tau\)</span>) of our treatment is simply the difference in potential outcomes between these two worlds:</p>
+<p>These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your outcome variable value must be the <strong>individual treatment effect</strong> (notated <span class="math inline">\(\tau\)</span>) of our treatment:</p>
 <p><span class="math display">\[
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
+<p>As the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.</p>
+<ul>
+<li>If every individual in our study has the same individual treatment effect <span class="math inline">\(\tau\)</span>, we have a <strong>homogenous</strong> treatment effect.</li>
+<li>If individual’s have different treatment effects <span class="math inline">\(\tau\)</span>, we have a <strong>heterogenous</strong> effect.</li>
+</ul>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -296,74 +352,46 @@ Stable Unit Treatment Value Assumption
 </div>
 <p><br></p>
 </section>
-<section id="the-fundamental-problem" class="level2">
-<h2 class="anchored" data-anchor-id="the-fundamental-problem">The Fundamental Problem</h2>
+<section id="the-problem-of-counterfactuals" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem-of-counterfactuals">The Problem of Counterfactuals</h2>
 <p>However, in reality, we do not have two parallel realities, one where you get the treatment, and another you don’t get the treatment. In the real world, someone either gets the treatment, or doesn’t get the treatment.</p>
 <ul>
 <li>In the real world, you either got the vaccine, or didn’t get the vaccine.</li>
+<li>In the real world, you either went to college, or didn’t.</li>
 </ul>
 <p>Thus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the <strong>counterfactual</strong>.</p>
 <table class="table-bordered caption-top table">
 <colgroup>
 <col style="width: 40%">
-<col style="width: 30%">
-<col style="width: 30%">
+<col style="width: 35%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>In the Real World</th>
-<th>Observed Outcome</th>
+<th>Observed Outcome <span class="math inline">\(Y\)</span></th>
 <th>Counterfactual</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>I receive treatment</td>
-<td><span class="math inline">\(\textcolor{purple}{Y(1)}\)</span></td>
-<td><span class="math inline">\(\textcolor{purple}{Y(0)}\)</span></td>
+<td>Scenario 1: I receive treatment</td>
+<td><span class="math inline">\(Y = \textcolor{purple}{Y(1)}\)</span></td>
+<td><span class="math inline">\(\textcolor{red}{Y(0)}\)</span></td>
 </tr>
 <tr class="even">
-<td>I did not receive treatment</td>
-<td><span class="math inline">\(\textcolor{purple}{Y(0)}\)</span></td>
-<td><span class="math inline">\(\textcolor{purple}{Y(1)}\)</span></td>
+<td>Scenario 2: I did not receive treatment</td>
+<td><span class="math inline">\(Y = \textcolor{purple}{Y(0)}\)</span></td>
+<td><span class="math inline">\(\textcolor{red}{Y(1)}\)</span></td>
 </tr>
 </tbody>
 </table>
+<p>For the rest of the book, I will notate the unobserved potential outcome (counterfactual) in red for clarity.</p>
 <p>Remember our individual treatment effect <span class="math inline">\(\tau\)</span>:</p>
 <p><span class="math display">\[
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
 <p>The <strong>fundamental problem of causal inference</strong> is that in order to calculate our treatment effect <span class="math inline">\(\tau\)</span>, we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate the counterfactuals in order to estimate the causal effects.</p>
-<p><br></p>
-</section>
-<section id="heterogenous-treatment-effects" class="level2">
-<h2 class="anchored" data-anchor-id="heterogenous-treatment-effects">Heterogenous Treatment Effects</h2>
-<p>Remember our individual treatment effect <span class="math inline">\(\tau\)</span>:</p>
-<p><span class="math display">\[
-\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
-\]</span></p>
-<p>As the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.</p>
-<p>Because we have multiple individuals in a study, we will also have multiple individual treatment effects <span class="math inline">\(\tau\)</span>, one for each individual. This means we can have two scenarios:</p>
-<table class="table-bordered caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Homogenous Treatment Effects</th>
-<th>Heterogenous Treatment Effects</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>When the individual treatment effects <span class="math inline">\(\tau\)</span> are <strong>the same</strong> across all individuals. This implies that the treatment has the same causal effect for everyone.</td>
-<td>When the individual treatment effects <span class="math inline">\(\tau\)</span> <strong>differ</strong> between different individuals. This is often based on some characteristics of individuals.</td>
-</tr>
-</tbody>
-</table>
-<p>An example of a heterogenous treatment effect is that a maternity leave policy treatment probably has different effects on men vs.&nbsp;women.</p>
-<p>The reason homogenous and heterogenous treatment effects are important is that they often influence what type of strategies we can use in causal estimation, as we will see later.</p>
 <p><br></p>
 </section>
 <section id="causal-estimands" class="level2">
@@ -372,7 +400,7 @@ Stable Unit Treatment Value Assumption
 <p><span class="math display">\[
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
-<p>However, because of the <a href="#the-fundamental-problem">The Fundamental Problem</a>, it is almost impossible to estimate the individual treatment effect <span class="math inline">\(\tau\)</span> for every person.</p>
+<p>However, because of the <a href="#the-problem-of-counterfactuals">The Problem of Counterfactuals</a>, it is almost impossible to estimate the individual treatment effect <span class="math inline">\(\tau\)</span> for every person.</p>
 <p>We instead mostly focus on averaged <strong>group</strong> estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:</p>
 <table class="table-bordered caption-top table">
 <colgroup>
@@ -855,13 +883,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./correlation.html" class="pagination-link" aria-label="Correlation vs. Causation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./identification.html" class="pagination-link" aria-label="Identification Proofs">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Identification Proofs</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./correlation.html" class="pagination-link" aria-label="Correlation vs. Causation">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

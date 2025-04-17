@@ -10,9 +10,12 @@ book:
   search: true
   chapters:
     - index.qmd
-    - correlation.qmd
+    - "---"
     - frameworks.qmd
+    - correlation.qmd
+    - "---"
     - part: "Related Statistical Topics"
+    - "---"
   appendices:
     - mechanics.qmd
     - identification.qmd

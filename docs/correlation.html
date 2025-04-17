@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Correlation vs.&nbsp;Causation – Uncovering the Causes: From Correlation to Causation</title>
+<title>2&nbsp; Correlation vs.&nbsp;Causation – Uncovering the Causes: From Correlation to Causation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./frameworks.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./frameworks.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -112,7 +111,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./correlation.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./correlation.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -143,32 +142,48 @@ window.Quarto = {
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./correlation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></span></a>
-  </div>
-</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./frameworks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Causation?</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./correlation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Related Statistical Topics</span></span>
   </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Appendix</span></span>
-  </li>
-        <li class="sidebar-item">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Mechanics of Regression</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./identification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Identification Proofs</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -179,9 +194,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#treatment-and-outcomes" id="toc-treatment-and-outcomes" class="nav-link active" data-scroll-target="#treatment-and-outcomes">Treatment and Outcomes</a></li>
-  <li><a href="#correlations-between-variables" id="toc-correlations-between-variables" class="nav-link" data-scroll-target="#correlations-between-variables">Correlations between Variables</a></li>
+  <li><a href="#what-is-correlation" id="toc-what-is-correlation" class="nav-link active" data-scroll-target="#what-is-correlation">What is Correlation?</a></li>
   <li><a href="#correlation-is-not-causation" id="toc-correlation-is-not-causation" class="nav-link" data-scroll-target="#correlation-is-not-causation">Correlation is not Causation</a></li>
+  <li><a href="#formalising-selection-bias" id="toc-formalising-selection-bias" class="nav-link" data-scroll-target="#formalising-selection-bias">Formalising Selection Bias</a></li>
   <li><a href="#formalising-confounders" id="toc-formalising-confounders" class="nav-link" data-scroll-target="#formalising-confounders">Formalising Confounders</a></li>
   <li><a href="#dealing-with-confounders" id="toc-dealing-with-confounders" class="nav-link" data-scroll-target="#dealing-with-confounders">Dealing with Confounders</a></li>
   </ul>
@@ -192,7 +207,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></h1>
 </div>
 
 
@@ -219,7 +234,7 @@ Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this chapter, we discuss the basics of causal inference, and why causation is not correlation:</p>
+<p>In this chapter, we discuss why correlation is not causation:</p>
 <ol type="1">
 <li>Define what treatment and outcome variables are.</li>
 <li>Discuss the concept of correlation.</li>
@@ -229,55 +244,10 @@ Overview
 </div>
 </div>
 <p><br></p>
-<section id="treatment-and-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="treatment-and-outcomes">Treatment and Outcomes</h2>
-<p>In causal inference, we are concerned with how a <strong>treatment</strong> (notated <span class="math inline">\(D\)</span>) causes some change in the <strong>outcome</strong> variable (notated <span class="math inline">\(Y\)</span>).</p>
-<p>In this course, we mostly assume that the treatment variable is <strong>binary</strong>. This means that you either get the treatment, or you do not get the treatment.</p>
-<p><span class="math display">\[
-D = \begin{cases}
-0 \quad \text{You did not receive the treatment} \\
-1 \quad \text{You did receive the treatment}
-\end{cases}
-\]</span></p>
-<p>A few examples of causal questions include:</p>
-<table class="table-bordered caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Our Causal Question: <span class="math inline">\(D \rightarrow Y\)</span></th>
-<th>Treatment <span class="math inline">\(D\)</span></th>
-<th>Outcome <span class="math inline">\(Y\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>How does taking the vaccine cause change in mortality rates?</td>
-<td>Getting the vaccine (yes or no)</td>
-<td>Mortality rate</td>
-</tr>
-<tr class="even">
-<td>How does going to college change your expected lifetime earnings?</td>
-<td>Went to college (yes or no)</td>
-<td>Expected lifetime earnings</td>
-</tr>
-<tr class="odd">
-<td>How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold?</td>
-<td>Tax exemptions on electric vehicles (yes or no)</td>
-<td>Amount of electric vehicles sold</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-</section>
-<section id="correlations-between-variables" class="level2">
-<h2 class="anchored" data-anchor-id="correlations-between-variables">Correlations between Variables</h2>
-<p>One way we can analyse the relationship between a treatment and an outcome is with a correlation. <strong>Correlation</strong> is how one variable changes when the other variable changes.</p>
-<p>For example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings.</p>
-<p>To calculate a correlation measure, we find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.</p>
+<section id="what-is-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-correlation">What is Correlation?</h2>
+<p>One (very common) way we can analyse the relationship between a treatment and an outcome is with a correlation. <strong>Correlation</strong> is how one variable changes when the other variable changes.</p>
+<p>For example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings. To calculate a correlation measure, we find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.</p>
 <p>Once we have these averages, we can compare them to determine what correlation we have:</p>
 <table class="table-bordered caption-top table">
 <colgroup>
@@ -305,11 +275,16 @@ D = \begin{cases}
 </tr>
 </tbody>
 </table>
+<p>We can generalise this to find the correlation of any treatment and outcome:</p>
+<p><span class="math display">\[
+\text{correlation} = Y_t - Y_c
+\]</span></p>
+<p>Where <span class="math inline">\(Y_t\)</span> is the average outcome value of individuals who do receive the treatment, and <span class="math inline">\(Y_c\)</span> is the average outcome of individuals who do not receive the treatment.</p>
 <p><br></p>
 </section>
 <section id="correlation-is-not-causation" class="level2">
 <h2 class="anchored" data-anchor-id="correlation-is-not-causation">Correlation is not Causation</h2>
-<p>You probably have heard the phrase: “<em>correlation is not causation</em>”. But what does this mean? Imagine this causal scenario:</p>
+<p>You probably have heard the phrase: “<em>correlation is not causation</em>”. But what does this mean? Imagine this causal scenario as an example:</p>
 <table class="table-bordered caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -335,16 +310,68 @@ D = \begin{cases}
 <ul>
 <li>The average health outcome of individuals who went to the hospital is <u>quite low</u>.</li>
 <li>The average health outcome of individuals who did not go to the hospital is <u>quite high</u>.</li>
+<li>Thus, we find that going to the hospital is correlated with <strong>worse</strong> health outcomes.</li>
 </ul>
-<p>Thus, based on our discussion on correlation, we find that going to the hospital is correlated with <strong>worse</strong> health outcomes. Does this mean that going to the hospital worsens your health?</p>
-<p>The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a <strong>confounder</strong>. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn’t get the treatment.</p>
+<p>Does this mean that going to the hospital worsens your health? The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a <strong>confounder</strong>. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn’t get the treatment.</p>
+<p>In this example, a confounder could be <strong>smoking</strong>.</p>
 <ul>
-<li>In this example, a confounder could be <strong>smoking</strong>. Smoking will be negatively correlated with health outcomes. Someone who smokes is also more likely to visit the hospital with health complications, and thus, is more likely to get the treatment.</li>
-<li>Since smokers on average have worse health outcomes, and they are more likely to go to the hospital and get the treatment.</li>
-<li>That means people who go to the hospital (get the treatment) start out with worse health outcomes than people who did not go to the hospital.</li>
+<li>Smoking will worsen health outcomes. Someone who smokes is also more likely to visit the hospital with health complications (getting the treatment)</li>
+<li>That means people who go to the hospital (get the treatment) start out with (on average) worse health outcomes than people who did not go to the hospital.</li>
 </ul>
 <p>This means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.</p>
 <p>Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes. Correlation is thus not equal to causation because of confounders.</p>
+<p><br></p>
+</section>
+<section id="formalising-selection-bias" class="level2">
+<h2 class="anchored" data-anchor-id="formalising-selection-bias">Formalising Selection Bias</h2>
+<p>We just provided an example of confounders resulting in correlation not equalling causation. Let us generalise this example.</p>
+<p>We split every individual into two groups - those who received the treatment, and those who haven’t. Using what we learned in the <a href="./frameworks.html">last chapter</a>, we get:</p>
+<table class="table-bordered caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 20%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Observed Outcome</th>
+<th>Counterfactual</th>
+<th><strong>Real Treatment Effect</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Group that got the treatment</td>
+<td><span class="math inline">\(Y_t = \textcolor{purple}{Y_t(1)}\)</span></td>
+<td><span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span></td>
+<td><span class="math inline">\(\tau_t = \textcolor{purple}{Y_t(1)} - \textcolor{red}{Y_t(0)}\)</span></td>
+</tr>
+<tr class="even">
+<td>Group that did not get the treatment.</td>
+<td><span class="math inline">\(Y_c = \textcolor{purple}{Y_c(0)}\)</span></td>
+<td><span class="math inline">\(\textcolor{red}{Y_t(1)}\)</span></td>
+<td><span class="math inline">\(\tau_c = \textcolor{red}{Y_c(1)} - \textcolor{purple}{Y_c(0)}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We know have the real treatment effects <span class="math inline">\(\tau_t\)</span> and <span class="math inline">\(\tau_c\)</span>. But how do these treatment effects compare to correlation. Recall our definition of correlation:</p>
+<p><span class="math display">\[
+\text{correlation} = Y_t - Y_c \ = \ \textcolor{purple}{Y_t(1)} - \textcolor{purple}{Y_c(0)}
+\]</span></p>
+<p>Notice how this equation for correlation is <strong>not the same</strong> to either causal effect we found above. However, if <span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> and <span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> are equal, then our correlation would indeed be the same as the causal effect of the treatment group, <span class="math inline">\(\tau_t\)</span>. So are these equal?</p>
+<ul>
+<li><span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> is the potential outcome of group <span class="math inline">\(c\)</span> in the parallel world they do not get the treatment (which we observe)</li>
+<li><span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> is the potential outcome of group <span class="math inline">\(t\)</span> in the parallel world they do not get the treament (which is counterfactual).</li>
+<li>Thus, both are the outcome value of all individuals, had they not received the treatment.</li>
+</ul>
+<p>So are these two equal? Not if there is a <strong>confounder</strong>.</p>
+<ul>
+<li>Since the confounder is correlated with the outcome, that means people with different values of the confounder will have different outcomes had they not received the treatment.</li>
+<li>And since the confounder affects who gets and does not get the treatment, it might result in the treatment and control groups having different no-treatment potential outcomes.</li>
+</ul>
+<p>Thus, if there is a confounder, then <span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> and <span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> are not equal, and correlation does not equal causation. This error caused by confounders is called <strong>selection bias</strong> (or endogeneity bias).</p>
 <p><br></p>
 </section>
 <section id="formalising-confounders" class="level2">
@@ -807,14 +834,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./frameworks.html" class="pagination-link" aria-label="What is Causation?">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is Causation?</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./frameworks.html" class="pagination-link" aria-label="Causal Frameworks">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Causal Frameworks</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
