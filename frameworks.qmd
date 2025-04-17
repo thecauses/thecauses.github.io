@@ -17,18 +17,20 @@ In this chapter, we discuss the the key aspects of causal inference:
 
 In the last chapter, we discussed how correlation is not equal to causation. However, we did not formally define what causation is.
 
-Imagine we have two hypothetical parallel worlds - copies of the current world. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.
+Imagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.
 
 | World | Treatment $D$              | Outcome $Y$                |
 |-------|----------------------------|----------------------------|
 | 0     | Does not Receive Treatment | $\textcolor{purple}{Y(0)}$ |
 | 1     | Receives Treatment         | $\textcolor{purple}{Y(1)}$ |
 
+: {tbl-colwidths="\[25,45,30\]" .bordered}
+
 These two outcome variable values are called **potential outcomes**.
 
-Since these two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment, any difference in your outcome variable value must be a result of the treatment.
+These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your outcome variable value must be a result of the treatment.
 
-Using this fact, we know the individual treatment effect (notated $\tau$) of our treatment is simply the difference in potential outcomes between these two worlds:
+Using this fact, we know the **individual treatment effect** (notated $\tau$) of our treatment is simply the difference in potential outcomes between these two worlds:
 
 $$
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
@@ -51,7 +53,7 @@ The reason this is important is that if A's treatment status affects B's outcome
 
 ## The Fundamental Problem
 
-However, we have an issue - in reality, we do not have two parallel realities, one where you get the treatment, and another you don't get the treatment. In the real world, someone either gets the treatment, or doesn't get the treatment.
+However, in reality, we do not have two parallel realities, one where you get the treatment, and another you don't get the treatment. In the real world, someone either gets the treatment, or doesn't get the treatment.
 
 -   In the real world, you either got the vaccine, or didn't get the vaccine.
 
@@ -62,13 +64,15 @@ Thus, by definition, one of the potential outcomes is not observed in the real w
 | I receive treatment         | $\textcolor{purple}{Y(1)}$ | $\textcolor{purple}{Y(0)}$ |
 | I did not receive treatment | $\textcolor{purple}{Y(0)}$ | $\textcolor{purple}{Y(1)}$ |
 
+: {tbl-colwidths="\[40,30,30\]" .bordered}
+
 Remember our individual treatment effect $\tau$:
 
 $$
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 $$
 
-The **fundamental problem of causal inference** is that in order to find our treatment effect $\tau$, we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate these counterfactuals in order to estimate the causal effects.
+The **fundamental problem of causal inference** is that in order to calculate our treatment effect $\tau$, we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate the counterfactuals in order to estimate the causal effects.
 
 <br />
 
@@ -84,9 +88,13 @@ As the name implies, this is an individual effect, that belongs to an individual
 
 Because we have multiple individuals in a study, we will also have multiple individual treatment effects $\tau$, one for each individual. This means we can have two scenarios:
 
--   **Homogenous Treatment Effects**: This is when the individual treatment effects $\tau$ are equal across all individuals. This implies that the treatment has the same causal effect for everyone.
+| Homogenous Treatment Effects                                                                                                                                   | Heterogenous Treatment Effects                                                                                                                     |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| When the individual treatment effects $\tau$ are **the same** across all individuals. This implies that the treatment has the same causal effect for everyone. | When the individual treatment effects $\tau$ **differ** between different individuals. This is often based on some characteristics of individuals. |
 
--   **Heterogenous Treatment Effects**: This is when the individual treatment effects $\tau$ differ between individuals. This is often based on some characteristics of individuals. For example, a maternity leave policy treatment probably has different treatment effects on men vs. women.
+: {tbl-colwidths="\[50,50\]" .bordered}
+
+An example of a heterogenous treatment effect is that a maternity leave policy treatment probably has different effects on men vs. women.
 
 The reason homogenous and heterogenous treatment effects are important is that they often influence what type of strategies we can use in causal estimation, as we will see later.
 
@@ -94,19 +102,23 @@ The reason homogenous and heterogenous treatment effects are important is that t
 
 ## Causal Estimands
 
-An **estimand** is a true real-world value that we want to estimate. For example, the individual treatment effect $\tau$ is an estimand - the true treatment effect as defined by the parallel world potential outcomes:
+An **estimand** is some true value that we want to estimate. For example, the individual treatment effect $\tau$ is an estimand - the true treatment effect as defined by the potential outcomes:
 
 $$
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 $$
 
-However, because of the fundamental problem of causal inference, it is almost impossible to estimate the individual treatment effect $\tau$ for every person.
+However, because of the [The Fundamental Problem], it is almost impossible to estimate the individual treatment effect $\tau$ for every person.
 
-We instead mostly focus on averaged group estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:
+We instead mostly focus on averaged **group** estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:
 
--   **Average Treatment Effect (ATE)**: This is exactly what it sounds like - the average of individual treatment effects $\tau$, for all individuals in our study. This means for both individuals who received and didn't receive the treatment.
--   **Average Treatment Effect on the Treated (ATT)**: This is the average of individual treatment effects $\tau$, but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.
--   **Local Average Treatment Effect (LATE)**: This is the average of individual treatment effects $\tau$, but only for a specific (local) group of individuals in a study. This group can be defined by their confounding values, or some other characteristic the individuals hold together.
+| Estimand                                      | Notation      | Definition                                                                                                                                                                                               |
+|-----------------------------------------------|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Average Treatment Effect (ATE)                | $\tau_{ATE}$  | The average of individual treatment effects $\tau$, for all individuals in our study, including people who did and didn't get the treatment.                                                             |
+| Average Treatment Effect on the Treated (ATT) | $\tau_{ATT}$  | The average of individual treatment effects $\tau$, but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.                           |
+| Local Average Treatment Effect (LATE)         | $\tau_{LATE}$ | The average of individual treatment effects $\tau$, but only for a specific (local) group of individuals in a study. This group is usually defined by some characteristic the individuals hold together. |
+
+: {tbl-colwidths="\[30, 17, 53\]" .bordered}
 
 Remember that these are causal estimands - the true causal effects in the world. We do not have both potential outcomes, so we will need some strategy to **estimate** these true causal effects.
 
@@ -121,7 +133,7 @@ However, an estimation process has a level of uncertainty. We cannot be sure tha
 -   Smaller standard errors means we are more confident about our estimates.
 -   Larger standard errors means we are less certain about our estimates.
 
-With our standard errors, we can calculate how likely that there is zero (no) causal effect (called a p-value). This procedure is called a hypothesis test.
+With our standard errors, we can calculate how likely that there is zero (no) causal effect (called a **p-value**). This procedure is called a hypothesis test.
 
 -   If our p-value is less than 0.05 (5%), there is less than a 5% chance that there is zero causal effect, which implies 95%+ chance there is a causal effect. In this case, we say there is a **statistically significant causal effect**.
 -   If our p-value is larger than 0.05 (5%), there is a greater than 5% chance that the causal effect is 0. We generally conclude that there is no statistically significant causal effect.

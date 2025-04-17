@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Correlation vs.&nbsp;Causation – Understanding the Causes of Things</title>
+<title>1&nbsp; Correlation vs.&nbsp;Causation – Uncovering the Causes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,7 +127,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Understanding the Causes of Things</a> 
+      <a href="./">Uncovering the Causes</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -157,7 +157,11 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Appendix: Additional Topics</span></span>
+ <span class="menu-text">Related Statistical Topics</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Appendix</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -227,77 +231,150 @@ Overview
 <p><br></p>
 <section id="treatment-and-outcomes" class="level2">
 <h2 class="anchored" data-anchor-id="treatment-and-outcomes">Treatment and Outcomes</h2>
-<p>In causal inference, we are concerned with how a <strong>treatment</strong> causes some change in the <strong>outcome</strong> variable:</p>
-<ul>
-<li>How does taking the vaccine cause change in mortality rates.</li>
-<li>How does going to college change your expected lifetime earnings.</li>
-<li>How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold.</li>
-</ul>
-<p>In this course, we mostly assume that the treatment variable is <strong>binary</strong>. This means that the treatment can take one of two values - you either have received the treatment, or did not receive the treatment. For example, you either received the vaccine, or you didn’t.</p>
-<p>We typically notate the treatment as <span class="math inline">\(D\)</span> for notation simplicity:</p>
+<p>In causal inference, we are concerned with how a <strong>treatment</strong> (notated <span class="math inline">\(D\)</span>) causes some change in the <strong>outcome</strong> variable (notated <span class="math inline">\(Y\)</span>).</p>
+<p>In this course, we mostly assume that the treatment variable is <strong>binary</strong>. This means that you either get the treatment, or you do not get the treatment.</p>
 <p><span class="math display">\[
 D = \begin{cases}
 0 \quad \text{You did not receive the treatment} \\
 1 \quad \text{You did receive the treatment}
 \end{cases}
 \]</span></p>
-<p>The outcome variable is the variable of interest that changes as a result of either receiving or not receiving treatment. For example, your expected lifetime earnings changes depending on if you went to college or not.</p>
-<p>We typically notate the outcome variable as <span class="math inline">\(Y\)</span>.</p>
+<p>A few examples of causal questions include:</p>
+<table class="table-bordered caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Our Causal Question: <span class="math inline">\(D \rightarrow Y\)</span></th>
+<th>Treatment <span class="math inline">\(D\)</span></th>
+<th>Outcome <span class="math inline">\(Y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How does taking the vaccine cause change in mortality rates?</td>
+<td>Getting the vaccine (yes or no)</td>
+<td>Mortality rate</td>
+</tr>
+<tr class="even">
+<td>How does going to college change your expected lifetime earnings?</td>
+<td>Went to college (yes or no)</td>
+<td>Expected lifetime earnings</td>
+</tr>
+<tr class="odd">
+<td>How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold?</td>
+<td>Tax exemptions on electric vehicles (yes or no)</td>
+<td>Amount of electric vehicles sold</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 </section>
 <section id="correlations-between-variables" class="level2">
 <h2 class="anchored" data-anchor-id="correlations-between-variables">Correlations between Variables</h2>
 <p>One way we can analyse the relationship between a treatment and an outcome is with a correlation. <strong>Correlation</strong> is how one variable changes when the other variable changes.</p>
 <p>For example, let us say that our treatment is whether or not you went to college. Our outcome of interest is you career earnings.</p>
-<ul>
-<li>To calculate a correlation measure, we would simply find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.</li>
-<li>Once we have these averages, we can compare them. If by going to college, you get a higher average career earnings, then going to college is <strong>positively correlated</strong> with career earnings.</li>
-<li>The opposite is also true: if by going to college, you get a lower average career earnings, then going to college is <strong>negatively correlated</strong> with career earnings.</li>
-<li>If going to college and not going to college have the same career earnings, then we say that going to college is <strong>not correlated</strong> with career earnings.</li>
-</ul>
+<p>To calculate a correlation measure, we find the average career earnings of someone who didn’t go to college, and the average career earnings of someone who did go to college.</p>
+<p>Once we have these averages, we can compare them to determine what correlation we have:</p>
+<table class="table-bordered caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type of Correlation</th>
+<th>How to Identify</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Positive Correlation</strong> between going to college and average career earnings.</td>
+<td>If by going to college, you get <strong>higher</strong> average career earnings.</td>
+</tr>
+<tr class="even">
+<td><strong>Negative Correlation</strong> between going to college and average career earnings.</td>
+<td>If by going to college, you get <strong>lower</strong> average career earnings.</td>
+</tr>
+<tr class="odd">
+<td><strong>No Correlation</strong> between going to college and average career earnings.</td>
+<td>If by going to college <strong>does not change</strong> the average career earnings.</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 </section>
 <section id="correlation-is-not-causation" class="level2">
 <h2 class="anchored" data-anchor-id="correlation-is-not-causation">Correlation is not Causation</h2>
-<p>You probably have heard the phrase: “correlation is not causation”. But what does this mean?</p>
-<p>Let us take an example. Imagine that our treatment is if you go to the hospital or not, and our outcome is some measure of your health. Our causal question is thus: how does going to the hospital cause your health to change?</p>
+<p>You probably have heard the phrase: “<em>correlation is not causation</em>”. But what does this mean? Imagine this causal scenario:</p>
+<table class="table-bordered caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Our Causal Question: <span class="math inline">\(D \rightarrow Y\)</span></th>
+<th>Treatment <span class="math inline">\(D\)</span></th>
+<th>Outcome <span class="math inline">\(Y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>How does going to the hospital to receive treatment affect your health?</td>
+<td>Going to the hospital (yes or no)</td>
+<td>Some measure of health outcome</td>
+</tr>
+</tbody>
+</table>
 <p>If we just collect correlation data, we likely find the following:</p>
 <ul>
-<li>The average health outcome of individuals who went to the hospital (got the treatment) is <u>quite low</u>.</li>
-<li>The average health outcome of individuals who did not go to the hospital (did not get the treatment) is <u>quite high</u>.</li>
+<li>The average health outcome of individuals who went to the hospital is <u>quite low</u>.</li>
+<li>The average health outcome of individuals who did not go to the hospital is <u>quite high</u>.</li>
 </ul>
 <p>Thus, based on our discussion on correlation, we find that going to the hospital is correlated with <strong>worse</strong> health outcomes. Does this mean that going to the hospital worsens your health?</p>
-<p>The answer is <strong>no</strong>! The reason we have a negative correlation is because of a <strong>confounding variable</strong>. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn’t get the treatment.</p>
+<p>The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a <strong>confounder</strong>. A confounder is a third variable, that is correlated with our outcome, while also affecting who gets and doesn’t get the treatment.</p>
 <ul>
-<li>In this example, a confounder could be <strong>smoking</strong>. Smoking will be negatively correlated with health outcome. Someone who smokes is also more likely to visit the hospital with health complications, and thus, is more likely to get the treatment.</li>
-<li>Since smokers on average have worse health outcomes, and they are more likely to go to the hospital and get the treatment, that means people who go to the hospital (get the treatment) start out with worse health outcomes than people who did not go to the hospital.</li>
+<li>In this example, a confounder could be <strong>smoking</strong>. Smoking will be negatively correlated with health outcomes. Someone who smokes is also more likely to visit the hospital with health complications, and thus, is more likely to get the treatment.</li>
+<li>Since smokers on average have worse health outcomes, and they are more likely to go to the hospital and get the treatment.</li>
+<li>That means people who go to the hospital (get the treatment) start out with worse health outcomes than people who did not go to the hospital.</li>
 </ul>
 <p>This means that the hospital might actually be boosting these unhealthy people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects and treatment of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.</p>
-<p>Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.</p>
+<p>Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes. Correlation is thus not equal to causation because of confounders.</p>
 <p><br></p>
 </section>
 <section id="formalising-confounders" class="level2">
 <h2 class="anchored" data-anchor-id="formalising-confounders">Formalising Confounders</h2>
 <p>To dive deeper into causal inference, we need to formally define confounders. Confounders, often notated with a <span class="math inline">\(X\)</span>, are variables that meet the following characteristics:</p>
 <ol type="1">
-<li>The confounder is correlated (either positively or negatively) with the outcome variable of interest.</li>
+<li>The confounder is correlated (positive or negative) with the outcome variable.</li>
 <li>The confounder causes who gets and doesn’t get the treatment.</li>
 <li>The confounder is <strong>not</strong> itself caused by the treatment.</li>
 </ol>
-<p>We often explore confounders graphically:</p>
+<p>We often explore confounders graphically with <strong>causal diagrams</strong>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/clipboard-928665935.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 <p><span class="math inline">\(X\)</span> is a confounder. It is correlated with outcome <span class="math inline">\(Y\)</span> (as shown by the arrow <span class="math inline">\(X\rightarrow Y\)</span> ), and it causes who gets and doesn’t get the treatment <span class="math inline">\(D\)</span> (as shown by the arrow <span class="math inline">\(X \rightarrow D\)</span>).</p>
-<p><span class="math inline">\(V\)</span> is <strong>not</strong> a confounder. Why? <span class="math inline">\(V\)</span> does not cause who gets and doesn’t get the treatment - note that the arrow is pointing from <span class="math inline">\(D \rightarrow V\)</span>, meaning treatment <span class="math inline">\(D\)</span> is causing <span class="math inline">\(V\)</span>, and not the other way around.</p>
+<p><span class="math inline">\(V\)</span> is <strong>not</strong> a confounder. Why? <span class="math inline">\(V\)</span> is caused by the treatment <span class="math inline">\(D\)</span>, as shown by the direction of the arrow. Thus, this violates the third condition above.</p>
 <p><br></p>
 </section>
 <section id="dealing-with-confounders" class="level2">
 <h2 class="anchored" data-anchor-id="dealing-with-confounders">Dealing with Confounders</h2>
 <p>We have discussed how the presence of confounders can result in our correlation being completely different from the causal effect.</p>
-<p>To get the correct causal effect of a treatment on an outcome, we must find some way to “account” for confounder. There are two main ways we do this in causal inference:</p>
+<p>To get the correct causal effect of a treatment on an outcome, we must find some way to “account” for confounder. But first, how do we identify confounders?</p>
+<ul>
+<li>Unfortunately, there is not some magical statistical test to find confounders.</li>
+<li>Instead, we have to use our own <em>knowledge</em> and <em>intuition</em> about a topic to think of potential confounders.</li>
+<li>Typically, researchers identify potential confounders by reading a lot about the topics they are studying, and thinking about how other variables might meet the definition of a confounder.</li>
+</ul>
+<p>Once we have identified confounders, there are two main ways we do this in causal inference:</p>
 <ol type="1">
 <li>We <strong>control</strong> for confounders. This basically means we account for the influence of confounder <span class="math inline">\(X\)</span>, and get rid of that part of influence.</li>
 <li>We <strong>determine who gets treated</strong>. For example, if we randomly decide who gets the treatment and who doesn’t (such as flipping a coin), that means <strong>we the researchers</strong> are controlling who gets the treatment, and not the confounder. Thus, the confounder no longer determines who gets and doesn’t get the treatment, and thus is no longer a confounder.</li>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Causal Frameworks – Understanding the Causes of Things</title>
+<title>2&nbsp; Causal Frameworks – Uncovering the Causes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,7 +127,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Understanding the Causes of Things</a> 
+      <a href="./">Uncovering the Causes</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -157,7 +157,11 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Appendix: Additional Topics</span></span>
+ <span class="menu-text">Related Statistical Topics</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Appendix</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -228,8 +232,13 @@ Overview
 <section id="potential-outcomes-framework" class="level2">
 <h2 class="anchored" data-anchor-id="potential-outcomes-framework">Potential Outcomes Framework</h2>
 <p>In the last chapter, we discussed how correlation is not equal to causation. However, we did not formally define what causation is.</p>
-<p>Imagine we have two hypothetical parallel worlds - copies of the current world. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.</p>
-<table class="caption-top table">
+<p>Imagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.</p>
+<table class="table-bordered caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 45%">
+<col style="width: 30%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>World</th>
@@ -251,8 +260,8 @@ Overview
 </tbody>
 </table>
 <p>These two outcome variable values are called <strong>potential outcomes</strong>.</p>
-<p>Since these two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment, any difference in your outcome variable value must be a result of the treatment.</p>
-<p>Using this fact, we know the individual treatment effect (notated <span class="math inline">\(\tau\)</span>) of our treatment is simply the difference in potential outcomes between these two worlds:</p>
+<p>These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in your outcome variable value must be a result of the treatment.</p>
+<p>Using this fact, we know the <strong>individual treatment effect</strong> (notated <span class="math inline">\(\tau\)</span>) of our treatment is simply the difference in potential outcomes between these two worlds:</p>
 <p><span class="math display">\[
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
@@ -282,16 +291,16 @@ Stable Unit Treatment Value Assumption
 </section>
 <section id="the-fundamental-problem" class="level2">
 <h2 class="anchored" data-anchor-id="the-fundamental-problem">The Fundamental Problem</h2>
-<p>However, we have an issue - in reality, we do not have two parallel realities, one where you get the treatment, and another you don’t get the treatment. In the real world, someone either gets the treatment, or doesn’t get the treatment.</p>
+<p>However, in reality, we do not have two parallel realities, one where you get the treatment, and another you don’t get the treatment. In the real world, someone either gets the treatment, or doesn’t get the treatment.</p>
 <ul>
 <li>In the real world, you either got the vaccine, or didn’t get the vaccine.</li>
 </ul>
 <p>Thus, by definition, one of the potential outcomes is not observed in the real world. The potential outcome not observed in the real world is called the <strong>counterfactual</strong>.</p>
-<table class="caption-top table">
+<table class="table-bordered caption-top table">
 <colgroup>
-<col style="width: 36%">
-<col style="width: 31%">
-<col style="width: 31%">
+<col style="width: 40%">
+<col style="width: 30%">
+<col style="width: 30%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -317,7 +326,7 @@ Stable Unit Treatment Value Assumption
 <p><span class="math display">\[
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
-<p>The <strong>fundamental problem of causal inference</strong> is that in order to find our treatment effect <span class="math inline">\(\tau\)</span>, we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate these counterfactuals in order to estimate the causal effects.</p>
+<p>The <strong>fundamental problem of causal inference</strong> is that in order to calculate our treatment effect <span class="math inline">\(\tau\)</span>, we need both potential outcomes. However, we can never observe both. Our goal in causal inference will be to estimate/approximate the counterfactuals in order to estimate the causal effects.</p>
 <p><br></p>
 </section>
 <section id="heterogenous-treatment-effects" class="level2">
@@ -328,26 +337,67 @@ Stable Unit Treatment Value Assumption
 \]</span></p>
 <p>As the name implies, this is an individual effect, that belongs to an individual within our study. We typically have multiple individuals in a study.</p>
 <p>Because we have multiple individuals in a study, we will also have multiple individual treatment effects <span class="math inline">\(\tau\)</span>, one for each individual. This means we can have two scenarios:</p>
-<ul>
-<li><p><strong>Homogenous Treatment Effects</strong>: This is when the individual treatment effects <span class="math inline">\(\tau\)</span> are equal across all individuals. This implies that the treatment has the same causal effect for everyone.</p></li>
-<li><p><strong>Heterogenous Treatment Effects</strong>: This is when the individual treatment effects <span class="math inline">\(\tau\)</span> differ between individuals. This is often based on some characteristics of individuals. For example, a maternity leave policy treatment probably has different treatment effects on men vs.&nbsp;women.</p></li>
-</ul>
+<table class="table-bordered caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Homogenous Treatment Effects</th>
+<th>Heterogenous Treatment Effects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>When the individual treatment effects <span class="math inline">\(\tau\)</span> are <strong>the same</strong> across all individuals. This implies that the treatment has the same causal effect for everyone.</td>
+<td>When the individual treatment effects <span class="math inline">\(\tau\)</span> <strong>differ</strong> between different individuals. This is often based on some characteristics of individuals.</td>
+</tr>
+</tbody>
+</table>
+<p>An example of a heterogenous treatment effect is that a maternity leave policy treatment probably has different effects on men vs.&nbsp;women.</p>
 <p>The reason homogenous and heterogenous treatment effects are important is that they often influence what type of strategies we can use in causal estimation, as we will see later.</p>
 <p><br></p>
 </section>
 <section id="causal-estimands" class="level2">
 <h2 class="anchored" data-anchor-id="causal-estimands">Causal Estimands</h2>
-<p>An <strong>estimand</strong> is a true real-world value that we want to estimate. For example, the individual treatment effect <span class="math inline">\(\tau\)</span> is an estimand - the true treatment effect as defined by the parallel world potential outcomes:</p>
+<p>An <strong>estimand</strong> is some true value that we want to estimate. For example, the individual treatment effect <span class="math inline">\(\tau\)</span> is an estimand - the true treatment effect as defined by the potential outcomes:</p>
 <p><span class="math display">\[
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 \]</span></p>
-<p>However, because of the fundamental problem of causal inference, it is almost impossible to estimate the individual treatment effect <span class="math inline">\(\tau\)</span> for every person.</p>
-<p>We instead mostly focus on averaged group estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:</p>
-<ul>
-<li><strong>Average Treatment Effect (ATE)</strong>: This is exactly what it sounds like - the average of individual treatment effects <span class="math inline">\(\tau\)</span>, for all individuals in our study. This means for both individuals who received and didn’t receive the treatment.</li>
-<li><strong>Average Treatment Effect on the Treated (ATT)</strong>: This is the average of individual treatment effects <span class="math inline">\(\tau\)</span>, but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.</li>
-<li><strong>Local Average Treatment Effect (LATE)</strong>: This is the average of individual treatment effects <span class="math inline">\(\tau\)</span>, but only for a specific (local) group of individuals in a study. This group can be defined by their confounding values, or some other characteristic the individuals hold together.</li>
-</ul>
+<p>However, because of the <a href="#the-fundamental-problem">The Fundamental Problem</a>, it is almost impossible to estimate the individual treatment effect <span class="math inline">\(\tau\)</span> for every person.</p>
+<p>We instead mostly focus on averaged <strong>group</strong> estimands - essentially the average treatment effect for different groups of people. This is because it is easier to estimate counterfactual outcomes in groups. The main causal estimands are:</p>
+<table class="table-bordered caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 17%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estimand</th>
+<th>Notation</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Average Treatment Effect (ATE)</td>
+<td><span class="math inline">\(\tau_{ATE}\)</span></td>
+<td>The average of individual treatment effects <span class="math inline">\(\tau\)</span>, for all individuals in our study, including people who did and didn’t get the treatment.</td>
+</tr>
+<tr class="even">
+<td>Average Treatment Effect on the Treated (ATT)</td>
+<td><span class="math inline">\(\tau_{ATT}\)</span></td>
+<td>The average of individual treatment effects <span class="math inline">\(\tau\)</span>, but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.</td>
+</tr>
+<tr class="odd">
+<td>Local Average Treatment Effect (LATE)</td>
+<td><span class="math inline">\(\tau_{LATE}\)</span></td>
+<td>The average of individual treatment effects <span class="math inline">\(\tau\)</span>, but only for a specific (local) group of individuals in a study. This group is usually defined by some characteristic the individuals hold together.</td>
+</tr>
+</tbody>
+</table>
 <p>Remember that these are causal estimands - the true causal effects in the world. We do not have both potential outcomes, so we will need some strategy to <strong>estimate</strong> these true causal effects.</p>
 <p><br></p>
 </section>
@@ -359,7 +409,7 @@ Stable Unit Treatment Value Assumption
 <li>Smaller standard errors means we are more confident about our estimates.</li>
 <li>Larger standard errors means we are less certain about our estimates.</li>
 </ul>
-<p>With our standard errors, we can calculate how likely that there is zero (no) causal effect (called a p-value). This procedure is called a hypothesis test.</p>
+<p>With our standard errors, we can calculate how likely that there is zero (no) causal effect (called a <strong>p-value</strong>). This procedure is called a hypothesis test.</p>
 <ul>
 <li>If our p-value is less than 0.05 (5%), there is less than a 5% chance that there is zero causal effect, which implies 95%+ chance there is a causal effect. In this case, we say there is a <strong>statistically significant causal effect</strong>.</li>
 <li>If our p-value is larger than 0.05 (5%), there is a greater than 5% chance that the causal effect is 0. We generally conclude that there is no statistically significant causal effect.</li>

@@ -1,6 +1,8 @@
 # Preface {.unnumbered}
 
-How does raising the minimum wage cause unemployment levels to change? How does going to university cause our career earnings to change? How does taking the vaccine cause our chances of getting the disease to change? From economics to health, politics to physics, causation is key.
+How does raising the minimum wage cause unemployment levels to change? How does going to university cause our career earnings to change? How does taking the vaccine cause our chances of getting the disease to change? How do diversity policies cause changes in reported discrimination?
+
+From politics to health, economics to science, causation is key. Our lives revolve around causation - yet so many of us do not understand causation.
 
 We have all heard of the saying - "correlation is not causation". But what does that actually mean? How do we go from an observed correlation to finding the causal effect?
 
@@ -10,7 +12,11 @@ This booklet aims to teach the fundamentals of causal inference, while relying o
 
 ## Prerequisites
 
-I aim to avoid as much mathematics and technical notation as possible. I recommend that before starting, one has an understanding of basic statistical concepts, such as average/mean, and some simple high-school level algebra. Some understanding of statistical inference and simple linear regression is desirable but not required.
+I aim to avoid as much mathematics and technical notation as possible. I recommend that before starting, one has an understanding of the following:
+
+1.  Basic statistical concepts, such as mean/average, binary vs. continuous variables.
+2.  Basic algebra concepts, such as slope of a linear line.
+3.  (Optional but helpful) a basic understanding of statistical inference and simple regression.
 
 I provide R-code to implement the methods I discuss in this booklet. While I provide the code for the methods, I do not teach how to code in R in this booklet. Thus, if you wish to implement these methods, I recommend looking at simple tutorials regarding coding in R.
 

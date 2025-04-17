@@ -3,15 +3,16 @@ project:
   output-dir: docs
 
 book:
-  title: "Understanding the Causes of Things"
-  subtitle: "An Introduction to Causal Inference: From Correlation to Causation"
+  title: "Uncovering the Causes"
+  subtitle: "From Correlation to Causation: An Introduction to Applied Causal Inference"
   author: "Kevin Li (London School of Economics)"
   cover-image: cover.jpeg
   chapters:
     - index.qmd
     - correlation.qmd
     - frameworks.qmd
-    - part: "Appendix: Additional Topics"
+    - part: "Related Statistical Topics"
+    - part: "Appendix"
     - references.qmd
 
 bibliography: references.bib
