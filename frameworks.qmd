@@ -7,6 +7,8 @@ In this chapter, we discuss the the key aspects of causal inference:
 3.  Discuss the issue of **counterfactuals** as the main problem in causal inference.
 4.  Discuss. the idea of **statistical inference** and **uncertainty**.
 
+[Further materials] that go into more detail are provided at the end of this chapter.
+
 <br />
 
 ## Treatment and Outcomes
@@ -47,32 +49,11 @@ The outcome values of these two parallel worlds are called **potential outcomes*
 
 : {tbl-colwidths="\[25,45,30\]" .bordered}
 
-These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in outcomes between the two worlds must be the result of the treatment.
-
-::: {.callout-important appearance="simple"}
-## Key Definition: Individual Treatment Effect
-
-The **individual treatment effect** (notated $\tau$) is the causal effect of a treatment on an outcome for a specific individual.
-:::
-
-We can calculate the individual treatment effect as the difference in potential outcomes:
+These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in outcomes between the two worlds must be the **individual treatment/causal effect** (notated $\tau$):
 
 $$
 \tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
 $$
-
-::: {.callout-note collapse="true" appearance="simple"}
-## Additional Info: SUTVA
-
-The potential outcomes framework described above, with two parallel worlds, depends on a key assumption, called the stable unit treatment value assumption (SUTVA).
-
-Let us say we have multiple people in our study, including person A and B. SUTVA essentially says that if person A gets the treatment, that does not affect the outcome values of person B.
-
-The reason this is important is that if A's treatment status affects B's outcome, then we would have more than 2 potential worlds - not just B getting the treatment or not, but also if A got the treatment or not. Common causes of SUTVA violations include:
-
--   Spill-over effects. For example, if we are testing a new curriculum's impact on student performance, student A who got the new curriculum might teach/tutor their friend, student B, which affects their outcomes.
--   Dilution: For example, in vaccines, there is herd immunity. That mean other people getting the vaccines improves my health outcomes.
-:::
 
 <br />
 
@@ -118,3 +99,17 @@ In most software and reports, if there is a p-value less than 5%, the authors wi
 ![](images/clipboard-3174072485.png){fig-align="center" width="50%"}
 
 In the figure above, you can see the stars \*\*\* indicate a non-zero causal effect. Do not worry about interpreting the table now - we will show more details in the following chapters.
+
+<br />
+
+## Further Materials
+
+For a more advanced look at the concepts covered in this chapter, see my handout notes on:
+
+| Handout Notes                                                                                 | Description                                                                                          |
+|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| [Random Variables and Distributions](https://thecauses.github.io/materials/distributions.pdf) | These notes cover the building blocks of statistics in a more technical and mathematical way.        |
+| Statistical Inference                                                                         | These notes cover the idea of estimators, standard errors, and p-values in more detail.              |
+| Potential Outcomes Framework                                                                  | These notes provide a more mathematical and rigorous background on the potential outcomes framework. |
+
+: {tbl-colwidths="\[35, 65\]" .bordered}

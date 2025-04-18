@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kevin Li (London School of Economics)">
 
-<title>Uncovering the Causes: From Correlation to Causation</title>
+<title>Appendix A — Advanced Materials – Uncovering the Causes: From Correlation to Causation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./more.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./materials.html">Appendices</a></li><li class="breadcrumb-item"><a href="./materials.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Advanced Materials</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./materials.html" class="sidebar-item-text sidebar-link">
+  <a href="./materials.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Advanced Materials</span></span></a>
   </div>
 </li>
@@ -176,22 +176,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./materials.html">Appendices</a></li><li class="breadcrumb-item"><a href="./materials.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Advanced Materials</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Uncovering the Causes: From Correlation to Causation</h1>
-<p class="subtitle lead">A Basic Introduction to Applied Causal Inference</p>
+<h1 class="title">Appendix A — Advanced Materials</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Kevin Li (London School of Economics) </p>
-          </div>
-  </div>
     
   
     
@@ -202,38 +195,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1><p><img src="cover.jpeg" title="Uncovering the Causes: From Correlation to Causation" class="quarto-cover-image img-fluid"></p>
-<p>How does raising the minimum wage cause unemployment levels to change? How does going to university cause our career earnings to change? How does taking the vaccine cause our chances of getting the disease to change? How do diversity policies cause changes in reported discrimination?</p>
-<p>From politics to health, economics to science, causation is key. Our lives revolve around causation - yet so many of us do not understand causation.</p>
-<p>We have all heard of the saying - “correlation is not causation”. But what does that actually mean? How do we go from an observed correlation to finding the causal effect?</p>
-<p>This booklet aims to teach the fundamentals of causal inference, while relying on as little mathematics and complexity as possible. The goal is that with the knowledge in this booklet, you will be able to critically assess the claims of others - is it truly causation or just correlation? You will also be able to conduct your own causal analysis using the R programming language.</p>
-<p><br></p>
-<section id="prerequisites" class="level2">
-<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
-<p>I aim to avoid as much mathematics and technical notation as possible. I recommend that before starting, one has an understanding of the following:</p>
+<p>This book on causal inference has been intentionally simplified to limit the use of mathematics, and get across the key points. However, individuals more interested in causal inference may find these advanced materials more suitable. These advanced set of notes are to be used in complement to the material introduced in the book.</p>
+<p>List of Advanced Materials:</p>
 <ol type="1">
-<li>Basic statistical concepts, such as mean/average, binary vs.&nbsp;continuous variables.</li>
-<li>Basic algebra concepts, such as slope of a linear line.</li>
-<li>(Optional but helpful) a basic understanding of statistical inference and simple regression.</li>
+<li><a href="https://thecauses.github.io/materials/distributions.pdf">Random Variables and Distributions</a></li>
+<li>Statistical Inference</li>
+<li>Potential Outcomes Framework</li>
+<li>Proofs of Selection Bias</li>
+<li>Selection on Observables Identification</li>
+<li>Weighting Identification</li>
+<li>Details of Linear Regression</li>
+<li>Least Squares Estimator</li>
+<li>Details of Differences-in-Differences</li>
+<li>Instrumental Variables Estimator</li>
+<li>Instrumental Variables Designs</li>
+<li>Details on Regression Discontinuity</li>
 </ol>
-<p>I provide R-code to implement the methods I discuss in this booklet. While I provide the code for the methods, I do not teach how to code in R in this booklet. Thus, if you wish to implement these methods, I recommend looking at simple tutorials regarding coding in R.</p>
-<p>I also provide some more detailed notes in blue drop-down info boxes, for those who are interested in a more thorough approach.</p>
-<p><br></p>
-</section>
-<section id="layout" class="level2">
-<h2 class="anchored" data-anchor-id="layout">Layout</h2>
-<p>This booklet is laid out in the following manner:</p>
-<ul>
-<li>In the first two chapters, we discuss the basics of causal inference: what is causation, how is it different from correlation, and what are the challenges of finding causal effects.</li>
-<li>For the remaining main chapters, we discuss different methods to estimate causal effects.</li>
-<li>In the <strong>appendix</strong>, I provide some useful complementary statistical methods that can be used alongside causal inference techniques.</li>
-</ul>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -656,6 +635,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./more.html" class="pagination-link" aria-label="More Statistical Methods">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">More Statistical Methods</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

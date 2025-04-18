@@ -182,8 +182,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./logistic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Binary Choice Models</span></span></a>
+  <a href="./materials.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Advanced Materials</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./more.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">More Statistical Methods</span></span></a>
   </div>
 </li>
       </ul>
@@ -223,24 +229,11 @@ window.Quarto = {
 <li>Discuss the concept of <strong>correlation</strong>.</li>
 <li>Discuss how <strong>confounders</strong> mean correlation is not equal to causation.</li>
 </ol>
+<p><a href="#further-materials">Further materials</a> that go into more detail are provided at the end of this chapter.</p>
 <p><br></p>
 <section id="what-is-correlation" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-correlation">What is Correlation?</h2>
-<p>Correlation is a very common way to express the relationship between variables.</p>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Key Definition: <strong>Correlation</strong>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Correlation</strong> is how one variable changes when the other variable changes.</p>
-</div>
-</div>
-<p>To calculate a correlation between treatment and control, we:</p>
+<p><strong>Correlation</strong> is how one variable changes when another variable changes. To calculate a correlation between treatment and control, we:</p>
 <ul>
 <li>Find the average outcome values of all who got the treatment: <span class="math inline">\(Y_t\)</span>.</li>
 <li>Find the average outcome values of all who didn’t get the treatment: <span class="math inline">\(Y_c\)</span>.</li>
@@ -309,25 +302,13 @@ Key Definition: <strong>Correlation</strong>
 <li>The average health outcome of individuals who did not go to the hospital is <u>quite high</u>.</li>
 <li>Thus, we find that going to the hospital is correlated with <strong>worse</strong> health outcomes.</li>
 </ul>
-<p>Does this mean that going to the hospital <strong>causes</strong> worse health? The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a <strong>confounder</strong>.</p>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Key Definition: <strong>Confounders</strong>
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>Does this mean that going to the hospital <strong>causes</strong> worse health? The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a confounder.</p>
 <p>A <strong>confounder</strong> is a third variable that has the following characteristics:</p>
 <ol type="1">
 <li>The confounder is correlated (positive or negative) with the outcome variable.</li>
 <li>The confounder causes who gets and doesn’t get the treatment.</li>
 <li>The confounder is <strong>not</strong> itself caused by the treatment.</li>
 </ol>
-</div>
-</div>
 <p>In this example, a confounder could be <strong>smoking</strong>.</p>
 <ul>
 <li>Smoking will worsen health outcomes. Someone who smokes is also more likely to visit the hospital with health complications (getting the treatment)</li>
@@ -387,6 +368,32 @@ Key Definition: <strong>Confounders</strong>
 </ul>
 <p>Thus, if there is a confounder, then <span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> and <span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> are not equal, and correlation does not equal causation. This error caused by confounders is called <strong>selection bias</strong>.</p>
 <p><br></p>
+</section>
+<section id="further-materials" class="level2">
+<h2 class="anchored" data-anchor-id="further-materials">Further Materials</h2>
+<p>For a more advanced look at the concepts covered in this chapter, see my handout notes on:</p>
+<table class="table-bordered caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Handout Notes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Potential Outcomes Framework</td>
+<td>These notes provide a more mathematical and rigorous background on the potential outcomes framework.</td>
+</tr>
+<tr class="even">
+<td>Proofs of Selection Bias</td>
+<td>These notes use the potential outcomes framework to prove the issue of selection bias.</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

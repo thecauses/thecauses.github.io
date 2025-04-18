@@ -18,7 +18,8 @@ book:
     - part: "Designs for Causal Estimation"
     - "---"
   appendices:
-    - logistic.qmd
+    - materials.qmd
+    - more.qmd
 
 bibliography: references.bib
 
@@ -42,8 +43,6 @@ format:
     include-in-header:
       text: |
         <script src="mathjax-config.js"></script>
-  pdf:
-    documentclass: scrreprt
 
 editor: visual
 

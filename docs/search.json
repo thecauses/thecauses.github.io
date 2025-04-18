@@ -64,7 +64,7 @@
     "href": "correlation.html",
     "title": "2  Correlation vs. Causation",
     "section": "",
-    "text": "What is Correlation?\nCorrelation is a very common way to express the relationship between variables.\nTo calculate a correlation between treatment and control, we:\nThen, compare the two average values by finding their difference:\n\\[\n\\text{correlation} = Y_t - Y_c\n\\]\nOur result will either be positive, negative, or zero. We can interpret it in the following way:\nNote how I used the world related - correlation is not causation.",
+    "text": "What is Correlation?\nCorrelation is how one variable changes when another variable changes. To calculate a correlation between treatment and control, we:\nThen, compare the two average values by finding their difference:\n\\[\n\\text{correlation} = Y_t - Y_c\n\\]\nOur result will either be positive, negative, or zero. We can interpret it in the following way:\nNote how I used the world related - correlation is not causation.",
     "crumbs": [
       "Introduction to Causation",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
@@ -115,7 +115,7 @@
     "href": "correlation.html#correlation-is-not-causation",
     "title": "2  Correlation vs. Causation",
     "section": "Correlation is not Causation",
-    "text": "Correlation is not Causation\nWhy is correlation not causation? Imagine this causal scenario as an example:\n\n\n\n\n\n\n\n\nOur Causal Question: \\(D \\rightarrow Y\\)\nTreatment \\(D\\)\nOutcome \\(Y\\)\n\n\n\n\nHow does going to the hospital to receive treatment affect your health?\nGoing to the hospital (yes or no)\nSome measure of health outcome\n\n\n\nIf we just collect correlation data, we likely find the following:\n\nThe average health outcome of individuals who went to the hospital is quite low.\nThe average health outcome of individuals who did not go to the hospital is quite high.\nThus, we find that going to the hospital is correlated with worse health outcomes.\n\nDoes this mean that going to the hospital causes worse health? The answer is no! Our correlation is incorrectly measuring the causal effect because of a confounder.\n\n\n\n\n\n\nKey Definition: Confounders\n\n\n\nA confounder is a third variable that has the following characteristics:\n\nThe confounder is correlated (positive or negative) with the outcome variable.\nThe confounder causes who gets and doesn’t get the treatment.\nThe confounder is not itself caused by the treatment.\n\n\n\nIn this example, a confounder could be smoking.\n\nSmoking will worsen health outcomes. Someone who smokes is also more likely to visit the hospital with health complications (getting the treatment)\nThat means people who go to the hospital (get the treatment) start out with (on average) worse health outcomes than people who did not go to the hospital.\n\nThis means that the hospital might actually be boosting people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.\nThus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.",
+    "text": "Correlation is not Causation\nWhy is correlation not causation? Imagine this causal scenario as an example:\n\n\n\n\n\n\n\n\nOur Causal Question: \\(D \\rightarrow Y\\)\nTreatment \\(D\\)\nOutcome \\(Y\\)\n\n\n\n\nHow does going to the hospital to receive treatment affect your health?\nGoing to the hospital (yes or no)\nSome measure of health outcome\n\n\n\nIf we just collect correlation data, we likely find the following:\n\nThe average health outcome of individuals who went to the hospital is quite low.\nThe average health outcome of individuals who did not go to the hospital is quite high.\nThus, we find that going to the hospital is correlated with worse health outcomes.\n\nDoes this mean that going to the hospital causes worse health? The answer is no! Our correlation is incorrectly measuring the causal effect because of a confounder.\nA confounder is a third variable that has the following characteristics:\n\nThe confounder is correlated (positive or negative) with the outcome variable.\nThe confounder causes who gets and doesn’t get the treatment.\nThe confounder is not itself caused by the treatment.\n\nIn this example, a confounder could be smoking.\n\nSmoking will worsen health outcomes. Someone who smokes is also more likely to visit the hospital with health complications (getting the treatment)\nThat means people who go to the hospital (get the treatment) start out with (on average) worse health outcomes than people who did not go to the hospital.\n\nThis means that the hospital might actually be boosting people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.\nThus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.",
     "crumbs": [
       "Introduction to Causation",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
@@ -157,7 +157,7 @@
     "href": "frameworks.html#potential-outcomes-framework",
     "title": "1  What is Causation?",
     "section": "Potential Outcomes Framework",
-    "text": "Potential Outcomes Framework\nImagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.\nThe outcome values of these two parallel worlds are called potential outcomes:\n\n\n\n\n\n\n\n\nParallel World\nTreatment \\(D\\)\nPotential Outcome\n\n\n\n\n0\nDoes not Receive Treatment\n\\(\\textcolor{purple}{Y(0)}\\)\n\n\n1\nReceives Treatment\n\\(\\textcolor{purple}{Y(1)}\\)\n\n\n\nThese two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in outcomes between the two worlds must be the result of the treatment.\n\n\n\n\n\n\nKey Definition: Individual Treatment Effect\n\n\n\nThe individual treatment effect (notated \\(\\tau\\)) is the causal effect of a treatment on an outcome for a specific individual.\n\n\nWe can calculate the individual treatment effect as the difference in potential outcomes:\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]\n\n\n\n\n\n\nAdditional Info: SUTVA\n\n\n\n\n\nThe potential outcomes framework described above, with two parallel worlds, depends on a key assumption, called the stable unit treatment value assumption (SUTVA).\nLet us say we have multiple people in our study, including person A and B. SUTVA essentially says that if person A gets the treatment, that does not affect the outcome values of person B.\nThe reason this is important is that if A’s treatment status affects B’s outcome, then we would have more than 2 potential worlds - not just B getting the treatment or not, but also if A got the treatment or not. Common causes of SUTVA violations include:\n\nSpill-over effects. For example, if we are testing a new curriculum’s impact on student performance, student A who got the new curriculum might teach/tutor their friend, student B, which affects their outcomes.\nDilution: For example, in vaccines, there is herd immunity. That mean other people getting the vaccines improves my health outcomes.",
+    "text": "Potential Outcomes Framework\nImagine we have two hypothetical parallel worlds that are copies of each other. Both of these worlds are identical except for one aspect: the treatment. In one world, you get the treatment, and in the other parallel world, you do not get the treatment.\nThe outcome values of these two parallel worlds are called potential outcomes:\n\n\n\n\n\n\n\n\nParallel World\nTreatment \\(D\\)\nPotential Outcome\n\n\n\n\n0\nDoes not Receive Treatment\n\\(\\textcolor{purple}{Y(0)}\\)\n\n\n1\nReceives Treatment\n\\(\\textcolor{purple}{Y(1)}\\)\n\n\n\nThese two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in outcomes between the two worlds must be the individual treatment/causal effect (notated \\(\\tau\\)):\n\\[\n\\tau = \\textcolor{purple}{Y(1)} - \\textcolor{purple}{Y(0)}\n\\]",
     "crumbs": [
       "Introduction to Causation",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
@@ -330,7 +330,7 @@
     "href": "correlation.html#what-is-correlation",
     "title": "2  Correlation vs. Causation",
     "section": "",
-    "text": "Key Definition: Correlation\n\n\n\nCorrelation is how one variable changes when the other variable changes.\n\n\n\n\nFind the average outcome values of all who got the treatment: \\(Y_t\\).\nFind the average outcome values of all who didn’t get the treatment: \\(Y_c\\).\n\n\n\n\n\n\n\n\n\n\n\nType of Correlation\nInterpretation\n\n\n\n\nPositive Correlation between treatment and outcome.\nGetting the treatment is related with higher outcome values on average.\n\n\nNegative Correlation between treatment and outcome.\nGetting the treatment is related with lower outcome values on average.\n\n\nNo (Zero) Correlation between treatment and outcome.\nGetting the treatment has no relationship with the average outcome values.",
+    "text": "Find the average outcome values of all who got the treatment: \\(Y_t\\).\nFind the average outcome values of all who didn’t get the treatment: \\(Y_c\\).\n\n\n\n\n\n\n\n\n\n\n\nType of Correlation\nInterpretation\n\n\n\n\nPositive Correlation between treatment and outcome.\nGetting the treatment is related with higher outcome values on average.\n\n\nNegative Correlation between treatment and outcome.\nGetting the treatment is related with lower outcome values on average.\n\n\nNo (Zero) Correlation between treatment and outcome.\nGetting the treatment has no relationship with the average outcome values.",
     "crumbs": [
       "Introduction to Causation",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
@@ -431,6 +431,50 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Identification Proofs</span>"
+    ]
+  },
+  {
+    "objectID": "frameworks.html#further-materials",
+    "href": "frameworks.html#further-materials",
+    "title": "1  What is Causation?",
+    "section": "Further Materials",
+    "text": "Further Materials\nFor a more advanced look at the concepts covered in this chapter, see my handout notes on:\n\n\n\n\n\n\n\nHandout Notes\nDescription\n\n\n\n\nRandom Variables and Distributions\nThese notes cover the building blocks of statistics in a more technical and mathematical way.\n\n\nStatistical Inference\nThese notes cover the idea of estimators, standard errors, and p-values in more detail.\n\n\nPotential Outcomes Framework\nThese notes provide a more mathematical and rigorous background on the potential outcomes framework.",
+    "crumbs": [
+      "Introduction to Causation",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is Causation?</span>"
+    ]
+  },
+  {
+    "objectID": "correlation.html#further-materials",
+    "href": "correlation.html#further-materials",
+    "title": "2  Correlation vs. Causation",
+    "section": "Further Materials",
+    "text": "Further Materials\nFor a more advanced look at the concepts covered in this chapter, see my handout notes on:\n\n\n\n\n\n\n\nHandout Notes\nDescription\n\n\n\n\nPotential Outcomes Framework\nThese notes provide a more mathematical and rigorous background on the potential outcomes framework.\n\n\nProofs of Selection Bias\nThese notes use the potential outcomes framework to prove the issue of selection bias.",
+    "crumbs": [
+      "Introduction to Causation",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
+    ]
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Appendix A — Advanced Materials",
+    "section": "",
+    "text": "This book on causal inference has been intentionally simplified to limit the use of mathematics, and get across the key points. However, individuals more interested in causal inference may find these advanced materials more suitable. These advanced set of notes are to be used in complement to the material introduced in the book.\nList of Advanced Materials:\n\nRandom Variables and Distributions\nStatistical Inference\nPotential Outcomes Framework\nProofs of Selection Bias\nSelection on Observables Identification\nWeighting Identification\nDetails of Linear Regression\nLeast Squares Estimator\nDetails of Differences-in-Differences\nInstrumental Variables Estimator\nInstrumental Variables Designs\nDetails on Regression Discontinuity",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Advanced Materials</span>"
+    ]
+  },
+  {
+    "objectID": "more.html",
+    "href": "more.html",
+    "title": "Appendix B — More Statistical Methods",
+    "section": "",
+    "text": "This book has focused solely on Causal Inference techniques. But statistics is so much more than just causal inference!\n\nStatistics is widely used for predictive purposes, such as predicting the stock market or sports. We briefly saw the predictive power of statistics when dealing with models that need propensity scores - which are estimated through statistics.\nStatistics is very important for measurement. After all, some treatments, outcomes, and confounders of interest are very difficult to directly measure, so statistics can help us with that.\nStatistics is useful for understanding our data. We can’t really say much about causation if we do not understand our data.\n\nHere are additional pages (in a similar, very applied style as this book) on other statistical topics. These pages are included in a sub-book that can be accessed here, or you can use the links below.\n\nRegression Transformations (this builds on chapter 5)\nLogistic Regression\nRegression for Counts\nRandom Forests\nPrinciple Components Analysis\nFactor Analysis\nItem Response Theory\nLatent Class Models\nStructural Equation Models\nCluster Analysis",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>More Statistical Methods</span>"
     ]
   }
 ]

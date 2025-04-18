@@ -1,0 +1,20 @@
+# More Statistical Methods
+
+This book has focused solely on Causal Inference techniques. But statistics is so much more than just causal inference!
+
+-   Statistics is widely used for **predictive purposes**, such as predicting the stock market or sports. We briefly saw the predictive power of statistics when dealing with models that need propensity scores - which are estimated through statistics.
+-   Statistics is very important for **measurement**. After all, some treatments, outcomes, and confounders of interest are very difficult to directly measure, so statistics can help us with that.
+-   Statistics is useful for **understanding our data**. We can't really say much about causation if we do not understand our data.
+
+Here are additional pages (in a similar, very applied style as this book) on other statistical topics. These pages are included in a sub-book that can be accessed here, or you can use the links below.
+
+1.  Regression Transformations (this builds on chapter 5)
+2.  Logistic Regression
+3.  Regression for Counts
+4.  Random Forests
+5.  Principle Components Analysis
+6.  Factor Analysis
+7.  Item Response Theory
+8.  Latent Class Models
+9.  Structural Equation Models
+10. Cluster Analysis

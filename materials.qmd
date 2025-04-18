@@ -1,0 +1,18 @@
+# Advanced Materials
+
+This book on causal inference has been intentionally simplified to limit the use of mathematics, and get across the key points. However, individuals more interested in causal inference may find these advanced materials more suitable. These advanced set of notes are to be used in complement to the material introduced in the book.
+
+List of Advanced Materials:
+
+1.  [Random Variables and Distributions](https://thecauses.github.io/materials/distributions.pdf)
+2.  Statistical Inference
+3.  Potential Outcomes Framework
+4.  Proofs of Selection Bias
+5.  Selection on Observables Identification
+6.  Weighting Identification
+7.  Details of Linear Regression
+8.  Least Squares Estimator
+9.  Details of Differences-in-Differences
+10. Instrumental Variables Estimator
+11. Instrumental Variables Designs
+12. Details on Regression Discontinuity
