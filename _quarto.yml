@@ -18,8 +18,10 @@ book:
     - part: "Designs for Causal Estimation"
     - "---"
   appendices:
-    - materials.qmd
     - more.qmd
+    - details.qmd
+    - identification.qmd
+    
 
 bibliography: references.bib
 

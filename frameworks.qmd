@@ -7,8 +7,6 @@ In this chapter, we discuss the the key aspects of causal inference:
 3.  Discuss the issue of **counterfactuals** as the main problem in causal inference.
 4.  Discuss. the idea of **statistical inference** and **uncertainty**.
 
-[Further materials] that go into more detail are provided at the end of this chapter.
-
 <br />
 
 ## Treatment and Outcomes
@@ -27,7 +25,7 @@ $$
 A few examples of causal questions include:
 
 | Our Causal Question: $D \rightarrow Y$                                                                   | Treatment $D$                                   | Outcome $Y$                      |
-|----------------------------------------------------------------------------------------------------------|-------------------------------------------------|----------------------------------|
+|--------------------------------------|------------------|-----------------|
 | How does taking the vaccine cause change in mortality rates?                                             | Getting the vaccine (yes or no)                 | Mortality rate                   |
 | How does going to college change your expected lifetime earnings?                                        | Went to college (yes or no)                     | Expected lifetime earnings       |
 | How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold? | Tax exemptions on electric vehicles (yes or no) | Amount of electric vehicles sold |
@@ -62,7 +60,7 @@ $$
 However, in reality, we do not have two parallel worlds. In the real world, someone either gets the treatment, or doesn't get the treatment. Thus, by definition, one of the potential outcomes is not observed in the real world - the one not observed is called the **counterfactual**.
 
 | In the Real World                       | Observed Outcome $Y$           | Counterfactual          |
-|-----------------------------------------|--------------------------------|-------------------------|
+|------------------------------|------------------------|-------------------|
 | Scenario 1: I receive treatment         | $Y = \textcolor{purple}{Y(1)}$ | $\textcolor{red}{Y(0)}$ |
 | Scenario 2: I did not receive treatment | $Y = \textcolor{purple}{Y(0)}$ | $\textcolor{red}{Y(1)}$ |
 
@@ -73,7 +71,7 @@ The **fundamental problem of causal inference** is that in order to calculate ou
 Causal inference is about estimating the counterfactuals with an **estimator**. This is difficult at the individual level, so instead, we focus on average treatment effects for groups:
 
 | Type                                          | Notation      | Definition                                                                                                                                                                                               |
-|-----------------------------------------------|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|------------|------------|-----------------------------------------------|
 | Average Treatment Effect (ATE)                | $\tau_{ATE}$  | The average of individual treatment effects $\tau$, for all individuals in our study, including people who did and didn't get the treatment.                                                             |
 | Average Treatment Effect on the Treated (ATT) | $\tau_{ATT}$  | The average of individual treatment effects $\tau$, but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.                           |
 | Local Average Treatment Effect (LATE)         | $\tau_{LATE}$ | The average of individual treatment effects $\tau$, but only for a specific (local) group of individuals in a study. This group is usually defined by some characteristic the individuals hold together. |
@@ -101,15 +99,3 @@ In most software and reports, if there is a p-value less than 5%, the authors wi
 In the figure above, you can see the stars \*\*\* indicate a non-zero causal effect. Do not worry about interpreting the table now - we will show more details in the following chapters.
 
 <br />
-
-## Further Materials
-
-For a more advanced look at the concepts covered in this chapter, see my handout notes on:
-
-| Handout Notes                                                                                 | Description                                                                                          |
-|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
-| [Random Variables and Distributions](https://thecauses.github.io/materials/distributions.pdf) | These notes cover the building blocks of statistics in a more technical and mathematical way.        |
-| Statistical Inference                                                                         | These notes cover the idea of estimators, standard errors, and p-values in more detail.              |
-| Potential Outcomes Framework                                                                  | These notes provide a more mathematical and rigorous background on the potential outcomes framework. |
-
-: {tbl-colwidths="\[35, 65\]" .bordered}

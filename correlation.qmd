@@ -5,8 +5,6 @@ In this chapter, we discuss why correlation is not causation:
 1.  Discuss the concept of **correlation**.
 2.  Discuss how **confounders** mean correlation is not equal to causation.
 
-[Further materials] that go into more detail are provided at the end of this chapter.
-
 <br />
 
 ## What is Correlation?
@@ -25,7 +23,7 @@ $$
 Our result will either be positive, negative, or zero. We can interpret it in the following way:
 
 | Type of Correlation                                      | Interpretation                                                                 |
-|------------------------------|-----------------------------------------|
+|-------------------------------|-----------------------------------------|
 | **Positive Correlation** between treatment and outcome.  | Getting the treatment is related with **higher** outcome values on average.    |
 | **Negative Correlation** between treatment and outcome.  | Getting the treatment is related with **lower** outcome values on average.     |
 | **No (Zero) Correlation** between treatment and outcome. | Getting the treatment **has no relationship** with the average outcome values. |
@@ -41,7 +39,7 @@ Note how I used the world **related** - correlation is not causation.
 Why is correlation not causation? Imagine this causal scenario as an example:
 
 | Our Causal Question: $D \rightarrow Y$                                  | Treatment $D$                     | Outcome $Y$                    |
-|------------------------------------|------------------|------------------|
+|------------------------------------|-------------------|-------------------|
 | How does going to the hospital to receive treatment affect your health? | Going to the hospital (yes or no) | Some measure of health outcome |
 
 : {tbl-colwidths="\[50,25,25\]" .bordered}
@@ -76,7 +74,7 @@ Thus, while our correlation says that going to the hospital worsens our health o
 Let us generalise why correlation is not equal to causation. We split every individual in our study into two groups - those who received the treatment, and those who haven't. Using what we learned in the [last chapter](frameworks.qmd), we get:
 
 | Group                                 | Observed Outcome                   | Counterfactual            | **Real Treatment Effect**                                       |
-|----------------|----------------|----------------|-------------------------|
+|-----------------|-----------------|-----------------|-----------------------|
 | Group that got the treatment          | $Y_t = \textcolor{purple}{Y_t(1)}$ | $\textcolor{red}{Y_t(0)}$ | $\tau_t = \textcolor{purple}{Y_t(1)} - \textcolor{red}{Y_t(0)}$ |
 | Group that did not get the treatment. | $Y_c = \textcolor{purple}{Y_c(0)}$ | $\textcolor{red}{Y_t(1)}$ | $\tau_c = \textcolor{red}{Y_c(1)} - \textcolor{purple}{Y_c(0)}$ |
 
@@ -100,16 +98,3 @@ So are these two equal? Not if there is a **confounder**.
 -   And since the confounder affects who gets and does not get the treatment, it might result in the treatment and control groups having different no-treatment potential outcomes.
 
 Thus, if there is a confounder, then $\textcolor{purple}{Y_c(0)}$ and $\textcolor{red}{Y_t(0)}$ are not equal, and correlation does not equal causation. This error caused by confounders is called **selection bias**.
-
-<br />
-
-## Further Materials
-
-For a more advanced look at the concepts covered in this chapter, see my handout notes on:
-
-| Handout Notes                | Description                                                                                          |
-|----------------------------|--------------------------------------------|
-| Potential Outcomes Framework | These notes provide a more mathematical and rigorous background on the potential outcomes framework. |
-| Proofs of Selection Bias     | These notes use the potential outcomes framework to prove the issue of selection bias.               |
-
-: {tbl-colwidths="\[35, 65\]" .bordered}
