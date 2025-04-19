@@ -64,7 +64,7 @@ $$
 $$
 
 ::: aside
-Note: technically, for the causal effect to be the differences in potential outcomes, we need an additional assumption called SUTVA. [Appendix B](details.qmd) gives more details.
+Note: $\tau$ (tau) is a greek letter that is used to represent causal effects. Also technically, for this equation to be true, we need an additional assumption called SUTVA. [Appendix B](details.qmd) gives more details.
 :::
 
 We call this causal effect the **individual treatment effect**.
