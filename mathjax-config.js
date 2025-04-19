@@ -17,7 +17,7 @@ MathJax = {
       }
     },
     chtml: {
-        scale: 1.15,
+        scale: 1.08,
         mtextInheritFont: true,
         mtextFont: 'Cambria',
     },

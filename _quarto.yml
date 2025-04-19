@@ -18,7 +18,7 @@ book:
     - part: "Designs for Causal Estimation"
     - "---"
   appendices:
-    - more.qmd
+    - choose.qmd
     - details.qmd
     - identification.qmd
     

@@ -127,16 +127,5 @@
       "Introduction to Causation",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Correlation vs. Causation</span>"
     ]
-  },
-  {
-    "objectID": "more.html",
-    "href": "more.html",
-    "title": "Appendix A — More Statistical Methods",
-    "section": "",
-    "text": "This book has focused solely on Causal Inference techniques. But statistics is so much more than just causal inference!\n\nStatistics is widely used for predictive purposes, such as predicting the stock market or sports. We briefly saw the predictive power of statistics when dealing with models that need propensity scores - which are estimated through statistics.\nStatistics is very important for measurement. After all, some treatments, outcomes, and confounders of interest are very difficult to directly measure, so statistics can help us with that.\nStatistics is useful for understanding our data. We can’t really say much about causation if we do not understand our data.\n\nHere are additional pages (in a similar, very applied style as this book) on other statistical topics. These pages are included in a sub-book that can be accessed here, or you can use the links below.\n\nRegression Transformations (this builds on chapter 5)\nLogistic Regression\nRegression for Counts\nRandom Forests\nPrinciple Components Analysis\nFactor Analysis\nItem Response Theory\nLatent Class Models\nStructural Equation Models\nCluster Analysis",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>A</span>  <span class='chapter-title'>More Statistical Methods</span>"
-    ]
   }
 ]
