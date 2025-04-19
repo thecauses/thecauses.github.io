@@ -7,13 +7,29 @@ In this chapter, we discuss the the key aspects of causal inference:
 3.  Discuss the issue of **counterfactuals** as the main problem in causal inference.
 4.  Discuss. the idea of **statistical inference** and **uncertainty**.
 
+Some helpfulnotes are provided in the margins. If you want a more formal and detailed description of the topics in this chapter, consult [appendix B](details.qmd).
+
 <br />
 
 ## Treatment and Outcomes
 
 In causal inference, we are concerned with how a **treatment** (notated $D$) causes some change in the **outcome** variable (notated $Y$).
 
-We generally assume that the treatment variable is **binary**. This means that you either get the treatment, or you do not get the treatment.
+![](images/clipboard-4016282451.png){fig-align="center" width="55%"}
+
+| Our Causal Question: $D \rightarrow Y$                                                                   | Treatment $D$                                   | Outcome $Y$                      |
+|:----------------------------------|:------------------|:------------------|
+| How does taking the vaccine cause change in mortality rates?                                             | Getting the vaccine (yes or no)                 | Mortality rate                   |
+| How does going to college change your expected lifetime earnings?                                        | Went to college (yes or no)                     | Expected lifetime earnings       |
+| How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold? | Tax exemptions on electric vehicles (yes or no) | Amount of electric vehicles sold |
+
+: Examples of causal questions. {#tbl-examples tbl-colwidths="\[50,25,25\]" .bordered}
+
+We generally assume that the treatment variable is **binary**.
+
+::: aside
+Note: a binary variable is a variable that can only take two values (often labelled 0 or 1). For example, flipping a coin is either heads or tails.
+:::
 
 $$
 D = \begin{cases}
@@ -21,16 +37,6 @@ D = \begin{cases}
 1 \quad \text{You did receive the treatment}
 \end{cases}
 $$
-
-A few examples of causal questions include:
-
-| Our Causal Question: $D \rightarrow Y$                                                                   | Treatment $D$                                   | Outcome $Y$                      |
-|--------------------------------------|------------------|-----------------|
-| How does taking the vaccine cause change in mortality rates?                                             | Getting the vaccine (yes or no)                 | Mortality rate                   |
-| How does going to college change your expected lifetime earnings?                                        | Went to college (yes or no)                     | Expected lifetime earnings       |
-| How does the presence of tax exemptions on electric vehicles change how many electric vehicles are sold? | Tax exemptions on electric vehicles (yes or no) | Amount of electric vehicles sold |
-
-: {tbl-colwidths="\[50,25,25\]" .bordered}
 
 <br />
 
@@ -40,43 +46,57 @@ Imagine we have two hypothetical parallel worlds that are copies of each other. 
 
 The outcome values of these two parallel worlds are called **potential outcomes**:
 
-| Parallel World | Treatment $D$              | Potential Outcome          |
-|----------------|----------------------------|----------------------------|
-| 0              | Does not Receive Treatment | $\textcolor{purple}{Y(0)}$ |
-| 1              | Receives Treatment         | $\textcolor{purple}{Y(1)}$ |
+| Parallel World                     | Potential Outcome |
+|:-----------------------------------|:------------------|
+| Does not Receive Treatment $D = 0$ | $\C$              |
+| Receives Treatment $D = 1$         | $\T$              |
 
-: {tbl-colwidths="\[25,45,30\]" .bordered}
+: The (0) and (1) are not exponents - they label the outcome $Y$ for treatment status. {#tbl-potout tbl-colwidths="\[65,35\]" .bordered}
 
-These two hypothetical parallel worlds are identical to each other, with the only difference being that in one world, you get the treatment. Thus, any difference in outcomes between the two worlds must be the **individual treatment/causal effect** (notated $\tau$):
+::: aside
+Note: [Appendix B](details.qmd) provides more details on potential outcomes.
+:::
+
+The two hypothetical parallel worlds are [identical]{.underline} to each other, with the only difference being in one world, you get the treatment. Thus, any difference in outcomes between the two worlds must be the **causal effect** of the treatment (notated $\tau$):
 
 $$
-\tau = \textcolor{purple}{Y(1)} - \textcolor{purple}{Y(0)}
+\tau = \T - \C
 $$
+
+::: aside
+Note: technically, for the causal effect to be the differences in potential outcomes, we need an additional assumption called SUTVA. [Appendix B](details.qmd) gives more details.
+:::
+
+We call this causal effect the **individual treatment effect**.
 
 <br />
 
 ## The Problem of Counterfactuals
 
-However, in reality, we do not have two parallel worlds. In the real world, someone either gets the treatment, or doesn't get the treatment. Thus, by definition, one of the potential outcomes is not observed in the real world - the one not observed is called the **counterfactual**.
+However, in reality, we do not have two parallel worlds. You either get the treatment, or don't get the treatment. Thus, by definition, one of the potential outcomes is not observed in our real world - the one not observed is called the **counterfactual**.
 
-| In the Real World                       | Observed Outcome $Y$           | Counterfactual          |
-|------------------------------|------------------------|-------------------|
-| Scenario 1: I receive treatment         | $Y = \textcolor{purple}{Y(1)}$ | $\textcolor{red}{Y(0)}$ |
-| Scenario 2: I did not receive treatment | $Y = \textcolor{purple}{Y(0)}$ | $\textcolor{red}{Y(1)}$ |
+| In the Real World                       | Observed Outcome $Y$ | Counterfactual |
+|:----------------------------|:-----------------------|:------------------|
+| Scenario 1: I receive treatment         | $Y = \T$             | $\Cred$        |
+| Scenario 2: I did not receive treatment | $Y = \C$             | $\Tred$        |
 
-: {tbl-colwidths="\[40,35,25\]" .bordered}
+: From now on, to emphasise what potential outcomes are counterfactuals (unobserved), I will always label counterfactuals in red. {#tbl-observed tbl-colwidths="\[40,35,25\]" .bordered}
 
 The **fundamental problem of causal inference** is that in order to calculate our individual treatment effect $\tau$, we need both potential outcomes. However, we can never observe both.
 
-Causal inference is about estimating the counterfactuals with an **estimator**. This is difficult at the individual level, so instead, we focus on average treatment effects for groups:
+We need to estimate the counterfactuals with an **estimator**. This is difficult at the individual level, so instead, we focus on average treatment effects for groups:
+
+::: aside
+Note: An **estimand** is some true value, such as the true individual treatment effect defined by our potential outcomes. An **estimator** is a procedure to produce an **estimate** of the true value of the estimand.
+:::
 
 | Type                                          | Notation      | Definition                                                                                                                                                                                               |
-|------------|------------|-----------------------------------------------|
+|:----------------|:----------------|:-------------------------------------|
 | Average Treatment Effect (ATE)                | $\tau_{ATE}$  | The average of individual treatment effects $\tau$, for all individuals in our study, including people who did and didn't get the treatment.                                                             |
 | Average Treatment Effect on the Treated (ATT) | $\tau_{ATT}$  | The average of individual treatment effects $\tau$, but only for individuals who receive the treatment in our study. We ignore those who never receive treatment in our study.                           |
 | Local Average Treatment Effect (LATE)         | $\tau_{LATE}$ | The average of individual treatment effects $\tau$, but only for a specific (local) group of individuals in a study. This group is usually defined by some characteristic the individuals hold together. |
 
-: {tbl-colwidths="\[30, 15, 55\]" .bordered}
+: For a more formal definition of these group level treatment effects, consult [appendix B](details.qmd). {#tbl-estimands tbl-colwidths="\[30, 15, 55\]" .bordered}
 
 <br />
 
@@ -87,15 +107,23 @@ The estimation process for counterfactuals has a level of uncertainty. We cannot
 -   Smaller standard errors means we are more confident about our estimates.
 -   Larger standard errors means we are less certain about our estimates.
 
-With our standard errors, we can calculate how likely that there is zero (no) causal effect (called a **p-value**). This procedure is called a hypothesis test.
+::: aside
+Note: the mathematics of calculating standard errors is complex, so we will just trust our computer can do this accurately.
+:::
 
--   If our p-value is less than 0.05 (5%), there is less than a 5% chance that there is zero causal effect, which implies 95%+ chance there is a causal effect. In this case, we say there is a **statistically significant causal effect**.
--   If our p-value is larger than 0.05 (5%), there is a greater than 5% chance that the causal effect is 0. We generally conclude that there is no statistically significant causal effect.
+With our standard errors, we can calculate how likely that there is zero (no) causal effect (called a **p-value**). This procedure is called a hypothesis test. Our p-value gives us the following interpretations:
+
+| P-Value                | Implication                                                                                                                        | Conclusion                                                                                                             |
+|:-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|
+| Less than 0.05 (5%)    | There is less than a 5% chance that there is a zero causal effect. This means a 95%+ chance that there is a causal effect.         | We can conclude that the causal effect is **statistically significant** and conclude treatment $D$ causes outcome $Y$. |
+| Greater than 0.05 (5%) | There is greater than a 5% chance that there is zero causal effect. This means a 95% or less chance that there is a causal effect. | We cannot conclude that there is a causal effect between $D$ and $Y$. The effect is **not** statistically significant. |
+
+: A common question is why we decide a p-value of 0.05 is the threshold for significance. The answer is tradition - most fields historically use 5% for no clear reason. {#tbl-significance tbl-colwidths="\[26, 37, 37\]" .bordered}
 
 In most software and reports, if there is a p-value less than 5%, the authors will put stars (\*\*) next to the estimate. If you see any stars, there is statistically significant causal effect.
 
-![](images/clipboard-3174072485.png){fig-align="center" width="50%"}
-
-In the figure above, you can see the stars \*\*\* indicate a non-zero causal effect. Do not worry about interpreting the table now - we will show more details in the following chapters.
-
 <br />
+
+## Further Resources
+
+If you want a more formal and detailed description of the topics in this chapter, consult [appendix B](details.qmd).

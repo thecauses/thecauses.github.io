@@ -32,9 +32,11 @@ format:
     css: styles.css
     toc: true
     toc-depth: 0
+    tbl-cap-location: bottom
+    reference-location: margin
     grid:
-      sidebar-width: 275px
-      body-width: 700px
+      sidebar-width: 285px
+      body-width: 730px
       margin-width: 190px
       gutter-width: 1.5em
     html-math-method: mathjax

@@ -102,7 +102,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -209,7 +209,7 @@ window.Quarto = {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./frameworks.html">Introduction to Causation</a></li><li class="breadcrumb-item"><a href="./correlation.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Correlation vs.&nbsp;Causation</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -235,98 +235,108 @@ window.Quarto = {
 <li>Discuss the concept of <strong>correlation</strong>.</li>
 <li>Discuss how <strong>confounders</strong> mean correlation is not equal to causation.</li>
 </ol>
+<p>If you want a more formal and detailed description of the topics in this chapter, consult <a href="./details.html">appendix B</a>.</p>
 <p><br></p>
-<section id="what-is-correlation" class="level2">
+<section id="what-is-correlation" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="what-is-correlation">What is Correlation?</h2>
-<p><strong>Correlation</strong> is how one variable changes when another variable changes. To calculate a correlation between treatment and control, we:</p>
+<p><strong>Correlation</strong> is how one variable changes when another variable changes.</p>
+<p>To calculate a correlation between treatment and control, we divide all the individuals into our study into two groups. The <strong>treatment group</strong> (group <span class="math inline">\(T\)</span>) will consist of the individuals who receive our treatment. The <strong>control group</strong> (group <span class="math inline">\(C\)</span>) will consist of individuals who do not get the treatment. Then:</p>
 <ul>
-<li>Find the average outcome values of all who got the treatment: <span class="math inline">\(Y_t\)</span>.</li>
-<li>Find the average outcome values of all who didn’t get the treatment: <span class="math inline">\(Y_c\)</span>.</li>
+<li>Find the average outcome <span class="math inline">\(Y\)</span> values of group <span class="math inline">\(T\)</span>, the treatment group: <span class="math inline">\(\mean Y_T\)</span>.</li>
+<li>Find the average outcome <span class="math inline">\(Y\)</span> values of group <span class="math inline">\(C\)</span>, the control group: <span class="math inline">\(\mean Y_C\)</span>.</li>
 </ul>
-<p>Then, compare the two average values by finding their difference:</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Note: the bar/line over the <span class="math inline">\(Y\)</span> is the statistical symbol for mean/average.</p>
+</div></div><p>Then, compare the two average values by finding their difference:</p>
 <p><span class="math display">\[
-\text{correlation} = Y_t - Y_c
+\text{correlation} = \mean Y_T - \mean Y_C
 \]</span></p>
-<p>Our result will either be positive, negative, or zero. We can interpret it in the following way:</p>
-<table class="table-bordered caption-top table">
+<p>Our result will either be positive, negative, or zero:</p>
+<div id="tbl-corr" class="bordered quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[50,50]">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-bordered table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Type of Correlation</th>
-<th>Interpretation</th>
+<th style="text-align: left;">Type of Correlation</th>
+<th style="text-align: left;">Interpretation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Positive Correlation</strong> between treatment and outcome.</td>
-<td>Getting the treatment is related with <strong>higher</strong> outcome values on average.</td>
+<td style="text-align: left;"><strong>Positive Correlation</strong> between treatment and outcome.</td>
+<td style="text-align: left;">Getting the treatment is related with <strong>higher</strong> outcome values on average.</td>
 </tr>
 <tr class="even">
-<td><strong>Negative Correlation</strong> between treatment and outcome.</td>
-<td>Getting the treatment is related with <strong>lower</strong> outcome values on average.</td>
+<td style="text-align: left;"><strong>Negative Correlation</strong> between treatment and outcome.</td>
+<td style="text-align: left;">Getting the treatment is related with <strong>lower</strong> outcome values on average.</td>
 </tr>
 <tr class="odd">
-<td><strong>No (Zero) Correlation</strong> between treatment and outcome.</td>
-<td>Getting the treatment <strong>has no relationship</strong> with the average outcome values.</td>
+<td style="text-align: left;"><strong>No (Zero) Correlation</strong> between treatment and outcome.</td>
+<td style="text-align: left;">Getting the treatment <strong>has no relationship</strong> with the average outcome values.</td>
 </tr>
 </tbody>
 </table>
-<p>Note how I used the world <strong>related</strong> - correlation is not causation.</p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-corr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Note how I used the world <strong>related</strong> - correlation is not causation.
+</figcaption>
+</figure>
+</div>
 <p><br></p>
 </section>
-<section id="correlation-is-not-causation" class="level2">
+<section id="correlation-is-not-causation" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="correlation-is-not-causation">Correlation is not Causation</h2>
-<p>Why is correlation not causation? Imagine this causal scenario as an example:</p>
-<table class="table-bordered caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Our Causal Question: <span class="math inline">\(D \rightarrow Y\)</span></th>
-<th>Treatment <span class="math inline">\(D\)</span></th>
-<th>Outcome <span class="math inline">\(Y\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>How does going to the hospital to receive treatment affect your health?</td>
-<td>Going to the hospital (yes or no)</td>
-<td>Some measure of health outcome</td>
-</tr>
-</tbody>
-</table>
+<p>Why is correlation not causation? Imagine this causal question as an example:</p>
+<blockquote class="blockquote">
+<p>How does going to the hospital to receive treatment affect your health outcomes?</p>
+</blockquote>
 <p>If we just collect correlation data, we likely find the following:</p>
 <ul>
-<li>The average health outcome of individuals who went to the hospital is <u>quite low</u>.</li>
-<li>The average health outcome of individuals who did not go to the hospital is <u>quite high</u>.</li>
+<li>The average health outcome of individuals who went to the hospital is <u>low</u>.</li>
+<li>The average health outcome of individuals who did not go to the hospital is <u>high</u>.</li>
 <li>Thus, we find that going to the hospital is correlated with <strong>worse</strong> health outcomes.</li>
 </ul>
 <p>Does this mean that going to the hospital <strong>causes</strong> worse health? The answer is <strong>no</strong>! Our correlation is incorrectly measuring the causal effect because of a confounder.</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
 <p>A <strong>confounder</strong> is a third variable that has the following characteristics:</p>
 <ol type="1">
 <li>The confounder is correlated (positive or negative) with the outcome variable.</li>
 <li>The confounder causes who gets and doesn’t get the treatment.</li>
 <li>The confounder is <strong>not</strong> itself caused by the treatment.</li>
 </ol>
+</div>
+</div>
+</div>
 <p>In this example, a confounder could be <strong>smoking</strong>.</p>
 <ul>
-<li>Smoking will worsen health outcomes. Someone who smokes is also more likely to visit the hospital with health complications (getting the treatment)</li>
-<li>That means people who go to the hospital (get the treatment) start out with (on average) worse health outcomes than people who did not go to the hospital.</li>
+<li>Smoking will worsen health outcomes. Someone who smokes is also more likely to visit the hospital with health complications.</li>
+<li>That means people who go to the hospital start out with (on average) worse health outcomes than people who did not go to the hospital.</li>
 </ul>
 <p>This means that the hospital might actually be boosting people’s health outcomes significantly. But since the people going to the hospital start out with such bad health, even the positive effects of the hospital cannot get their average health outcome to be equal to the people who did not go to the hospital.</p>
-<p>Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Note: this issue is called <strong>selection bias</strong> - when people who get the treatment differ from people who do not get the treatment. Then, we cannot tell if the difference in outcomes is due to the treatment, or due to their existing differences.</p>
+</div></div><p>Thus, while our correlation says that going to the hospital worsens our health outcomes, the actual causal effect is that going to the hospital boosts our health outcomes.</p>
 <p><br></p>
 </section>
-<section id="formalising-selection-bias" class="level2">
+<section id="formalising-selection-bias" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="formalising-selection-bias">Formalising Selection Bias</h2>
-<p>Let us generalise why correlation is not equal to causation. We split every individual in our study into two groups - those who received the treatment, and those who haven’t. Using what we learned in the <a href="./frameworks.html">last chapter</a>, we get:</p>
-<table class="table-bordered caption-top table">
+<p>Let us generalise why correlation is not equal to causation. We split every individual in our study into two groups - those who received the treatment, and those who haven’t:</p>
+<div id="tbl-selbias" class="bordered quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[25,25,20,30]">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-selbias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table-bordered table">
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -335,35 +345,44 @@ window.Quarto = {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Group</th>
-<th>Observed Outcome</th>
-<th>Counterfactual</th>
-<th><strong>Real Treatment Effect</strong></th>
+<th style="text-align: left;">Group</th>
+<th style="text-align: left;">Observed Outcome</th>
+<th style="text-align: left;">Counterfactual</th>
+<th style="text-align: left;"><strong>Real Treatment Effect</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Group that got the treatment</td>
-<td><span class="math inline">\(Y_t = \textcolor{purple}{Y_t(1)}\)</span></td>
-<td><span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span></td>
-<td><span class="math inline">\(\tau_t = \textcolor{purple}{Y_t(1)} - \textcolor{red}{Y_t(0)}\)</span></td>
+<td style="text-align: left;">Group that got the treatment</td>
+<td style="text-align: left;"><span class="math inline">\(\mean Y_T = \textcolor{purple}{\mean Y_T^{(1)}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\textcolor{red}{\mean Y_T^{(0)}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mean \tau_T = \textcolor{purple}{\mean Y_T^{(1)}} - \textcolor{red}{\mean Y_T^{(0)}}\)</span></td>
 </tr>
 <tr class="even">
-<td>Group that did not get the treatment.</td>
-<td><span class="math inline">\(Y_c = \textcolor{purple}{Y_c(0)}\)</span></td>
-<td><span class="math inline">\(\textcolor{red}{Y_t(1)}\)</span></td>
-<td><span class="math inline">\(\tau_c = \textcolor{red}{Y_c(1)} - \textcolor{purple}{Y_c(0)}\)</span></td>
+<td style="text-align: left;">Group that did not get the treatment.</td>
+<td style="text-align: left;"><span class="math inline">\(\mean Y_C = \textcolor{purple}{\mean Y_C^{(0)}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\textcolor{red}{\mean Y_C^{(1)}}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\mean \tau_C = \textcolor{red}{\mean Y_C^{(1)}} - \textcolor{purple}{\mean Y_C^{(0)}}\)</span></td>
 </tr>
 </tbody>
 </table>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl" id="tbl-selbias-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: This table uses what we learned about counterfactuals (<a href="frameworks.html#tbl-observed" class="quarto-xref">Table&nbsp;<span>1.3</span></a>) and treatment effects from last chapter.
+</figcaption>
+</figure>
+</div>
 <p>We know the real treatment effects <span class="math inline">\(\tau_t\)</span> and <span class="math inline">\(\tau_c\)</span>. But how do these treatment effects compare to correlation? Recall our definition of correlation:</p>
 <p><span class="math display">\[
-\text{correlation} = Y_t - Y_c \ = \ \textcolor{purple}{Y_t(1)} - \textcolor{purple}{Y_c(0)}
+\text{correlation} = \mean Y_t - \mean Y_c \ = \ \textcolor{purple}{\mean Y_T^{(1)}} - \textcolor{purple}{\mean Y_C^{(0)}}
 \]</span></p>
-<p>Notice how this equation for correlation is <strong>not the same</strong> to either causal effect we found above. However, if <span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> and <span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> are equal, then our correlation would indeed be the same as the causal effect of the treatment group, <span class="math inline">\(\tau_t\)</span>. So are these equal?</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Note: We get this equation from the earlier definition of correlation, and using the table 2.2 to plug in <span class="math inline">\(\mean Y_T\)</span> and <span class="math inline">\(\mean Y_C\)</span>.</p>
+</div></div><p>Notice how this equation for correlation is <strong>not the same</strong> to either causal effect we found above. However, if <span class="math inline">\(\textcolor{purple}{\mean Y_C^{(0)}}\)</span> and <span class="math inline">\(\textcolor{red}{\mean Y_T^{(0)}}\)</span> are equal, then our correlation would indeed be the same as the causal effect of the treatment group, <span class="math inline">\(\mean \tau_T\)</span>. So are these equal?</p>
 <ul>
-<li><span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> is the potential outcome of group <span class="math inline">\(c\)</span> in the parallel world they do not get the treatment (which we observe)</li>
-<li><span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> is the potential outcome of group <span class="math inline">\(t\)</span> in the parallel world they do not get the treament (which is counterfactual).</li>
+<li><span class="math inline">\(\textcolor{purple}{\mean Y_C^{(0)}}\)</span> is the potential outcome of group <span class="math inline">\(C\)</span> in the parallel world they do not get the treatment (which we observe)</li>
+<li><span class="math inline">\(\textcolor{red}{\mean Y_T^{(0)}}\)</span> is the potential outcome of group <span class="math inline">\(T\)</span> in the parallel world they do not get the treament (which is counterfactual).</li>
 <li>Thus, both are the outcome value of all individuals, had they not received the treatment.</li>
 </ul>
 <p>So are these two equal? Not if there is a <strong>confounder</strong>.</p>
@@ -371,7 +390,12 @@ window.Quarto = {
 <li>Since the confounder is correlated with the outcome, that means people with different values of the confounder will have different outcomes had they not received the treatment.</li>
 <li>And since the confounder affects who gets and does not get the treatment, it might result in the treatment and control groups having different no-treatment potential outcomes.</li>
 </ul>
-<p>Thus, if there is a confounder, then <span class="math inline">\(\textcolor{purple}{Y_c(0)}\)</span> and <span class="math inline">\(\textcolor{red}{Y_t(0)}\)</span> are not equal, and correlation does not equal causation. This error caused by confounders is called <strong>selection bias</strong>.</p>
+<p>Thus, if there is a confounder, then <span class="math inline">\(\textcolor{purple}{\mean Y_C^{(0)}}\)</span> and <span class="math inline">\(\textcolor{red}{\mean Y_T^{(0)}}\)</span> are not equal, and correlation does not equal causation. This error caused by confounders is called <strong>selection bias</strong>.</p>
+<p><br></p>
+</section>
+<section id="further-resources" class="level2">
+<h2 class="anchored" data-anchor-id="further-resources">Further Resources</h2>
+<p>If you want a more formal and detailed description of the topics in this chapter, consult <a href="./details.html">appendix B</a>.</p>
 
 
 </section>
