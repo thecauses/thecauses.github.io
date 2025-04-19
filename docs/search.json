@@ -1,5 +1,35 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Uncovering the Causes: From Correlation to Causation",
+    "section": "",
+    "text": "Preface\nHow does raising the minimum wage cause unemployment levels to change? How does going to university cause our career earnings to change? How does taking the vaccine cause our chances of getting the disease to change? How do diversity policies cause changes in reported discrimination?\nFrom politics to health, economics to science, causation is key. Our lives revolve around causation - yet so many of us do not understand causation.\nWe have all heard of the saying - “correlation is not causation”. But what does that actually mean? How do we go from an observed correlation to finding the causal effect?\nThis booklet aims to teach the fundamentals of causal inference, while relying on as little mathematics and complexity as possible. The goal is that with the knowledge in this booklet, you will be able to critically assess the claims of others - is it truly causation or just correlation? You will also be able to conduct your own causal analysis using the R programming language.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#prerequisites",
+    "href": "index.html#prerequisites",
+    "title": "Uncovering the Causes: From Correlation to Causation",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nI aim to avoid as much mathematics and technical notation as possible. I recommend that before starting, one has an understanding of the following:\n\nBasic statistical concepts, such as mean/average, binary vs. continuous variables.\nBasic algebra concepts, such as slope of a linear line.\n(Optional but helpful) a basic understanding of statistical inference and simple regression.\n\nI provide R-code to implement the methods I discuss in this booklet. While I provide the code for the methods, I do not teach how to code in R in this booklet. Thus, if you wish to implement these methods, I recommend looking at simple tutorials regarding coding in R.\nI also provide some more detailed notes in blue drop-down info boxes, for those who are interested in a more thorough approach.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#layout",
+    "href": "index.html#layout",
+    "title": "Uncovering the Causes: From Correlation to Causation",
+    "section": "Layout",
+    "text": "Layout\nThis booklet is laid out in the following manner:\n\nIn the first two chapters, we discuss the basics of causal inference: what is causation, how is it different from correlation, and what are the challenges of finding causal effects.\nFor the remaining main chapters, we discuss different methods to estimate causal effects.\nIn the appendix, I provide some useful complementary notes that are a little more in depth.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
     "objectID": "frameworks.html",
     "href": "frameworks.html",
     "title": "1  What is Causation?",
